@@ -24,7 +24,7 @@ CHAR_LENGTH : 해당 문자열값의 글자 수 반환
 */
 
 SELECT 
-length('데이터베이스'), char_length('데이터베이스');
+length('데이터베이스'), char_length('데이터베이스'),
 char_length('database'), char_length('database');
 
 -- 사원명(emp_name), 사원명의 글자수, 이메일(eamil), 이메일의 글자수 조회
@@ -36,7 +36,7 @@ FROM employee;
   - 특정 문자열에서 찾고자 하는 문자열의 위치 반환
   - 없으면 0 반환
 */
-SELECT instr('AABAACAABBAA', 'B'), instr('AABAACAABBAA', 'D'); ---3, 0
+SELECT instr('AABAACAABBAA', 'B'), instr('AABAACAABBAA', 'D'); -- 3, 0
 -- 's'가 포함되어 있는 이메일 중 이메일, 이메일의 @ 위치 조회
 
 SELECT email, instr(eamil, '@')
@@ -54,11 +54,11 @@ SELECT lpad('hello', 10, '*'), rpad('hello', 10, "+");
  TRIM(컬럼|'문자열') | TRIM([LEADING|TRAILING|BOTH] 제거하고자하는문자들 FROM 컬럼|'문자열') 
  - 문자열의 앞/뒤/양쪽에 있는 지정한 문자들을 제거한 나머지 문자열 반환
 */
-SELECT trim('      KH      '); --기본적으로 양쪽에 있는 공백 제거
+SELECT trim('      KH      '); -- 기본적으로 양쪽에 있는 공백 제거
 SELECT trim(BOTH ' ' FROM '      KH      ' );
 
-SELECT trim(LEADING 'Z' FROM 'ZZZKHZZZ'); --KHZZZ <-- 문자 제거는 LEADING
-SELECT ltrim('      KH      '); --LTRIM : 앞쪽 공백만 제거
+SELECT trim(LEADING 'Z' FROM 'ZZZKHZZZ'); -- KHZZZ <-- 문자 제거는 LEADING
+SELECT ltrim('      KH      '); -- LTRIM : 앞쪽 공백만 제거
 
 SELECT trim(TRAILING 'Z' FROM 'ZZZKHZZZ'); -- ZZZKH
 SELECT rtrim('      KH      '); -- RTRIM : 뒤쪽 공백만 제거
@@ -67,19 +67,19 @@ SELECT rtrim('      KH      '); -- RTRIM : 뒤쪽 공백만 제거
   SUBSTR|SUBSTRING(컬럼|'문자열', 시작 위치 값, 추출할 문자 개수)
     - 문자열에서 특정 문자열을 추출해서 반환
 */
-SELECT substr('PROGRAMMING', 5, 2); --RA
-SELECT substr('PROGRAMMING', 1, 6); --PROGRA
-SELECT substr('PROGRAMMING', -8, 3); --GRA
+SELECT substr('PROGRAMMING', 5, 2); -- RA
+SELECT substr('PROGRAMMING', 1, 6); -- PROGRA
+SELECT substr('PROGRAMMING', -8, 3); -- GRA
 
 -- 여자 사원들의 이름(emp_name), 주민등록번호(emp_no) 조회
 SELECT emp_name, emp_no
-FROM employee;
-WHERE substr(emp_no, 8, 1) IN (2, 4)
+FROM employee
+WHERE substr(emp_no, 8, 1) IN (2, 4);
 
 -- 남자 사원들의 이름, 주민등록번호 조회
 SELECT emp_name, emp_no
-FROM employee;
-WHERE substr(emp_no, instr(emp_no, '-')+1, 1) IN (1, 3)
+FROM employee
+WHERE substr(emp_no, instr(emp_no, '-')+1, 1) IN (1, 3);
 
 
 /*
@@ -194,8 +194,8 @@ SELECT datediff('2024-12-31', now()), timediff('2025-01-01 00:00:00', now());
 -- 직원명, 입사일, 근무 일 수, 근무 개월 수, 근무 년 수 조회
 SELECT
     emp_name, hire_date,
-    timestampdiff(day, hire_date, now()) "근무 일 수"
-    timestampdiff(month, hire_date, now()) "근무 개월 수"
+    timestampdiff(day, hire_date, now()) "근무 일 수",
+    timestampdiff(month, hire_date, now()) "근무 개월 수",
     timestampdiff(year, hire_date, now()) "근무 년 수"
 FROM employee; 
 
