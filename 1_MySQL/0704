@@ -1,0 +1,105 @@
+-- 다음 작성된 SQL 구문이 정상적으로 작동하지 않는다.
+-- 그 이유를 원인(15점)에 작성하고 제대로된 SQL 구문을 조치사항(15점)에 작성하시오. (총 30점)
+
+
+
+-- 작성된 SQL문
+
+-- INSERT INTO 
+-- SELECT employee 
+-- FROM VALUES(300, '전지우', '700101-1234567');
+
+
+
+-- dept_code가 D6이거나 D9이고 salary가 300만원 이상이고
+
+-- 이메일 주소가 _ 앞에 3글자인 사원의 emp_name, emp_no, dept_code, salary 조회
+
+
+
+-- 작성된 SQL문
+
+SELECT emp_name, emp_no, dept_code, salary
+
+FROM employee
+
+WHERE dept_code = 'D6' OR dept_code = 'D9' AND salary >= 3000000;
+ 
+AND salary >= 3000000
+ 
+AND email LIKE '___/_%';
+ 
+
+
+-- 정답 원인 1 
+-- 정답 원인  샐러리 옆부등호에 = 가 빠져있음 ,이메일 라이크 옆 기존  '____%' 에서 '___/_%' 로 바뀌어야함
+-- 정답 원인 3 아래 앤드를 지우고 위에 or 을 쓴뒤 email LIKE '___/_%'; 이어서 써야함.
+-- 
+
+
+
+-- 다음과 같이 NULL 값을 비교하였는데 정상적으로 작동하지 않았다.
+-- 그 이유를 원인(10점)에 작성하고 제대로된 SQL 구문을 조치내용(10점)에 작성하시오. (총 20점)
+
+
+
+
+SELECT * FROM employee 
+WHERE bonus is null;
+
+-- 정답 원인 1 where 절에 보너스옆 부등호 = 가 빠지고  bonus 옆에 null 이아닌 is null 이 들어가야한다.
+
+-- NULL 값에 대한 비교처리가 되지 않음
+-- 다음 작성된 SQL 구문이 정상적으로 작동하지 않는다.
+-- 그 이유를 원인(15점)에 작성하고 제대로된 SQL 구문을 조치사항(15점)에 작성하시오. (총 30점)
+
+
+
+-- 작성된 SQL문
+
+-- INSERT INTO 
+-- SELECT employee 
+-- FROM VALUES(300, '전지우', '700101-1234567');
+
+
+
+-- dept_code가 D6이거나 D9이고 salary가 300만원 이상이고
+
+-- 이메일 주소가 _ 앞에 3글자인 사원의 emp_name, emp_no, dept_code, salary 조회
+
+
+
+-- 작성된 SQL문
+
+SELECT emp_name, emp_no, dept_code, salary
+
+FROM employee
+
+WHERE dept_code = 'D6'
+
+
+
+AND salary >= 3000000
+
+AND email LIKE '___/_%';
+
+
+-- 정답 원인 1
+-- 정답 원인 2 샐러리 옆부등호에 = 가 빠져있음
+-- 정답 원인 3 이메일 라이크 옆 기존  '____%' 에서 '___/_%' 로 바뀌어야함
+
+
+
+
+-- 다음과 같이 NULL 값을 비교하였는데 정상적으로 작동하지 않았다.
+-- 그 이유를 원인(10점)에 작성하고 제대로된 SQL 구문을 조치내용(10점)에 작성하시오. (총 20점)
+
+
+
+
+SELECT * FROM employee 
+WHERE bonus is null;
+
+-- 정답 원인 1 where 절에 보너스옆 부등호 = 가 빠지고  bonus 옆에 null 이아닌 is null 이 들어가야한다.
+
+-- NULL 값에 대한 비교처리가 되지 않음

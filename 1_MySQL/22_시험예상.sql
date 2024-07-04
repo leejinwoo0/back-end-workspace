@@ -111,5 +111,7 @@ FROM employee
 JOIN department ON (dept_code = dept_id)
 WHERE bonus IS NOT NULL;
 
+-- 실습문제 --
+-- 1. 직급이 대리면서 ASIA 지역에서 근무하는 직원들의 사번, 직원명 ,직급명, 부서명 ,근무지역, 급여조회
 
-
+SELECT emp_id, emp_name, job_name, de

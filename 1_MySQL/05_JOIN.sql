@@ -367,4 +367,4 @@ JOIN department ON (dept_code = dept_id)
 JOIN job USING (job_code)
 JOIN location ON (location_id = local_code)
 JOIN national USING (national_code)
-JOIN sal_gradeON (salary BETWEEN);
+JOIN sal_grade ON (salary BETWEEN);
