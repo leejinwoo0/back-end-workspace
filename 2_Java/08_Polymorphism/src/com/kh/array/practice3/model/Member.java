@@ -2,11 +2,13 @@ package com.kh.array.practice3.model;
 
 public class Member {
 	
+	private int empNO;
 	private String name;
 	private int age;
 	private int coupon;
 	private String booklist;
 	
+<<<<<<< HEAD
 	public Member(String name, int age, int coupon, String booklist) {
 		super();
 		this.name = name;
@@ -51,6 +53,8 @@ public class Member {
 	public String toString() {
 		return "Member [name=" + name + ", age=" + age + ", coupon=" + coupon + ", booklist=" + booklist + "]";
 	}
+=======
+>>>>>>> 561e309994b0a5ee1eefa77d35bfdc8cc3761c52
 	
 	
 	

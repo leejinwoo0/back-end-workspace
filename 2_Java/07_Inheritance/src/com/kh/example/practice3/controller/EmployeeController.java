@@ -41,4 +41,9 @@ public class EmployeeController {
 	public Employee info() {
 		return employee;
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeeController [employee=" + employee + "]";
+	}
 }

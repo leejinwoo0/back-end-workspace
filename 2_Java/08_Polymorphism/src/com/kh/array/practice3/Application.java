@@ -10,6 +10,7 @@ public class Application {
     
 	
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("이름 : ");
@@ -27,6 +28,10 @@ public class Application {
         Switch(num1){
         	case 1: Member [name=김미경, age=16, coupon=0, bookList=[null, null]]
         }
+=======
+		
+
+>>>>>>> 561e309994b0a5ee1eefa77d35bfdc8cc3761c52
 	}
 	
 	public void mainMenu() {
