@@ -14,10 +14,6 @@ public class Application {
 		
 		list.add("로또 번호 : ");
 		list.add("내 번호 : ");
-		list.add("로또 번호 : ");
-		list.add("내 번호 : ");
-		list.add("로또 번호 : ");
-		list.add("내 번호 : ");
 		
 		System.out.println(list);
 		int random = (int) (Math.random() * 45 + 1);
@@ -29,7 +25,10 @@ public class Application {
 			if(random != num) {
 				System.out.println("로또 번호");
 			} else if (random == num) {
-				System.out.println();
+				System.out.println("다른수를 입력하세요");
+			} else {
+				System.out.println(count + "번 만에 맞췄습니다.");
+				break;
 			}
 			
 		}

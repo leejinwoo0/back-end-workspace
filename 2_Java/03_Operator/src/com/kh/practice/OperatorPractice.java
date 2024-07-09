@@ -78,9 +78,9 @@ public class OperatorPractice {
 		System.out.print("나이 = ");
 		int age = sc.nextInt();
 		
-		String result =  age <= 13 ? "어린이" :  13 < age <= 19 && age > 19 ? "청소년" : "성인";
+		String str = age <= 13 ? "어린이" : age <= 19 ? "청소년" : "성인";
 		
-		System.out.println(result);
+		System.out.println(str);
 	}
 
 	//사과의 개수와 바구니의 크기(바구니 1개의 들어가는 사과의 개수)를 입력받아
