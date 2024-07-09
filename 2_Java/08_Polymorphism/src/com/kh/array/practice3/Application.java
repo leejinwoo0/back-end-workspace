@@ -10,6 +10,7 @@ public class Application {
 	MemberController membercontroller = new MemberController();
 
 	public static void main(String[] args) {
+		
 
 	}
 	

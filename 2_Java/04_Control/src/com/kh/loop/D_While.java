@@ -40,6 +40,7 @@ public class D_While {
 			int num = sc.nextInt();
 			System.out.println(num);
 			if(num == 0) break;
+		
 		}
 	}
 	
@@ -93,6 +94,8 @@ public class D_While {
 			} else {
 				System.out.println(count + "번 만에 맞혔습니다.");
 				break;
+				
+			
 			}
 		}
 
@@ -173,10 +176,10 @@ public class D_While {
 	public static void main(String[] args) {
 		D_While d = new D_While();
 //		d.method1();
-//		d.method2();
+		d.method2();
 //		d.method3();
 //		d.method4();
-		d.method5();
+//		d.method5();
 	}
 
 }
