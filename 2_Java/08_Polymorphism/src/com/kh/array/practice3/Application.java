@@ -10,7 +10,7 @@ public class Application {
     
 	
 	public static void main(String[] args) {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("이름 : ");
