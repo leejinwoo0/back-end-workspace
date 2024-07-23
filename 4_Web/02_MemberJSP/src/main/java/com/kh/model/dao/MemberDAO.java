@@ -82,5 +82,6 @@ public class MemberDAO {
 		if(rs.next()) member = new Member(id, rs.getString("password"), rs.getString("name"));
 		
 		close(rs, ps, conn);
+		return member;
 	}
 }
