@@ -5,32 +5,30 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import com.kh.model.dao.MemberDAO;
 import com.kh.model.vo.Member;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-@WebServlet("/login")
-public class LoginServlet1 extends HttpServlet {
+@WebServlet("/allMember")
+public class AllMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+	
 		
-		MemberDAO dao = new MemberDAO();
+		MemberDAO dao =new MemberDAO();
 		try {
-			Member member = dao.login(id, password);
+			List<Member> list = dao.all();
 			
-			// 바인딩 - Session
-			HttpSession session = request.getSession();
-			session.setAttribute("member", member);
-			
-			response.sendRedirect("/index.jsp");
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/allMember.jsp").forward(request, response);
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		}
 	}
