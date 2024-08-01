@@ -1,27 +1,85 @@
--- 회원 정보
-CREATE TABLE memberinformation (
-    member_code INT PRIMARY KEY AUTO_INCREMENT,
-    id VARCHAR(50),
-    password VARCHAR(50),
-    name VARCHAR(50),
-    phone VARCHAR(50)
+DROP TABLE comment;
+DROP TABLE video_like;
+DROP TABLE video;
+DROP TABLE subscribe;
+DROP TABLE channel;
+DROP TABLE member;
+
+-- 회원
+CREATE TABLE member(
+	id VARCHAR(20) PRIMARY KEY,
+    password VARCHAR(20),
+    email VARCHAR(50),
+    phone VARCHAR(13)
 );
 
--- 리뷰 (평점)
-CREATE TABLE review (
-    review_code INT PRIMARY KEY AUTO_INCREMENT,
-    package_review VARCHAR(100),
-    review_date CHAR(30),
-    member_code INT,
-    payment_amount_code INT,
-    FOREIGN KEY (member_code) REFERENCES memberinformation (member_code),
-    FOREIGN KEY (payment_amount_code) REFERENCES payment_amount (payment_amount_code)
+-- 채널
+CREATE TABLE channel(
+	channel_code INT PRIMARY KEY AUTO_INCREMENT,
+    channel_img VARCHAR(100),
+    channel_name VARCHAR(50),
+    id VARCHAR(20),
+    FOREIGN KEY (id) REFERENCES member(id)
 );
--- 질문게시판
-CREATE TABLE question_table (
-    question_code INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50),
-    qna VARCHAR(100),
-    member_code INT,
-    FOREIGN KEY (member_code) REFERENCES memberinformation (member_code)
+
+-- 동영상
+CREATE TABLE video(
+	video_code INT PRIMARY KEY AUTO_INCREMENT,
+    video_url VARCHAR(100),
+    video_img VARCHAR(100),
+    video_title VARCHAR(80),
+    video_count INT DEFAULT 0,
+    video_date DATE DEFAULT (current_date),
+    video_desc TEXT,
+    channel_code INT,
+    FOREIGN KEY (channel_code) REFERENCES channel(channel_code)
 );
+
+-- 댓글  
+CREATE TABLE comment(
+	comment_code INT PRIMARY KEY AUTO_INCREMENT,
+    comment_text TEXT,
+    comment_date DATE DEFAULT (current_date),
+    id VARCHAR(20),
+    video_code INT,
+    parent_code INT,
+    FOREIGN KEY (id) REFERENCES member(id),
+    FOREIGN KEY (video_code) REFERENCES video(video_code)
+);
+
+-- 구독 
+CREATE TABLE subscribe(
+	sub_code INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(20),
+    channel_code INT,
+    FOREIGN KEY (id) REFERENCES member(id),
+    FOREIGN KEY (channel_code) REFERENCES channel(channel_code)
+);
+
+-- 좋아요
+CREATE TABLE video_like(
+	like_code INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(20),
+    video_code INT,
+    FOREIGN KEY (id) REFERENCES member(id),
+    FOREIGN KEY (video_code) REFERENCES video(video_code)
+);
+
+INSERT INTO member(id, password, email, phone)
+VALUES('akmu', '1234', 'akmu@gmail.com', '010-0000-0000');
+
+SELECT * FROM member;
+
+INSERT INTO channel(channel_img, channel_name, id)
+VALUES('http://192.168.10.51:8082/channel/akmu.jpg', 'AKMU', 'akmu');
+
+SELECT * FROM channel;
+
+INSERT INTO video(video_url, video_img, video_title, video_desc, channel_code)
+VALUES('http://localhost:8082/video/AKMU1.mp4', 
+	'http://localhost:8082/thumbnail/akmu.webp',
+    'AKMU - 후라이의 꿈 LIVE CLIP (FESTIVAL ver.)',
+    'More about AKMU',
+    1);
+    
+SELECT * FROM video;
