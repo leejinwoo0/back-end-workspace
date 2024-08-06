@@ -31,12 +31,13 @@ public class MemberService {
 	public void update(Member member) {
 		mapper.update(member);
 	}
-
-	public List<Member> search(SearchDTO dto){
+	
+	public List<Member> search(SearchDTO dto) {
 		return mapper.search(dto);
 	}
 	
 	public void delete(List<String> idList) {
 		mapper.delete(idList);
 	}
+
 }

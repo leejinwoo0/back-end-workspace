@@ -9,4 +9,5 @@ import com.semi.youtube.mode.vo.Video;
 @Mapper
 public interface VideoMapper {
 	List<Video> allVideo();
+	Video detail(int videoCode);
 }
