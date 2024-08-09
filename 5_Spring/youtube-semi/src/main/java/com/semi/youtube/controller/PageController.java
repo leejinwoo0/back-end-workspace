@@ -28,4 +28,8 @@ public class PageController {
 		return "detail";
 	}
 
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 }
