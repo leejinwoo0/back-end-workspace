@@ -59,10 +59,17 @@
 			</button>
 		</div>
 		<div class="header-end">
+		<c:if test = "${empty vo}">
 			<button type="button" onclick="location.href='/login'">
 				<!-- <i class="fa-solid fa-user"></i> -->
 				로그인
 			</button>
+		</c:if>
+		<c:if test="${not empty vo }">
+		<button type="button" onclick="loacation.href='login'">
+		로그아웃
+		</button>
+		</c:if>	
 		</div>
 	</header>
 </body>

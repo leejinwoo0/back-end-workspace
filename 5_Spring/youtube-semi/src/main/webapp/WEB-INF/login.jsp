@@ -13,11 +13,10 @@
 <body>
 <div class="container-fluid">
     <h1>로그인</h1>
-    <form action="/login" method="post" onsubmit="return validate()">
+    <form action="/login" method="post">
   <div class="mb-3">
     <label for="id" class="form-label">아이디</label>
-    <input type="text" class="form-control" 
-    id="id" aria-describedby="form-text">
+    <input type="text" class="form-control" id="id" name="id">
     <div id="idCheck" class="form-text"></div>
   </div>
   <div class="mb-3">
@@ -28,7 +27,6 @@
   <button type="submit" class="btn btn-dark">로그인</button>
 </form>
 </div>
-<script src="${pageContext.request.contextPath}/js/login.js"></script>
 
 </body>
 </html>
