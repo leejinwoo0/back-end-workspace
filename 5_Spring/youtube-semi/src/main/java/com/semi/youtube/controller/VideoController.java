@@ -17,12 +17,12 @@ public class VideoController {
 	
 	@Autowired
 	private VideoService video;
-	
-	
+
 	// 좋아요
 	@ResponseBody
 	@PostMapping("/like")
 	public void like(HttpServletRequest request, int code) {
+		System.out.println(code);
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("vo");
 		
@@ -34,8 +34,7 @@ public class VideoController {
 		video.like(data);
 	}
 	
-	
-   // 좋아요 취소
+	// 좋아요 취소
 	@ResponseBody
 	@PostMapping("/unlike")
 	public void unlike(int code) {
@@ -44,21 +43,15 @@ public class VideoController {
 	
 	
 	
-	
-	// 비디오 전체 목록 보기
-	
-	// 비디오 1개 보여주기
-	
 	// 댓글 작성
 	
 	// 댓글 수정
 	
 	// 댓글 삭제
 	
+	
+	
 	// 구독
 	
 	// 구독 취소
-	
-	
-
 }

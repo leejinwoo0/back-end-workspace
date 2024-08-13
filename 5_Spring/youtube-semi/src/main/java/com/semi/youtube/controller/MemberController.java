@@ -14,17 +14,17 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
+	
 	@Autowired
 	private MemberService member;
 	
-	
 	// 중복체크
 	@ResponseBody
-	@PostMapping("check")
+	@PostMapping("/check")
 	public boolean check(String id) {
+		System.out.println(id);
 		return member.check(id);
 	}
-	
 	
 	// 로그인
 	@PostMapping("/login")
@@ -32,7 +32,7 @@ public class MemberController {
 		Member result = member.login(vo);
 		if(result!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("vo", session);
+			session.setAttribute("vo", result);
 			return "redirect:/";
 		}
 		return "login";
@@ -47,5 +47,6 @@ public class MemberController {
 	}
 	
 	// 회원가입
-
+	
+	
 }

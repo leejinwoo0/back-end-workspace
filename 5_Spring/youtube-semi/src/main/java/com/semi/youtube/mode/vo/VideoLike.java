@@ -1,14 +1,14 @@
 package com.semi.youtube.mode.vo;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @NoArgsConstructor 
+@AllArgsConstructor @Builder
 public class VideoLike {
-
 	private int likeCode;
-	private String idl; //member
-	private int videoCode; // video
-	
+	private String id; //member
+	private int videoCode; //video
 }

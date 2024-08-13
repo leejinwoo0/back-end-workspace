@@ -41,7 +41,7 @@ public Employee search(int id) throws SQLException{
 	Employee employee = null;
 	
 	if(rs.next()) {
-		employee = new Employee(id,rs.getString("emp_name"), rs.getString("email"), rs.getString("phone")); 
+		employee = new Employee(id,  rs.getString("emp_name"), rs.getString("email"), rs.getString("phone")); 
 	}
 
 	close(rs, ps, conn);

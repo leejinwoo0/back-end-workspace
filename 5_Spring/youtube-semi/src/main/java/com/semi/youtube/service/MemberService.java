@@ -10,16 +10,14 @@ import mapper.MemberMapper;
 @Service
 public class MemberService {
 
-	
 	@Autowired
 	private MemberMapper member;
 	
-	public boolean  check(String id) {
-	   Member vo =  member.check(id);
-	   if(vo!=null) return true;
-	   return false;
-	 
-   }
+	public boolean check(String id) {
+		Member vo = member.check(id);
+		if(vo!=null) return true;
+		return false;
+	}
 	
 	public Member login(Member vo) {
 		return member.login(vo);

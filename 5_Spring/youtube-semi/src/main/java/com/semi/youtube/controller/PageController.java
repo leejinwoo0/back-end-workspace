@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.semi.youtube.mode.vo.Member;
+import com.semi.youtube.mode.vo.Subscribe;
 import com.semi.youtube.mode.vo.Video;
 import com.semi.youtube.mode.vo.VideoLike;
 import com.semi.youtube.service.VideoService;
@@ -20,6 +21,7 @@ public class PageController {
 	@Autowired
 	private VideoService video;
 	
+	// 비디오 전체 목록 보기
 	@GetMapping("/")
 	public String index(Model model) {
 		System.out.println(video.allVideo());
@@ -29,8 +31,7 @@ public class PageController {
 	
 	// 비디오 1개 보여주기
 	// 좋아요 관련 정보 가져오기
-	// 구독자수 구독 관련 정보 가져오기
-	
+	// 구독자수, 구독 관련 정보 가져오기
 	@GetMapping("/{videoCode}")
 	public String detail(@PathVariable("videoCode") int videoCode, Model model, HttpServletRequest request) {
 		
@@ -45,22 +46,25 @@ public class PageController {
 		VideoLike like = null;
 		Subscribe sub = null;
 		if(member!=null) {
-			like =  video.checkLike(VideoLike.builder()
-	                  .id(member.getId())
-	                  .videoCode(videoCode)
-	                  .build());
-			sub = video.check(Subscribe.builder())
+			like = video.checkLike(VideoLike.builder()
 					.id(member.getId())
-					.channelCode(data.getChannel().getchannelCode()))
-                    .build());   
+					.videoCode(videoCode)
+					.build());
+			sub = video.check(Subscribe.builder()
+					.id(member.getId())
+					.channelCode(data.getChannel().getChannelCode())
+					.build());
 		}
-	   model.addAttribute("like", like);
+		
+		model.addAttribute("like", like);
+		model.addAttribute("sub", sub);
 		
 		return "detail";
 	}
-
+	
 	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
+
 }
