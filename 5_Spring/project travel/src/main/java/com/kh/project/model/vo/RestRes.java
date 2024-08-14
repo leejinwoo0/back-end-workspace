@@ -14,4 +14,8 @@ public class RestRes {
 	private int pmtAmtCode;
 	private int restCode;
 	private int memCode;
+	private String id;
+	private String password;
+	
+	
 }

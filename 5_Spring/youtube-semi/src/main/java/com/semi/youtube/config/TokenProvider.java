@@ -1,4 +1,4 @@
-package com.kh.security.config;
+package com.semi.youtube.config;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -7,8 +7,6 @@ import java.util.Map;
 
 import javax.crypto.SecretKey;
 
-import org.springframework.stereotype.Service;
-
 import com.kh.security.model.vo.Member;
 
 import io.jsonwebtoken.Claims;
@@ -16,10 +14,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
-@Service
 public class TokenProvider {
+
 	
-	private SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+private SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 	
 	public String create(Member member) {
 		return Jwts.builder()
@@ -48,5 +46,4 @@ public class TokenProvider {
 				.role((String) claims.get("role"))
 				.build();
 	}
-
 }

@@ -22,7 +22,7 @@ public class MemberService {
         
         // 암호화 된 비밀번호 저장
         vo.setPassword(bcpe.encode(vo.getPassword()));
-        vo.setRole("ROLE_ADMIN");
+        vo.setRole("ROLE_ADMIN"); 
         
 		mapper.register(vo);
 	}

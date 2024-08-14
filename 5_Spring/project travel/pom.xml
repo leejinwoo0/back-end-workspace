@@ -94,6 +94,29 @@
 			<artifactId>travel</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<!-- Spring Security-->
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.jetbrains</groupId>
+	    <artifactId>annotations</artifactId>
+	    <version>24.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.kh</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.kh</groupId>
+			<artifactId>security</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

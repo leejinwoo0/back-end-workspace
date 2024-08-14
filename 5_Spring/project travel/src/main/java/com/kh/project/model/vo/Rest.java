@@ -12,4 +12,6 @@ public class Rest {
     private String restPhone;
     private int avgPrice;
     private int restClassCode;
+    
+    
 }

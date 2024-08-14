@@ -14,3 +14,13 @@ form{
 button{
 	width: 100%;
 }
+a{
+	margin-top:1opx;
+	color:black;
+	
+}
+
+
+a : hover{
+	color: darked;
+}
