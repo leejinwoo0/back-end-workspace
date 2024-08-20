@@ -1,7 +1,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.Mem_info_Mapper">
-	<insert id="register" parameterType="com.kh.project.model.vo.Mem_info">
+<mapper namespace="mapper.MemInfoMapper">
+	<insert id="register" parameterType="com.kh.project.model.vo.MemInfo">
 		INSERT INTO member
-		VALUES (#{id}, #{password}, #{name})
+		VALUES (#{id}, #{password}, #{name}, #{phone}, #{role})
 	</insert>
+	
+	<select id="login" parameterType="String" resultType="MemInfo">
+	SELECT * FROM WHERE id=#{id}
+	</select>
 </mapper>

@@ -1,0 +1,91 @@
+/* 기본 폰트 설정 */
+@font-face {
+    font-family: 'Paris2024';
+    src: url('/fonts/Paris2024-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Paris2024', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url('/IMG/Untitled\ design.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 회원가입 폼 컨테이너 */
+#signup-form {
+    background-color: transparent; /* 폼을 완전히 투명하게 설정 */
+    box-shadow: none; /* 그림자 제거 */
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    color: #ffffff; /* 폼 내부 텍스트 색상을 흰색으로 변경 */
+}
+
+#signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ffffff; /* 제목 색상도 흰색으로 변경 */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff; /* 레이블 색상도 흰색으로 변경 */
+    font-family: "Sunflower", sans-serif;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ffffff; /* 입력 필드 테두리를 흰색으로 변경 */
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: transparent; /* 입력 필드를 투명하게 설정 */
+    color: #ffffff; /* 입력 필드 텍스트 색상을 흰색으로 변경 */
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}

@@ -35,6 +35,8 @@ CREATE TABLE pmt_amt (
     FOREIGN KEY (mem_code) REFERENCES mem_info (mem_code)
 );
 
+SELECT * FROM pmt_amt;
+
 -- 식당분류
 CREATE TABLE rest_class (
     rest_class_code INT PRIMARY KEY AUTO_INCREMENT,

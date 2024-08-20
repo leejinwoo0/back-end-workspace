@@ -11,28 +11,5 @@ import com.kh.security.model.vo.Member;
 @Controller
 public class RestResController {
 	
-	@Autowired
-	private RestResService service;
 	
-	@Autowired
-	private TokenProvider tokenProvider;
-	
-	@PostMapping("/register")
-	public String register(Member vo) {
-		service.register(vo);
-		
-		return"redirect:/";
-		
-	}
-
-	@PostMapping("/login")
-	public void login(Member vo) {
-		Member member = service.login(vo);
-		if(member!=null) {
-			
-		String token = tokenProvider.create(member);
-		
-			
-		}
-	}
 }
