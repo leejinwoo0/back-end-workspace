@@ -24,8 +24,7 @@ CREATE TABLE pmt_amt (
 CREATE TABLE stadium (
     stadium_code INT PRIMARY KEY AUTO_INCREMENT,
     stadium_event VARCHAR(20),
-    start_date CHAR(15),
-    end_date CHAR(15),
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
     price INT,
     game VARCHAR(20),
     game_skd TEXT
@@ -55,18 +54,15 @@ CREATE TABLE rest (
     rest_location VARCHAR(30),
     rest_phone VARCHAR(15),
     avg_price INT,
-     date CHAR(10),
-    time CHAR(10),
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
     people INT,
-    amount INT,
-    rest_class_code INT,
-    FOREIGN KEY (rest_class_code) REFERENCES rest_class (rest_class_code)
+    amount INT
 );
 
 -- 리뷰 (평점)
 CREATE TABLE review (
     review_code INT PRIMARY KEY AUTO_INCREMENT,
-    review_date CHAR(30),
+    review_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     package_review VARCHAR(100),
     mem_code INT,
     pmt_amt_code INT,
@@ -88,12 +84,8 @@ CREATE TABLE accom (
     accom_code INT PRIMARY KEY AUTO_INCREMENT,
     phone VARCHAR(15),
     location VARCHAR(70),
-    date CHAR(10),
-    time VARCHAR(50),
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
     headcount INT,
     price INT,
-    name_of_accom VARCHAR(70),
-    breakfast_availability VARCHAR(30),
-    accom_class_code INT,
-    FOREIGN KEY (accom_class_code) REFERENCES accom_class (accom_class_code)
+    name_of_accom VARCHAR(70)
 );
