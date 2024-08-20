@@ -17,10 +17,6 @@ public class MemberService {
 	private BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 	
 	public void register(Member vo) {
-//		System.out.println("암호화 전 : " + vo.getPassowrd());
-//        System.out.println("암호화 후 : " + bcpe.encode(vo.getPassowrd()));
-        
-        // 암호화 된 비밀번호 저장
         vo.setPassword(bcpe.encode(vo.getPassword()));
         vo.setRole("ROLE_ADMIN"); 
         

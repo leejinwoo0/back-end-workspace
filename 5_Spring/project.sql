@@ -169,3 +169,5 @@ CREATE TABLE accom_res (
     FOREIGN KEY (accom_code) REFERENCES accom (accom_code),
     FOREIGN KEY (mem_code) REFERENCES mem_info (mem_code)
 );
+
+SELECT * FROM mem_info;
