@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CompanyRestMapper">
+<select id="check" parameterType="String" resultType="CompanyRest">
+		SELECT * FROM com_rest WHERE id = #{id}
+	</select>
+	
+	<select id="login" parameterType="CompanyRest" resultType="CompanyRest">
+		SELECT * FROM com_rest WHERE id = #{id} AND password = #{password}
+	</select>
+
+	<update id="update" parameterType="CompanyRest">
+		UPDATE com_rest
+		SET
+		id=#{id}, password=#{password}
+		WHERE rest_code = #{rest_code}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM com_rest
+		WHERE rest_code =
+		#{rest_code}
+	</delete>
+</mapper>

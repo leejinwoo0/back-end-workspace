@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CompanyAccomMapper">
+<select id="check" parameterType="String" resultType="CompanyAccom">
+		SELECT * FROM com_accom WHERE id = #{id}
+	</select>
+	
+	<select id="login" parameterType="CompanyAccom" resultType="CompanyAccom">
+		SELECT * FROM com_accom WHERE id = #{id} AND password = #{password}
+	</select>
+
+	<update id="update" parameterType="CompanyAccom">
+		UPDATE com_accom
+		SET
+		id=#{id}, password=#{password}
+		WHERE accom_code = #{accom_code}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM com_accom
+		WHERE accom_code =
+		#{accom_code}
+	</delete>
+</mapper>

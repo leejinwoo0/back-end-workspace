@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CompanyStadiumMapper">
+<select id="check" parameterType="String" resultType="CompanyStadium">
+		SELECT * FROM com_stadium WHERE id = #{id}
+	</select>
+	
+	<select id="login" parameterType="CompanyStadium" resultType="CompanyStadium">
+		SELECT * FROM com_stadium WHERE id = #{id} AND password = #{password}
+	</select>
+
+	<update id="update" parameterType="CompanyStadium">
+		UPDATE com_stadium
+		SET
+		id=#{id}, password=#{password}
+		WHERE stadium_code = #{stadium_code}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM com_stadium
+		WHERE stadium_code =
+		#{stadium_code}
+	</delete>
+</mapper>
