@@ -1,0 +1,18 @@
+package com.kh.pet.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.kh.pet.model.vo.Member;
+import com.kh.pet.service.MemberService;
+
+@Mapper
+public interface MemberMapper {
+	
+	MemberService check(String id);
+	MemberService login(MemberService vo);
+	int update(MemberService vo);
+	List<Member> memberList(int id);
+
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="mapper.ChatMapper">
+
+<resultmap  id="chatMap" type="Chat">
+<id column="chat_code" property="chatCode"/>
+<result column="title" property="title"/>
+<result column="text" properyy="text"/>
+<result column="answer" property="answer"/>
+<result column="id" property="id"/>
+</resultmap>
+
+
+
+<!-- 상담 작성 -->
+<insert id= "insertChat" parameterType="Chat">
+
+</insert>
+</mapper>

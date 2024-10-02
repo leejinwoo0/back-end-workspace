@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ChatMapper">
+
+<resultmap  id="chatMap" type="Chat">
+<id column="chat_code" property="chatCode"/>
+<result column="title" property="title"/>
+<result column="text" properyy="text"/>
+<result column="answer" property="answer"/>
+<result column="id" property="id"/>
+</resultmap>
+
+
+
+<!-- 상담 작성 -->
+<insert id= "insertChat" parameterType="Chat">
+
+</insert>
+</mapper>

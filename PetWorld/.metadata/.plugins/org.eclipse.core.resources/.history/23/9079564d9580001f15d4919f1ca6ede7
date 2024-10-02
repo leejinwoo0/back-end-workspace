@@ -1,0 +1,32 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ReservationMapper">
+
+<resultMap id="reservationMap" type="Reservation">
+<id column="res_code" property="resCode"/>
+<result column="serviceman" property="serviceman"/>
+<result column="pet_num" property="petNum"/>
+<result column="care_time" property="careTime"/>
+<result column="bath_service" property="bathService"/>
+<result column="walk_service" property="walkService"/>
+<result column="pickup_service" property="pickupService"/>
+<result column="id" property="id"/>
+<result column="serviceman_code" property="servicemanCode"/>
+</resultMap>
+
+
+</mapper>
+
+
+CREATE TABLE Reservation (
+res_code INT PRIMARY KEY,
+serviceman VARCHAR(100),
+pet_num INT,
+care_time TIME,
+bath_service BOOLEAN,
+walk_service BOOLEAN,
+pickup_service BOOLEAN,
+id VARCHAR(50),
+serviceman_code INT,
+FOREIGN KEY (id) REFERENCES member (id),
+FOREIGN KEY (serviceman_code) REFERENCES PetSitter (serviceman_code)
+);
