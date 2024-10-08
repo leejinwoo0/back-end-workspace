@@ -59,7 +59,7 @@ public class MemberController {
 
 	// 회원정보수정 이름,전화번호,이메일(아이디)
 	@PostMapping("/mypage")
-	public String up(Member vo, HttpServletRequest request, Model jmodel) {
+	public String up(Member vo, HttpServletRequest request, Model model) {
 		try {
 			// 현재 인증된 사용자의 정보를 가져옴
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -69,11 +69,11 @@ public class MemberController {
 			String username = mbc.getUsername();
 
 			// 현재 사용자의 ID로 회원 정보를 가져옴
-			UserDetails curMember = memberService.loadUserByUsername(username);
+			UserDetails Member = memberService.loadUserByUsername(username);
 			
             // 이름, 이메일, 전화번호, 비밀번호, 주소 업데이트
-			if (curMember != null) {
-				vo.setId(curMember.getUsername()); // 현재 사용자의 ID 유지
+			if (Member != null) {
+				vo.setId(Member.getUsername()); // 현재 사용자의 ID 유지
 				vo.setName(vo.getName()); // 새로운 이름
 				vo.setEmail(vo.getEmail()); // 새로운 이메일
 				vo.setPhone(vo.getPhone()); // 새로운 전화번호
@@ -81,9 +81,9 @@ public class MemberController {
 				
 			// 비밀번호 변경	
 			if (vo.getPassword() !=null && !vo.getPassword().isEmpty()) {
-				boolean pwdCheck = bcpe.matches(vo.getPwd(), curMember.getPassword());
+				boolean pwdCheck = bcpe.matches(vo.getPwd(), Member.getPassword());
 				if(!pwdCheck) {
-					jmodel.addAttribute("errorMessage", "기존 비밀번호가 틀렸습니다");
+					model.addAttribute("errorMessage", "기존 비밀번호가 틀렸습니다");
 					return "mypage";
 				}else {
 					vo.setPassword(bcpe.encode(vo.getPassword()));
@@ -96,14 +96,14 @@ public class MemberController {
 					// 업데이트된 정보를 다시 세션에 저장할 필요 없음 (SecurityContext가 유지함)
 					return "redirect:/"; // 수정 성공 시 메인 페이지로 리다이렉트
 				} else {
-					jmodel.addAttribute("errorMessage", "정보 수정에 실패했습니다. 다시 시도해주세요.");
+					model.addAttribute("errorMessage", "정보 수정에 실패했습니다. 다시 시도해주세요.");
 					return "mypage"; // 실패 시 다시 회원정보수정 페이지로 이동
 				}
 			} else {
 				return "redirect:/login"; // 사용자를 찾을 수 없을 경우 로그인 페이지로 리다이렉트
 			}
 		} catch (Exception e) {
-			jmodel.addAttribute("errorMessage", "정보 수정 중 오류가 발생했습니다: " + e.getMessage());
+			model.addAttribute("errorMessage", "정보 수정 중 오류가 발생했습니다: " + e.getMessage());
 			return "mypage"; // 예외 발생 시 다시 회원정보수정 페이지로 이동
 		}
 	}

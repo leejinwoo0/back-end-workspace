@@ -28,22 +28,22 @@ FOREIGN KEY(id) REFERENCES Member(id)
 
 CREATE TABLE Reservation (
 res_code INT PRIMARY KEY,
-serviceman VARCHAR(100),
+petsitter VARCHAR(100),
 pet_num INT,
 care_time TIME,
 bath_service BOOLEAN,
 walk_service BOOLEAN,
 pickup_service BOOLEAN,
 id VARCHAR(50),
-serviceman_code INT,
+petsitter_code INT,
 FOREIGN KEY (id) REFERENCES member (id),
-FOREIGN KEY (serviceman_code) REFERENCES PetSitter (serviceman_code)
+FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
 );
 
 CREATE TABLE PetSitter (
-serviceman_code INT PRIMARY KEY,
-serviceman_class VARCHAR(50),
-serviceman_phone VARCHAR(15),
+petsitter_code INT PRIMARY KEY,
+petsitter_class VARCHAR(50),
+petsitter_phone VARCHAR(15),
 price DECIMAL (10, 2)
 );
 

@@ -4,40 +4,33 @@
     <!-- ResultMap 정의 -->
     <resultMap id="reservationMap" type="Reservation">
         <id column="res_code" property="resCode"/>   
-        <result column="service" property="service"/>
+        <result column="petsitter" property="petsitter"/>
         <result column="pet_num" property="petNum"/>
         <result column="care_time" property="careTime"/>
         <result column="bath_service" property="bathService"/>
         <result column="walk_service" property="walkService"/>
         <result column="pickup_service" property="pickupService"/>
         <result column="id" property="id"/>
-        <result column="serviceman_code" property="servicemanCode"/>
+        <result column="petsitter_code" property="petsitterCode"/>
     </resultMap>
 
     <!-- 예약 목록 조회 -->
     <select id="getReservationList" resultMap="reservationMap">
-        SELECT res_code, service, pet_num, care_time, bath_service, walk_service, pickup_service, id, serviceman_code
+        SELECT res_code, petsitter, pet_num, care_time, bath_service, walk_service, pickup_service, id, petsitter_code
         FROM Reservation
-    </select>
-
-    <!-- 예약 상세 조회 (예약 코드로) -->
-    <select id="getReservationByCode" parameterType="String" resultMap="reservationMap">
-        SELECT res_code, service, pet_num, care_time, bath_service, walk_service, pickup_service, id, serviceman_code
-        FROM Reservation
-        WHERE res_code = #{resCode}
     </select>
 
     <!-- 새로운 예약 추가 -->
     <insert id="insertReservation" parameterType="Reservation">
-        INSERT INTO Reservation (res_code, service, pet_num, care_time, bath_service, walk_service, pickup_service, id, serviceman_code)
-        VALUES (#{resCode}, #{service}, #{petNum}, #{careTime}, #{bathService}, #{walkService}, #{pickupService}, #{id}, #{servicemanCode})
+        INSERT INTO Reservation (res_code, service, pet_num, care_time, bath_service, walk_service, pickup_service, id, petsitter_code)
+        VALUES (#{resCode}, #{petsitter}, #{petNum}, #{careTime}, #{bathService}, #{walkService}, #{pickupService}, #{id}, #{petsitterCode})
     </insert>
 
     <!-- 예약 정보 수정 -->
     <update id="updateReservation" parameterType="Reservation">
         UPDATE Reservation
-        SET service = #{service}, pet_num = #{petNum}, care_time = #{careTime}, bath_service = #{bathService},
-            walk_service = #{walkService}, pickup_service = #{pickupService}, id = #{id}, serviceman_code = #{servicemanCode}
+        SET service = #{petsitter}, pet_num = #{petNum}, care_time = #{careTime}, bath_service = #{bathService},
+            walk_service = #{walkService}, pickup_service = #{pickupService}, id = #{id}, petsitter_code = #{petsitterCode}
         WHERE res_code = #{resCode}
     </update>
 

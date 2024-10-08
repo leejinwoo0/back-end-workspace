@@ -1,0 +1,46 @@
+package com.kh.pet.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kh.pet.model.vo.Reservation;
+
+import mapper.ReservationMapper;
+
+@Service
+public class ReservationService {
+	
+	@Autowired
+	private ReservationMapper mapper;
+	
+	// 예약 목록 조회 (예: 전체 예약 목록을 조회하는 메서드)
+    public List<Reservation> getAllReservations() {
+        return mapper.selectAllReservations(); // mapper를 통해 DB에서 모든 예약 가져오기
+    }
+
+    // 돌봄서비스사 예약 (필수)
+    public void makeReservation(String petsitter, int petNum, int careTime) {
+        Reservation reservation = new Reservation(petsitter, petNum, careTime);
+        mapper.insertReservation(reservation); // mapper를 통해 DB에 예약 정보 저장
+    }
+
+    // 목욕 예약 (선택)
+    public void addBathService(Reservation reservation) {
+        reservation.setBathService(true);
+        mapper.updateReservation(reservation); // 목욕 서비스가 포함된 예약 업데이트
+    }
+
+    // 산책 예약 (선택)
+    public void addWalkService(Reservation reservation) {
+        reservation.setWalkService(true);
+        mapper.updateReservation(reservation); // 산책 서비스가 포함된 예약 업데이트
+    }
+
+    // 픽업 예약 (선택)
+    public void addPickupService(Reservation reservation) {
+        reservation.setPickupService(true);
+        mapper.updateReservation(reservation); // 픽업 서비스가 포함된 예약 업데이트
+    }
+}
