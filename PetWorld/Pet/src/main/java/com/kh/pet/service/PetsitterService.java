@@ -30,4 +30,8 @@ public class PetsitterService {
 		petsitterMapper.deletePetsitter(petsitterCode);
 	}
 	
+	// 돌봄 서비스사 목록 추가
+	public void insertPetsitter(Petsitter petsitter) {
+		petsitterMapper.insertPetsitter(petsitter);
+	}
 }

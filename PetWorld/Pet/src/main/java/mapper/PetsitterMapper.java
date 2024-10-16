@@ -18,4 +18,7 @@ public interface PetsitterMapper {
 	
 	// 돌봄 서비스사 목록 삭제
 	void deletePetsitter(int petsitterCode);
+	
+	// 돌봄 서비스사 목록 추가
+	void insertPetsitter(Petsitter petsitter);
 }

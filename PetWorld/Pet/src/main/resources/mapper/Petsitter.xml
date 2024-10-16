@@ -31,5 +31,10 @@ WHERE petsitter_code = #{petsitterCode} AND #{roleAdmin} = true
 </delete>
 
 
+<!-- 돌봄서비스사 목록 추가 -->
+<insert id="insertPetsitter" parameterType="Petsitter">
+INSERT INTO petsitters (petsitter_code, petsitter_class, petsitter_phone, price)
+VALUES (#{petsitterCode}, #{petsitterClass}, #{petsitterPhone}, #{price})
+</insert>
 </mapper>
 

@@ -22,7 +22,11 @@ public class PetsitterController {
 	
 	
 	// 돌봄서비스사 목록 추가
-	
+	@GetMapping("/insert")
+	public String insertPetsitter(Petsitter petsitter) {
+		petsitterService.insertPetsitter(petsitter);
+		return "redirect:/petsitter/list";
+	}
 	
 	// 돌봄서비스사 목록 조회
 	@GetMapping()
