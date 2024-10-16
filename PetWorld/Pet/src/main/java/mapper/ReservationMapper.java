@@ -22,8 +22,8 @@ public interface ReservationMapper {
     // 예약 정보 수정
     void updateReservation(Reservation reservation);
 
-    // 예약 삭제 (예약 코드로 삭제)
-    void deleteReservation(String resCode);
+    // 예약 삭제 (예약 아이디로 삭제)
+    void deleteReservation(String id);
     
 }
 

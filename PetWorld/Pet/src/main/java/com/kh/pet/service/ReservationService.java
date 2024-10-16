@@ -40,4 +40,5 @@ public class ReservationService {
     public void deleteReservation(String resCode) {
     	reservationmapper.deleteReservation(resCode); // 예약 코드에 따라 예약 삭제
     }
+    
 }

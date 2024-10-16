@@ -14,6 +14,7 @@ public interface MemberMapper {
 	Member login(Member vo);
 	int signup(Member vo);
 	int update(Member vo);
+	int delete(Member vo);
 	List<Member> memberList(String id);
 
 }

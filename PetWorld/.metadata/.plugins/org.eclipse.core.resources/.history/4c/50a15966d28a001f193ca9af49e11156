@@ -1,0 +1,15 @@
+package mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ReviewMapper {
+
+	// 리뷰 목록 보여주기 회원유무 상관없이
+	List<Review> get ReviewList();
+	// 리뷰작성 회원만
+	
+	// 리뷰 삭제
+	
+	// 리뷰 수정
+}

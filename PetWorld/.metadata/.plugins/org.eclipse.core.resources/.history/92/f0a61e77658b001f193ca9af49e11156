@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ChatMapper">
+
+    <!-- 상담 내용을 매핑하는 resultMap -->
+    <resultMap id="chatMap" type="Chat">
+        <id column="chat_code" property="chatCode"/>
+        <result column="title" property="title"/>
+        <result column="text" property="text"/>
+        <result column="answer" property="answer"/>
+        <result column="id" property="id"/> <!-- 상담 작성자의 ID -->
+    </resultMap>
+    
+    
+    <!-- 1.회원유무 상관없이 상담내용 목록보기 -->
+    <select id="selectAllchats" resultMap="chatMap">
+    SELECT chat_code , title, text, answer, id
+    FROM chats     
+    </select>
+
+
+    <!-- 2.회원만 상담 내용 작성 -->
+    <insert id="insertChat">
+        INSERT INTO chat (chat_code, title, text, answer, id)
+        VALUES (#{chatCode}, #{title}, #{text}, NULL, #{id})
+    </insert>
+
+    <!-- 3. 관리자만 상담 내용에 답변 댓글 가능-->
+    <update id="updateAnswer">
+        UPDATE chat
+        SET answer = #{answer}
+         WHERE chat_code = #{chatCode} AND #{roleAdmin} = true
+    </update>
+
+    <!-- 4.회원만 상담 내용 수정 -->
+    <update id="updateChat">
+        UPDATE chat
+        SET title = #{title}, text = #{text}
+        WHERE chat_code = #{chatCode} AND id = #{id}
+    </update>
+
+    <!-- 5.회원만 상담 내용 삭제 -->
+    <delete id="deleteChat">
+        DELETE FROM chat
+        WHERE chat_code = #{chatCode} AND id = #{id}
+    </delete>
+
+</mapper>

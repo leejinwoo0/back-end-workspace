@@ -36,13 +36,13 @@ public class MemberController {
 	@PostMapping("/signUp")
 	public String signUp(Member vo, HttpServletRequest request) {
 		try {
-			// 회원(ROLE_MEMBER), 관리자(ROLE_ADMIN), 업체(ROLE_SERVICE)
+			// 회원(ROLE_MEMBER), 관리자(ROLE_ADMIN), 업체(ROLE_PETSITTER)
 			String chk = vo.getRole();
 			System.out.println(chk);
 			if (chk.equals("member")) {
 				vo.setRole("ROLE_MEMBER");
 			} else {
-				vo.setRole("ROLE_SERVICE");
+				vo.setRole("ROLE_PETSITTER");
 			}
 			boolean isRegistered = memberService.signUp(vo);
 			if (isRegistered) {

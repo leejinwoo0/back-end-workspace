@@ -13,11 +13,21 @@ import mapper.PetsitterMapper;
 public class PetsitterService {
 	
 	@Autowired
-	private PetsitterMapper petsittermapper;
+	private PetsitterMapper petsitterMapper;
 	
 	// 돌봄서비스사 목록 조회
-	public List<Petsitter> getPetsitterList() {
-	 return petsittermapper.getPetsitterList();
-	
+	public List<Petsitter> getAllPesitter() {
+	 return petsitterMapper.selectAllPetsitter();
 	}
+	
+	// 돌봄서비스사 목록 수정
+	public void updatePetsitter(Petsitter petsitter) {
+		petsitterMapper.updatePetsitter(petsitter);
+	}
+	
+	// 돌봄서비스사 목록 삭제
+	public void deletePetsitter(int petsitterCode) {
+		petsitterMapper.deletePetsitter(petsitterCode);
+	}
+	
 }

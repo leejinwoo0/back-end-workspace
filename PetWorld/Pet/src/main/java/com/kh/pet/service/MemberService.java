@@ -22,6 +22,8 @@ public class MemberService implements UserDetailsService {
 	    @Autowired
 		private PasswordEncoder bcpe;
 	   
+	    
+	    //중복체크
 	    public boolean check(String id) {
 	        Member vo = memberMapper.check(id);
 	        return vo != null; // ID가 이미 존재하면 true
@@ -31,6 +33,7 @@ public class MemberService implements UserDetailsService {
 	        return memberMapper.login(vo);
 	    }
 
+	    // 회원가입
 	    public boolean signUp(Member vo) {
 	        try {
 	        	vo.setPassword(bcpe.encode(vo.getPassword()));
@@ -52,6 +55,20 @@ public class MemberService implements UserDetailsService {
 	            return false;
 	        }
 	    }
+	    
+	    // 회원 탈퇴
+	    public boolean delete(Member vo) {
+	       try {
+	    	   int result = memberMapper.delete(vo);
+	    	   return result < 0;
+	       } catch (Exception e) {
+	    	  e.printStackTrace();
+	    	  return false;
+	       }	
+	       
+	    }
+	    
+	    
 	    
 	    public List<Member> memberList(String id) {
 	    	return memberMapper.memberList(id);

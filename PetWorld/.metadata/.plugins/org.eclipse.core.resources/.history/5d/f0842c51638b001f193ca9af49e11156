@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PetsitterMapper">
+<resultMap id="petsitterMap" type="Petsitter">
+<id column="petsitter_code" property="petsitterCode"/>
+<result column="petsitter_class" property="petsitterClass"/>
+<result column="petsitter_phone" property="petsitterPhone"/>
+<result column="price" property="price"/>
+</resultMap>
+
+
+<!-- 돌봄서비스사 목록조회 -->
+<select id="selelctAllPetsitters" resultMap="petsitterMap" >
+SELECT petsitter_code, petsitter_class, petsitter_class, petsitter_phone, price
+FROM petsitters
+
+</select>
+</mapper>
+

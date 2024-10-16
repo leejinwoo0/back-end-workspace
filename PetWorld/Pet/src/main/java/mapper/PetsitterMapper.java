@@ -9,5 +9,13 @@ import com.kh.pet.model.vo.Petsitter;
 @Mapper
 public interface PetsitterMapper {
 	
-	List<Petsitter> getPetsitterList();
+	
+	// 돌봄서비스사 목록 조회
+	List<Petsitter> selectAllPetsitter();
+	
+	// 돌봄서비스사 목록 수정
+	void updatePetsitter(Petsitter petsitter);
+	
+	// 돌봄 서비스사 목록 삭제
+	void deletePetsitter(int petsitterCode);
 }

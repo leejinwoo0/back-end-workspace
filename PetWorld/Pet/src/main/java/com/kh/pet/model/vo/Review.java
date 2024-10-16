@@ -14,6 +14,7 @@ public class Review {
 	private String photo;
 	private Date date;
 	private String id;
+	private int reviewCode;
 
 }
 

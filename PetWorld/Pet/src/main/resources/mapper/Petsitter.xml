@@ -9,9 +9,27 @@
 
 
 <!-- 돌봄서비스사 목록조회 -->
-<select id="getPetsitterList" resultMap="petsitterMap">
-SELECT petsitter_code, petsitter_class, petsitter_phone
-FROM Petsitter
+<select id="selelctAllPetsitters" resultMap="petsitterMap" >
+SELECT petsitter_code, petsitter_class, petsitter_class, petsitter_phone, price
+FROM petsitters
 </select>
+
+
+
+<!-- 관리자만 돌봄서비스사 목록 수정-->
+<update id="updatePetsitter">
+UPDATE petsitters
+SET petsitter_class = #{petsitterClass}, petsitter_phone = #{petsitterPhone}, price = #{price}
+WHERE petsitter_code = #{petsitterCode} AND #{roleAdmin} = true 
+</update>
+
+
+<!-- 관리지만 돌봄서비스사 목록 삭제 -->
+<delete id="deletePesitter">
+DELETE FROM petsitters 
+WHERE petsitter_code = #{petsitterCode} AND #{roleAdmin} = true
+</delete>
+
+
 </mapper>
 

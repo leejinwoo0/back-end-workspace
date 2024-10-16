@@ -35,5 +35,13 @@
         SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}, role = #{role}
         WHERE id = #{id}
     </update>
+    
+    <!-- 회원탈퇴 -->
+    <delete id ="deleteMember" parameterType="Member">
+       DELETE Member
+       SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}, role = #{role}
+       WHERE id = #{id}
+    </delete>
+    
 
 </mapper>
