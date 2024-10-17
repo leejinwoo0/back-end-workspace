@@ -1,12 +1,149 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        .check-btn {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover,
+        .check-btn:hover {
+            background-color: #4cae4c;
+        }
+
+        #usernameCheck {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 아이디 유효성 검사 (영문자 6~20자)
+            const usernamePattern = /^[a-zA-Z]{6,20}$/;
+            if (!usernamePattern.test(username)) {
+                alert("아이디는 영문자로 6~20자여야 합니다.");
+                return false;
+            }
+
+            // 비밀번호 유효성 검사 (4자 이상)
+            if (password.length < 4) {
+                alert("비밀번호는 4자리 이상이어야 합니다.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function checkUsername() {
+            const username = document.getElementById('username').value;
+            const usernameCheck = document.getElementById('usernameCheck');
+
+            // 간단한 중복 체크를 위한 AJAX 요청 (가상의 URL)
+            fetch(`checkUsername?username=${username}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.available) {
+                        usernameCheck.textContent = "사용 가능한 아이디입니다.";
+                        usernameCheck.style.color = "green";
+                    } else {
+                        usernameCheck.textContent = "이미 사용 중인 아이디입니다.";
+                        usernameCheck.style.color = "red";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </head>
 <body>
-
+    <div class="container">
+        <h2>회원가입</h2>
+        <form id="registerForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">이름:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="username">아이디:</label>
+                <input type="text" id="username" required>
+                <span id="usernameCheck"></span>
+                <button type="button" class="check-btn" onclick="checkUsername()">중복 체크</button>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">전화번호:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">주소:</label>
+                <input type="text" id="address" required>
+            </div>
+            <input type="submit" value="가입" class="submit-btn">
+        </form>
+    </div>
 </body>
 </html>

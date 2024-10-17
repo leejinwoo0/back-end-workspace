@@ -1,0 +1,66 @@
+function validateForm() {
+    const id = document.getElementById('id').value;
+    const password = document.getElementById('password').value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const email = document.getElementById('email').value;
+
+    const idPattern = /^[a-zA-Z0-9]{6,20}$/;
+    const phonePattern = /^\d{3}-\d{4}-\d{4}$/;
+
+    if (!idPattern.test(id)) {
+        alert("아이디는 6~20자의 영문자 또는 숫자만 사용할 수 있습니다.");
+        return false;
+    }
+    if (password.length < 6) {
+        alert("비밀번호는 최소 6자 이상이어야 합니다.");
+        return false;
+    }
+    if (name.trim() === "") {
+        alert("이름을 입력하세요.");
+        return false;
+    }
+    if (!phonePattern.test(phone)) {
+        alert("전화번호 형식이 올바르지 않습니다. (예: 010-1234-5678)");
+        return false;
+    }
+    if (address.trim() === "") {
+        alert("주소를 입력하세요.");
+        return false;
+    }
+    if (!validateEmail(email)) {
+        alert("유효한 이메일 주소를 입력하세요.");
+        return false;
+    }
+
+    return true; // 모든 유효성 검사를 통과한 경우
+}
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function checkDuplicateId() {
+    const id = document.getElementById('id').value;
+    if (id.trim() === "") {
+        alert("아이디를 먼저 입력하세요.");
+        return;
+    }
+
+    // AJAX 요청을 통해 서버에서 중복 체크
+    fetch(`/member/checkId?id=${encodeURIComponent(id)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                alert("이미 사용 중인 아이디입니다.");
+            } else {
+                alert("사용 가능한 아이디입니다.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("중복 체크 중 오류가 발생했습니다.");
+        });
+}

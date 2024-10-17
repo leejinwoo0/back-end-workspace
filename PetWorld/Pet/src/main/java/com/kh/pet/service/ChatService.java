@@ -8,7 +8,7 @@ import com.kh.pet.model.vo.Chat;
 @Service
 public class ChatService {
 
-    @Autowired
+    @Autowired(required = false)
     private ChatMapper chatMapper;
 
     // 상담 내용 목록 조회

@@ -15,7 +15,7 @@ import mapper.MemberMapper;
 @Service
 public class MemberService implements UserDetailsService {
 
-	  @Autowired
+	  @Autowired(required = false)
 	    private MemberMapper memberMapper;
 	    
 	    

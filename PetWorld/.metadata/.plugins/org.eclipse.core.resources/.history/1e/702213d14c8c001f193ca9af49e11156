@@ -1,0 +1,99 @@
+$(document).ready(function () {
+    // 중복확인 버튼 클릭 이벤트
+    $("#idButton").on("click", function () {
+        const userId = $("#id").val();
+        if (userId.length < 6 || userId.length > 20) {
+            $("#idSpan").text("아이디는 6~20글자로 입력해주세요.");
+            return;
+        }
+
+        // 중복 확인 AJAX 요청 (예시 URL)
+        $.ajax({
+            url: '/checkUserId', // 중복 확인을 위한 서버 URL
+            method: 'POST',
+            data: { id: userId },
+            success: function (response) {
+                if (response.isAvailable) {
+                    $("#idSpan").text("사용 가능한 아이디입니다.").css("color", "green");
+                } else {
+                    $("#idSpan").text("이미 사용 중인 아이디입니다.").css("color", "red");
+                }
+            },
+            error: function () {
+                $("#idSpan").text("오류가 발생했습니다. 다시 시도해주세요.");
+            }
+        });
+    });
+
+    // 이메일 도메인 선택 이벤트
+    $("#domainList").change(function () {
+        if ($(this).val() === "type") {
+            $("#emailDomain").prop("disabled", false).val("");
+        } else {
+            $("#emailDomain").prop("disabled", true).val($(this).val());
+        }
+    });
+
+    // 유효성 검사 함수
+    window.Validation = function (event) {
+        event.preventDefault(); // 기본 폼 제출 방지
+
+        // 입력 값 가져오기
+        const name = $("#name").val().trim();
+        const id = $("#id").val().trim();
+        const password = $("#password").val().trim();
+        const passwordCheck = $("#passwordCheck").val().trim();
+        const emailUser = $("#emailUser").val().trim();
+        const emailDomain = $("#emailDomain").val();
+        const phone1 = $("#phone1").val().trim();
+        const phone2 = $("#phone2").val().trim();
+
+        // 유효성 검사
+        if (name === "") {
+            $("#nameSpan").text("이름을 입력해주세요.");
+            return;
+        } else {
+            $("#nameSpan").text("");
+        }
+
+        if (id.length < 6 || id.length > 20) {
+            $("#idSpan").text("아이디는 6~20글자로 입력해주세요.");
+            return;
+        } else {
+            $("#idSpan").text("");
+        }
+
+        if (password === "") {
+            $("#passwordSpan").text("비밀번호를 입력해주세요.");
+            return;
+        } else {
+            $("#passwordSpan").text("");
+        }
+
+        if (password !== passwordCheck) {
+            $("#passwordCheckSpan").text("비밀번호가 일치하지 않습니다.");
+            return;
+        } else {
+            $("#passwordCheckSpan").text("");
+        }
+
+        // 이메일 유효성 검사
+        if (emailUser === "" || emailDomain === "이메일 선택") {
+            $("#phoneSpan").text("이메일을 입력해주세요.");
+            return;
+        } else {
+            $("#phoneSpan").text("");
+        }
+
+        // 전화번호 유효성 검사
+        if (phone2 === "") {
+            $("#phoneSpan").text("휴대폰 번호를 입력해주세요.");
+            return;
+        } else {
+            $("#phoneSpan").text("");
+        }
+
+        // 폼 데이터를 서버로 전송
+        $("form").off("submit").submit(); // 유효성 검사를 통과하면 폼 제출
+    };
+});

@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.pet.model.vo.Member;
@@ -28,7 +29,6 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("/check")
 	public boolean check(String id) {
-		System.out.println(id);
 		return memberService.check(id);
 	}
 

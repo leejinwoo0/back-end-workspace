@@ -13,17 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class PageController {
 	
-	// 동적 경로 매핑 (예: /page/rest, /page/accom, /page/goods)
-	@GetMapping("/page/{pageName}")
-	public String manyPage(@PathVariable String pageName) {
-		return pageName; // /WEB-INF/views/{pageName}.jsp
-	}
-	// 예를들면 /page/rest  -> rest.jsp
-	
-	
-	
-	
-	
 	
 	// 회원가입 페이지
 	@GetMapping("/signUp")
@@ -70,7 +59,6 @@ public class PageController {
 	}
 
 	// 자주받는 질문 페이지
-	
 	@GetMapping("/FAQ")
 	public String FAQ() {
 		return "FAQ";
@@ -81,4 +69,21 @@ public class PageController {
 		return "service";
 	}
 
+	// 리뷰
+	@GetMapping("/review")
+	public String review() {
+		return "review";
+	}
+	// 상담 게시판
+	@GetMapping("/chat")
+	public String chat() {
+		return "chat";
+	}
+	// 예약
+	@GetMapping("/reservation")
+	public String reservation() {
+		return "reservation";
+	}
+	
+	//
 }

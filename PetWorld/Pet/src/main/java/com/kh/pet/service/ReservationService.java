@@ -12,7 +12,7 @@ import mapper.ReservationMapper;
 @Service
 public class ReservationService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private ReservationMapper reservationmapper;
 	
 	// 예약 목록 조회

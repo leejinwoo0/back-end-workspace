@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ReviewService {
 
-    @Autowired
+    @Autowired(required = false)
     private ReviewMapper reviewMapper;
 
     // 회원 유무 상관없이 리뷰 목록 보기

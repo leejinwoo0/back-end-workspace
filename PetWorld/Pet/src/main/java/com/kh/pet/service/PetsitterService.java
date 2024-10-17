@@ -12,7 +12,7 @@ import mapper.PetsitterMapper;
 @Service
 public class PetsitterService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private PetsitterMapper petsitterMapper;
 	
 	// 돌봄서비스사 목록 조회

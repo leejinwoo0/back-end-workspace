@@ -1,0 +1,21 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2>회원가입</h2>
+    <form id="registerForm" onsubmit="return validateForm()">
+        이름: <input type="text" id="name" required><br>
+        아이디: <input type="text" id="username" required onblur="checkUsername()"><span id="usernameCheck"></span><br>
+        비밀번호: <input type="password" id="password" required><br>
+        전화번호: <input type="tel" id="phone" required><br>
+        이메일: <input type="email" id="email" required><br>
+        주소: <input type="text" id="address" required><br>
+        <input type="submit" value="가입">
+    </form>
+</body>
+</html>

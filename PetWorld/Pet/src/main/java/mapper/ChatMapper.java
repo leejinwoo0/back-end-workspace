@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 import com.kh.pet.model.vo.Chat;
 
 @Mapper
+
 public interface ChatMapper {
 
 	

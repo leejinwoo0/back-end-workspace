@@ -1,8 +1,10 @@
 package com.kh.pet;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan("com.kh.pet.mapper")
 @SpringBootApplication
 public class PetApplication {
 
