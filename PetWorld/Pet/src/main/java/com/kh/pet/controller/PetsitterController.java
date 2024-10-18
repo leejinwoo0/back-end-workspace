@@ -29,7 +29,7 @@ public class PetsitterController {
 	}
 	
 	// 돌봄서비스사 목록 조회
-	@GetMapping()
+	@GetMapping("/list")
 	public String getAllPetsitter(Model model) {
 		List<Petsitter> petsitterList = petsitterService.getAllPesitter();
 		model.addAttribute("petsitterList", petsitterList);

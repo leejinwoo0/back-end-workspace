@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel = "stylesheet" href="css/reset.css"/>
+<link rel = "sttlesheet" href="css/index.css"/>
+<title>Petworld</title>
+
+<header>
+<a href="/index">PetWorld</a>
+</header>
+ <nav>
+<a href= "/signUp">회원가입</a> 
+<a href= "/chat">상담게시판</a> 
+<a href= "/FAQ">FAQ</a>
+<a href= "/review">리뷰</a>
+<a href= "/petsitter">펫케어사</a>
+<a href= "/reservation">예약</a>
+<a href= "/service">서비스 종류</a>  
+ </nav>
+
+</head>
+<body>
+
+</body>
+</html>

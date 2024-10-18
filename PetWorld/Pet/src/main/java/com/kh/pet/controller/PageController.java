@@ -4,15 +4,23 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.pet.model.vo.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+
+
 @Controller
 public class PageController {
 	
+	
+	//메인 페이지
+	@GetMapping("/index")
+	public String index() {
+		return "index";
+	}
 	
 	// 회원가입 페이지
 	@GetMapping("/signUp")
@@ -34,7 +42,7 @@ public class PageController {
     	String role = member.getRole();
 		
 		if(role.equals("ROLE_PETSITTER")) {
-			return "sitterpage";
+			return "petsitterpage";
 		}else if(role.equals("ROLE_MEMBER")) {
 			return "mypage";
 		}
@@ -52,12 +60,7 @@ public class PageController {
 	public String delete() {
 		return "delete";
 	}
-	// 펫월드 사이트 홍보 페이지
-	@GetMapping("/petworld")
-	public String petworld() {
-		return "petworld";
-	}
-
+	
 	// 자주받는 질문 페이지
 	@GetMapping("/FAQ")
 	public String FAQ() {
@@ -74,10 +77,23 @@ public class PageController {
 	public String review() {
 		return "review";
 	}
+	
+	//리뷰 작성
+	@GetMapping("/reviewForm")
+	public String reviewForm() {
+		return "reviewForm";
+	}
+	
 	// 상담 게시판
 	@GetMapping("/chat")
 	public String chat() {
 		return "chat";
+	}
+	
+	// 상담 게시판 작성
+	@GetMapping("/chatForm")
+	public String chstForm() {
+		return "chatForm";
 	}
 	// 예약
 	@GetMapping("/reservation")
@@ -85,5 +101,11 @@ public class PageController {
 		return "reservation";
 	}
 	
-	//
+	// 펫케어사 소개 페이지
+	@GetMapping("/petsitter")
+	public String petsitter() {
+		return "petsitter";
+	}
+	
+	
 }

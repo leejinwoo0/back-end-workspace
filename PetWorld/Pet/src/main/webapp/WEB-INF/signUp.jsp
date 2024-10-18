@@ -1,149 +1,196 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f2f2f2;
             margin: 0;
+            padding: 0;
         }
 
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        h2 {
+        h1 {
             text-align: center;
             color: #333;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         label {
+            font-weight: bold;
             display: block;
             margin-bottom: 5px;
             color: #555;
         }
 
-        input[type="text"],
-        input[type="password"],
-        input[type="tel"],
-        input[type="email"] {
-            width: 100%;
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: calc(100% - 12px);
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             box-sizing: border-box;
         }
 
-        input[type="submit"],
-        .check-btn {
-            background-color: #5cb85c;
+        button, #usernameCheckBtn {
+            background-color: #4CAF50;
             color: white;
             padding: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
         }
 
-        input[type="submit"]:hover,
-        .check-btn:hover {
-            background-color: #4cae4c;
+        button:hover, #usernameCheckBtn:hover {
+            background-color: #45a049;
         }
 
-        #usernameCheck {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.9em;
+        #usernameCheckBtn {
+            width: 100px;
+            margin-left: 10px;
+            margin-top: -20px;
         }
+
+        #usernameWrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        span {
+            color: red;
+            font-size: 12px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
     </style>
     <script>
-        function validateForm() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        // 아이디 중복 확인 함수
+        function checkUsername() {
+            var username = document.getElementById("username").value;
 
-            // 아이디 유효성 검사 (영문자 6~20자)
-            const usernamePattern = /^[a-zA-Z]{6,20}$/;
-            if (!usernamePattern.test(username)) {
-                alert("아이디는 영문자로 6~20자여야 합니다.");
+            if (username.length < 6 || username.length > 20) {
+                document.getElementById("usernameCheck").innerText = "아이디는 영문자 6~20자리를 입력해주세요.";
                 return false;
             }
 
-            // 비밀번호 유효성 검사 (4자 이상)
+            // 서버와의 중복 체크 예시 (AJAX 사용)
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "checkUsername?username=" + username, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    if (xhr.responseText === "available") {
+                        document.getElementById("usernameCheck").innerText = "사용 가능한 아이디입니다.";
+                    } else {
+                        document.getElementById("usernameCheck").innerText = "이미 사용 중인 아이디입니다.";
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // 폼 유효성 검사 함수
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var name = document.getElementById("name").value;
+
+            // 이름이 비어있는지 확인
+            if (name.trim() === "") {
+                alert("이름을 입력해주세요.");
+                return false;
+            }
+
+            // 아이디 체크 (영문자 6~20자리)
+            var usernameRegex = /^[a-zA-Z]{6,20}$/;
+            if (!usernameRegex.test(username)) {
+                alert("아이디는 영문자 6~20자리여야 합니다.");
+                return false;
+            }
+
+            // 비밀번호 체크 (영문자 4자리 이상)
             if (password.length < 4) {
                 alert("비밀번호는 4자리 이상이어야 합니다.");
                 return false;
             }
 
-            return true;
-        }
+            // 전화번호 유효성 체크
+            var phoneRegex = /^\d{10,11}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("전화번호는 숫자 10~11자리를 입력해주세요.");
+                return false;
+            }
 
-        function checkUsername() {
-            const username = document.getElementById('username').value;
-            const usernameCheck = document.getElementById('usernameCheck');
+            // 이메일 유효성 체크
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailRegex.test(email)) {
+                alert("유효한 이메일을 입력해주세요.");
+                return false;
+            }
 
-            // 간단한 중복 체크를 위한 AJAX 요청 (가상의 URL)
-            fetch(`checkUsername?username=${username}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.available) {
-                        usernameCheck.textContent = "사용 가능한 아이디입니다.";
-                        usernameCheck.style.color = "green";
-                    } else {
-                        usernameCheck.textContent = "이미 사용 중인 아이디입니다.";
-                        usernameCheck.style.color = "red";
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+            // 주소가 비어있는지 확인
+            if (address.trim() === "") {
+                alert("주소를 입력해주세요.");
+                return false;
+            }
+
+            return true; // 폼이 유효하면 제출 진행
         }
     </script>
 </head>
 <body>
-    <div class="container">
-        <h2>회원가입</h2>
-        <form id="registerForm" onsubmit="return validateForm()">
-            <div class="form-group">
-                <label for="name">이름:</label>
-                <input type="text" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="username">아이디:</label>
-                <input type="text" id="username" required>
-                <span id="usernameCheck"></span>
-                <button type="button" class="check-btn" onclick="checkUsername()">중복 체크</button>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호:</label>
-                <input type="password" id="password" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">전화번호:</label>
-                <input type="tel" id="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="email">이메일:</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="address">주소:</label>
-                <input type="text" id="address" required>
-            </div>
-            <input type="submit" value="가입" class="submit-btn">
-        </form>
-    </div>
+    <h1>회원가입</h1>
+    <form name="signupForm" action="submitSignup" method="post" onsubmit="return validateForm()">
+        <div class="info">
+            <label for="name">이름: </label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="info" id="usernameWrapper">
+            <label for="username">아이디 (영문자 6~20자리): </label>
+            <input type="text" id="username" name="username" required>
+            <button type="button" id="usernameCheckBtn" onclick="checkUsername()">중복체크</button>
+        </div>
+        <span id="usernameCheck"></span>
+
+        <div class="info">
+            <label for="password">비밀번호 (영문자 4자리 이상): </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="info">
+            <label for="phone">전화번호: </label>
+            <input type="text" id="phone" name="phone" required>
+        </div>
+
+        <div class="info">
+            <label for="email">이메일: </label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="info">
+            <label for="address">주소: </label>
+            <input type="text" id="address" name="address" required>
+        </div>
+
+        <button type="submit">가입하기</button>
+    </form>
 </body>
 </html>
