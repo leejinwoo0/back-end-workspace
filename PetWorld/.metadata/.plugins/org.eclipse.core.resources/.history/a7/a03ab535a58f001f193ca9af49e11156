@@ -1,0 +1,74 @@
+package com.kh.pet.config;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@Component(value = "authenticationFailureHandler")
+public class DomainFailureHandler implements AuthenticationFailureHandler {
+
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request,
+                                        HttpServletResponse response,
+                                        AuthenticationException exception) throws IOException, ServletException {
+        
+        // 응답의 인코딩 설정
+        response.setContentType("application/json; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        // 실패 로직 핸들링
+        exception.printStackTrace();
+        writePrintErrorResponse(response, exception);
+        
+        // 로그인 실패 후에도 특정 리다이렉션을 원하신다면 아래 주석을 해제하세요
+        // response.sendRedirect("/login");
+    }
+
+    private void writePrintErrorResponse(HttpServletResponse response, AuthenticationException exception) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> responseMap = new HashMap<>();
+            String message = getExceptionMessage(exception);
+            responseMap.put("status", 401);
+            responseMap.put("message", message);
+            
+            // JSON 형태로 응답
+            response.getOutputStream().println(objectMapper.writeValueAsString(responseMap));
+            response.getOutputStream().flush(); // 응답을 플러시하여 클라이언트에 즉시 전송
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getExceptionMessage(AuthenticationException exception) {
+        if (exception instanceof BadCredentialsException) {
+            return "비밀번호가 일치하지 않습니다."; // 비밀번호 불일치 메시지
+        } else if (exception instanceof UsernameNotFoundException) {
+            return "계정이 없습니다.";
+        } else if (exception instanceof AccountExpiredException) {
+            return "계정이 만료되었습니다.";
+        } else if (exception instanceof CredentialsExpiredException) {
+            return "비밀번호가 만료되었습니다.";
+        } else if (exception instanceof DisabledException) {
+            return "계정이 비활성화되었습니다.";
+        } else if (exception instanceof LockedException) {
+            return "계정이 잠겼습니다.";
+        } else {
+            return "확인된 에러가 없습니다.";
+        }
+    }
+}

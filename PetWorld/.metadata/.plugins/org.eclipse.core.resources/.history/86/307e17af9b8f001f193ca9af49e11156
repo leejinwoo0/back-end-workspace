@@ -1,0 +1,39 @@
+package com.kh.pet.service;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.kh.pet.model.vo.Member;
+
+import mapper.MemberMapper;
+
+@Service
+public class MemberService {
+
+    @Autowired
+    private MemberMapper memberMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    // 회원가입 처리
+    public void signUp(Member member) {
+        // 비밀번호 암호화
+        String encodedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encodedPassword);
+        // MyBatis 매퍼를 통해 회원가입 처리
+        memberMapper.signUp(member);
+    }
+
+    // 회원 정보 수정
+    public void updateMember(Member member) {
+        // 비밀번호 암호화
+        String encodedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encodedPassword);
+        // MyBatis 매퍼를 통해 회원 정보 수정 처리
+        memberMapper.updateMember(member);
+    }
+}

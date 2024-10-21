@@ -1,197 +1,196 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-    <title>signUp</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            background-color: #fff;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        input[type="text"], input[type="password"], input[type="email"] {
-            width: calc(100% - 12px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button, #usernameCheckBtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover, #usernameCheckBtn:hover {
-            background-color: #45a049;
-        }
-
-        #usernameCheckBtn {
-            width: 100px;
-            margin-left: 10px;
-            margin-top: -20px;
-        }
-
-        #usernameWrapper {
-            display: flex;
-            align-items: center;
-        }
-
-        span {
-            color: red;
-            font-size: 12px;
-        }
-
-        .info {
-            margin-bottom: 20px;
-        }
-
-    </style>
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // 아이디 중복 확인 함수
-        function checkUsername() {
-            var username = document.getElementById("username").value;
-
-            if (username.length < 6 || username.length > 20) {
-                document.getElementById("usernameCheck").innerText = "아이디는 영문자 6~20자리를 입력해주세요.";
-                return false;
-            }
-
-            // 서버와의 중복 체크 예시 (AJAX 사용)
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "checkUsername?username=" + username, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    if (xhr.responseText === "available") {
-                        document.getElementById("usernameCheck").innerText = "사용 가능한 아이디입니다.";
-                    } else {
-                        document.getElementById("usernameCheck").innerText = "이미 사용 중인 아이디입니다.";
-                    }
+        // 중복 체크 함수
+        function checkDuplicateId() {
+            var id = $("#id").val();
+            if (id) {
+                const idRegex = /^[a-zA-Z]+$/; // 영문자만
+                if (!idRegex.test(id)) {
+                    $("#idFeedback").text("아이디는 영문자만 입력해야 합니다.").css("color", "red");
+                    return;
                 }
-            };
-            xhr.send();
+
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/check",
+                    data: { id: id },
+                    success: function(response) {
+                        if (response) {
+                            $("#idFeedback").text("사용 가능한 아이디입니다.").css("color", "green");
+                        } else {
+                            $("#idFeedback").text("이미 사용 중인 아이디입니다.").css("color", "red");
+                        }
+                    },
+                    error: function() {
+                        $("#idFeedback").text("중복 체크에 실패했습니다.").css("color", "red");
+                    }
+                });
+            } else {
+                alert("아이디를 입력해주세요.");
+            }
         }
 
-        // 폼 유효성 검사 함수
-        function validateForm() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var phone = document.getElementById("phone").value;
-            var email = document.getElementById("email").value;
-            var address = document.getElementById("address").value;
-            var name = document.getElementById("name").value;
+        // 실시간 유효성 검사
+        function validateInput() {
+            const name = $("#name").val();
+            const password = $("#password").val();
+            const id = $("#id").val(); // 아이디 추가
+            const nameRegex = /^[가-힣]{2,}$/; // 한글 2글자 이상
+            const passwordRegex = /^(?=.*[a-z])[a-z]{4,}$/; // 영소문자 4글자 이상
+            const idRegex = /^[a-zA-Z]+$/; // 영문자만
 
-            // 이름이 비어있는지 확인
-            if (name.trim() === "") {
-                alert("이름을 입력해주세요.");
-                return false;
+            // 이름 유효성 검사
+            if (nameRegex.test(name)) {
+                $("#nameFeedback").text("성공!").css("color", "green");
+            } else {
+                $("#nameFeedback").text("이름은 한글로 2글자 이상 입력해야 합니다.").css("color", "red");
             }
 
-            // 아이디 체크 (영문자 6~20자리)
-            var usernameRegex = /^[a-zA-Z]{6,20}$/;
-            if (!usernameRegex.test(username)) {
-                alert("아이디는 영문자 6~20자리여야 합니다.");
-                return false;
+            // 비밀번호 유효성 검사
+            if (passwordRegex.test(password)) {
+                $("#passwordFeedback").text("성공!").css("color", "green");
+            } else {
+                $("#passwordFeedback").text("비밀번호는 영문 소문자로 4글자 이상 입력해야 합니다.").css("color", "red");
             }
 
-            // 비밀번호 체크 (영문자 4자리 이상)
-            if (password.length < 4) {
-                alert("비밀번호는 4자리 이상이어야 합니다.");
-                return false;
+            // 아이디 유효성 검사
+            if (idRegex.test(id)) {
+                $("#idFeedback").text("아이디가 유효합니다.").css("color", "green");
+            } else {
+                $("#idFeedback").text("아이디는 영문자만 입력해야 합니다.").css("color", "red");
             }
-
-            // 전화번호 유효성 체크
-            var phoneRegex = /^\d{10,11}$/;
-            if (!phoneRegex.test(phone)) {
-                alert("전화번호는 숫자 10~11자리를 입력해주세요.");
-                return false;
-            }
-
-            // 이메일 유효성 체크
-            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (!emailRegex.test(email)) {
-                alert("유효한 이메일을 입력해주세요.");
-                return false;
-            }
-
-            // 주소가 비어있는지 확인
-            if (address.trim() === "") {
-                alert("주소를 입력해주세요.");
-                return false;
-            }
-
-            return true; // 폼이 유효하면 제출 진행
         }
     </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+            border: 1px solid #ced4da;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px; 
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+            font-size: 0.9em; /* 글씨 크기 줄임 */
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 7px; 
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-size: 0.8em; 
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .feedback {
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>회원가입</h1>
-    <form name="signupForm" action="submitSignup" method="post" onsubmit="return validateForm()">
-        <div class="info">
-            <label for="name">이름: </label>
-            <input type="text" id="name" name="name" required>
-        </div>
 
-        <div class="info" id="usernameWrapper">
-            <label for="username">아이디 (영문자 6~20자리): </label>
-            <input type="text" id="username" name="username" required>
-            <button type="button" id="usernameCheckBtn" onclick="checkUsername()">중복체크</button>
-        </div>
-        <span id="usernameCheck"></span>
+<div class="form-container">
+    <h2>회원가입</h2>
 
-        <div class="info">
-            <label for="password">비밀번호 (영문자 4자리 이상): </label>
-            <input type="password" id="password" name="password" required>
-        </div>
+    <c:if test="${not empty errorMessage}">
+        <div class="error">${errorMessage}</div>
+    </c:if>
 
-        <div class="info">
-            <label for="phone">전화번호: </label>
-            <input type="text" id="phone" name="phone" required>
-        </div>
+    <form action="${pageContext.request.contextPath}/signUp" method="post" onsubmit="return validateForm()">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required oninput="validateInput()">
+        <span id="nameFeedback" class="feedback"></span>
 
-        <div class="info">
-            <label for="email">이메일: </label>
-            <input type="email" id="email" name="email" required>
-        </div>
+        <label for="id">아이디:</label>
+        <input type="text" id="id" name="id" required oninput="validateInput()">
+        <button type="button" onclick="checkDuplicateId()">중복 체크</button>
+        <span id="idFeedback" class="feedback"></span>
 
-        <div class="info">
-            <label for="address">주소: </label>
-            <input type="text" id="address" name="address" required>
-        </div>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required oninput="validateInput()">
+        <span id="passwordFeedback" class="feedback"></span>
+
+        <label for="phone">전화번호:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="address">주소:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+        
+         <div class="form-group">
+    			<label for="role">사용자 유형 : </label>
+    			<select id="role" name="role" required>
+        			<option value="member">일반회원</option>
+        			<option value="petsitter">펫시터</option>
+    			</select>
+			</div>
 
         <button type="submit">가입하기</button>
     </form>
+
+    <p>이미 계정이 있으신가요? <a href="${pageContext.request.contextPath}/login">로그인</a></p>
+</div>
+
 </body>
 </html>

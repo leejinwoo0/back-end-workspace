@@ -1,0 +1,20 @@
+package mapper;
+
+
+
+import com.kh.pet.model.vo.Member;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
+public interface MemberMapper {
+    List<Member> getMemberList();
+    boolean checkId(String id);
+    int signUp(Member member);
+    int updateMember(Member member);
+    int deleteMember(String id); // id를 통해 삭제
+}

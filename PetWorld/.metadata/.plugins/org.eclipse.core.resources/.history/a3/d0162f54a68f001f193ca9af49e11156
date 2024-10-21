@@ -1,0 +1,51 @@
+package com.kh.pet.config;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@Component(value = "authenticationFailureHandler")
+public class DomainFailureHandler implements AuthenticationFailureHandler {
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request,
+                                        HttpServletResponse response,
+                                        AuthenticationException exception) throws IOException {
+        // 응답의 ContentType과 인코딩 설정
+        response.setContentType("application/json; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        
+        // 실패 로직 핸들링
+        writePrintErrorResponse(response, exception);
+    }
+
+    private void writePrintErrorResponse(HttpServletResponse response, AuthenticationException exception) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> responseMap = new HashMap<>();
+            String message = getExceptionMessage(exception);
+            responseMap.put("status", 401);
+            responseMap.put("message", message);
+            
+            // 응답 데이터 JSON 형태로 전송
+            response.getWriter().write(objectMapper.writeValueAsString(responseMap));
+            response.getWriter().flush(); // 응답을 플러시하여 클라이언트에 즉시 전송
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getExceptionMessage(AuthenticationException exception) {
+        if (exception instanceof BadCredentialsException) {
+            return "비밀번호가 일치하지 않습니다."; // 비밀번호 불일치 메시지
+        } else {
+            return "로그인 중 오류가 발생했습니다."; // 다른 오류 메시지
+        }
+    }
+}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,6 @@ header {
   display: flex;
   justify-content: space-between;
   height: 100px;
-  /*line-height: 80px;*/
   align-items: center;
   z-index: 1000;
 }
@@ -29,7 +29,6 @@ header img {
  margin-top:20px;
 }
 
-
 header a {
   font-size: 2.3rem; /* PetWorld의 글자 크기 */
   font-weight: bold; /* 필요에 따라 굵기 설정 */
@@ -37,17 +36,14 @@ header a {
 }
 
 header nav a {
-  font-size: 1.1rem; /* nav의 a 요소 글자 크기 */
+  font-size: 1rem; /* nav의 a 요소 글자 크기 */
   font-weight: bold; 
 }
 header > * {
-  width: 50%;
+  width: 60%;
   display: flex;
 }
 
-header form {
-  justify-content: center;
-}
 header nav {
   justify-content: end;
   height: 100%;
@@ -69,15 +65,6 @@ section {
   flex-direction: column;
   text-align: center;
 }
-#sec1 {
-  background-color: white;
-}
-#sec2 {
-  background-color: white;
-}
-#sec3 {
-  background-color: white;
-}
 section h2 {
   font-size: 3rem;
   font-weight: bold;
@@ -87,65 +74,66 @@ section p {
   line-height: 1.5;
 }
 
-
-.dog1 img {
+.dog1 img{
   width: 400px;
   height: 400px;
-  margin-left: 700px;
+  margin-left: 600px;
 }
 
-.dog2 img {
+
+.dog2 img{
   width: 400px;
   height: 400px;
-  margin-right: 700px;
+  margin-right:600px;
 }
+
 
 .good img {
   width: 400px;
   height: 400px;
-  margin-left: 700px;
+  margin-left: 600px;
 }
 
+.s1, .s2, .s3 {
+  position: relative;
+  top: 100px;
+}
 .s1 {
- margin-left: -700px;
- position: relative;
- top: 100px;
+  margin-left: -700px;
 }
-
 .s2 {
- margin-right : -700px;
- position: relative;
- top: 100px;
+  margin-right: -700px;
 }
-
 .s3 {
- margin-left : -700px;
- position: relative;
- top: 100px;
+  margin-left: -700px;
 }
-
-
-
-
-
 </style>
 </head>
 <body>
 <header>
-<img src ="img/mainlogo.webp">
-<a href="/index">PetWorld</a>
- <nav>
-<a href= "/signUp">회원가입</a> 
-<a href= "/chat">상담게시판</a> 
-<a href= "/FAQ">FAQ</a>
-<a href= "/review">리뷰</a>
-<a href= "/petsitter">펫시터</a>
-<a href= "/reservation">예약</a>
-<a href= "/service">서비스 종류</a>  
- </nav>
+ <img src="img/mainlogo.webp">
+    <a href="/index">PetWorld</a>
+    <nav>
+        <c:choose>
+            <c:when test="${not empty sessionScope.userId}">
+                <a href="/logout">로그아웃</a>
+                <a href="/update">회원정보수정</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/signUp">회원가입</a> 
+                <a href="/login">로그인</a>
+            </c:otherwise>
+        </c:choose>
+        <a href="/chat">상담게시판</a> 
+        <a href="/FAQ">FAQ</a>
+        <a href="/review">리뷰</a>
+        <a href="/petsitter">펫시터</a>
+        <a href="/reservation">예약</a>
+        <a href="/service">서비스 종류</a>  
+    </nav>
 </header>
 
-<section id= sec1>
+<section id="sec1">
 <div class="s1">
 <h2>펫시터가 책임질게~</h2>
 <P>asdasdasd</P>
@@ -155,22 +143,22 @@ section p {
 </div>
 </section>
 
-<section id= sec2>
+<section id="sec2">
 <div class="s2">
 <h2>개건고양이건 가져만와</h2>
 <P>asdasdasd</P>
 </div>
-<div class = "dog2">
+<div class="dog2">
 <img src = "img/개사진2.webp">
 </div>
 </section>
 
-<section id= sec3>
+<section id="sec3">
 <div class="s3">
 <h2>행복하잖아~</h2>
 <p>asdasdas</p>
 </div>
-<div class = "good">
+<div class="good">
 <img src = "img/화목한반려동물사진.webp">
 </div>
 </section>
