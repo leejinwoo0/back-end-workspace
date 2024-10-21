@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel = "stylesheet" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+
 <title>Petworld</title>
 <style>
 header {
@@ -17,17 +18,27 @@ header {
   height: 100px;
   /*line-height: 80px;*/
   align-items: center;
+  z-index: 1000;
 }
 
+header img {
+ width: 100px; 
+ height: 100px; 
+ border-radius: 80%;
+ margin-left: 50px;
+ margin-top:20px;
+}
+
+
 header a {
-  font-size: 2rem; /* PetWorld의 글자 크기 */
+  font-size: 2.3rem; /* PetWorld의 글자 크기 */
   font-weight: bold; /* 필요에 따라 굵기 설정 */
-  margin-left: 50px;
+  margin-left: 10px;
 }
 
 header nav a {
-  font-size: 1rem; /* nav의 a 요소 글자 크기 */
-  font-weight: normal; /* 필요에 따라 굵기 설정 */
+  font-size: 1.1rem; /* nav의 a 요소 글자 크기 */
+  font-weight: bold; 
 }
 header > * {
   width: 50%;
@@ -60,8 +71,6 @@ section {
 }
 #sec1 {
   background-color: white;
-  width: 100%;
-  display: flex;
 }
 #sec2 {
   background-color: white;
@@ -77,19 +86,7 @@ section h2 {
 section p {
   line-height: 1.5;
 }
-.top {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  background-color: black;
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .dog1 img {
   width: 400px;
@@ -131,14 +128,12 @@ section p {
 
 
 
-
 </style>
 </head>
 <body>
 <header>
-
+<img src ="img/mainlogo.webp">
 <a href="/index">PetWorld</a>
-
  <nav>
 <a href= "/signUp">회원가입</a> 
 <a href= "/chat">상담게시판</a> 
@@ -179,9 +174,6 @@ section p {
 <img src = "img/화목한반려동물사진.webp">
 </div>
 </section>
-
-
-
 
 </body>
 </html>
