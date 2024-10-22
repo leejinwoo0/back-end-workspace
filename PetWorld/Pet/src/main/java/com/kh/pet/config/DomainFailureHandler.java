@@ -23,6 +23,8 @@ public class DomainFailureHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request,
                                         HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
+    	
+    
 	// 실패로직 핸들링
         exception.printStackTrace();
         writePrintErrorResponse(response, exception);

@@ -2756,3 +2756,453 @@ java.lang.IllegalArgumentException: Argument not valid
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-22 00:23:28.882
+!MESSAGE Could not retrieve superclass
+!STACK 0
+org.eclipse.jdt.internal.compiler.problem.AbortCompilation: Pb(347) The type com.google.protobuf.GeneratedMessageV3 cannot be resolved. It is indirectly referenced from required type com.mysql.cj.x.protobuf.MysqlxExpr.Array
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:159)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:226)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.handle(ProblemReporter.java:2713)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.isClassPathCorrect(ProblemReporter.java:5205)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:125)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:251)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.superclass(BinaryTypeBinding.java:2463)
+	at org.eclipse.jdt.core.dom.TypeBinding.getSuperclass(TypeBinding.java:858)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.isInherited(UnresolvedElementsBaseSubProcessor.java:1015)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.addSimilarTypeProposals(UnresolvedElementsBaseSubProcessor.java:983)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.collectTypeProposals(UnresolvedElementsBaseSubProcessor.java:742)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsSubProcessor.getTypeProposals(UnresolvedElementsSubProcessor.java:144)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.process(QuickFixProcessor.java:455)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.getCorrections(QuickFixProcessor.java:378)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionCollector.safeRun(JavaCorrectionProcessor.java:381)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.run(JavaCorrectionProcessor.java:341)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.process(JavaCorrectionProcessor.java:336)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.collectCorrections(JavaCorrectionProcessor.java:465)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.getJavaAnnotationFixes(ProblemHover.java:115)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.computeCompletionProposals(ProblemHover.java:89)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.<init>(ProblemHover.java:74)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover.createAnnotationInfo(ProblemHover.java:178)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractAnnotationHover.getHoverInfo2(AbstractAnnotationHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-22 00:23:28.892
+!MESSAGE Could not retrieve superclass
+!STACK 0
+org.eclipse.jdt.internal.compiler.problem.AbortCompilation: Pb(347) The type com.google.protobuf.GeneratedMessageV3 cannot be resolved. It is indirectly referenced from required type com.mysql.cj.x.protobuf.MysqlxDatatypes.Array
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:159)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:226)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.handle(ProblemReporter.java:2713)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.isClassPathCorrect(ProblemReporter.java:5205)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:125)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:251)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.superclass(BinaryTypeBinding.java:2463)
+	at org.eclipse.jdt.core.dom.TypeBinding.getSuperclass(TypeBinding.java:858)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.isInherited(UnresolvedElementsBaseSubProcessor.java:1015)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.addSimilarTypeProposals(UnresolvedElementsBaseSubProcessor.java:983)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.collectTypeProposals(UnresolvedElementsBaseSubProcessor.java:742)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsSubProcessor.getTypeProposals(UnresolvedElementsSubProcessor.java:144)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.process(QuickFixProcessor.java:455)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.getCorrections(QuickFixProcessor.java:378)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionCollector.safeRun(JavaCorrectionProcessor.java:381)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.run(JavaCorrectionProcessor.java:341)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.process(JavaCorrectionProcessor.java:336)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.collectCorrections(JavaCorrectionProcessor.java:465)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.getJavaAnnotationFixes(ProblemHover.java:115)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.computeCompletionProposals(ProblemHover.java:89)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.<init>(ProblemHover.java:74)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover.createAnnotationInfo(ProblemHover.java:178)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractAnnotationHover.getHoverInfo2(AbstractAnnotationHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-10-22 00:27:54.496
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10181)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7727)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3415)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.lambda$1(SemanticHighlightReconcilerStrategy.java:246)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4058)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3676)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 00:38:51.619
+!MESSAGE [Info]	ESLint server running in node v20.13.1
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 00:38:51.720
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.4.5 from path "D:\eclipse\plugins\org.eclipse.wildwebdeveloper_1.2.2.202405280856\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 00:38:51.723
+!MESSAGE [Info]	Typescript Server version info: {version=5.4.5, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:38:51.726
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:38:52.792
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:38:52.820
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:46:00.161
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:46:00.563
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.jdt.core 4 2 2024-10-22 00:46:01.315
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.core.resources.IResourceDelta.getKind()" because "resources[i]" is null
+	at org.eclipse.jem.workbench.utility.JavaModelListener.isClasspathResourceChange(JavaModelListener.java:268)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processJavaElementChanged(JavaReflectionSynchronizer.java:124)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processDelta(JavaModelListener.java:116)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processDelta(JavaReflectionSynchronizer.java:343)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processChildren(JavaModelListener.java:78)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processChildren(JavaReflectionSynchronizer.java:336)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processJavaElementChanged(JavaModelListener.java:176)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processDelta(JavaModelListener.java:113)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processDelta(JavaReflectionSynchronizer.java:343)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.elementChanged(JavaModelListener.java:63)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.elementChanged(JavaReflectionSynchronizer.java:265)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1751)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1739)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1572)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1548)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2259)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2151)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:501)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:321)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:311)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:174)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:458)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1586)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:221)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-22 00:46:01.315
+!MESSAGE Exception occurred in listener of Java element change notification
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.core.resources.IResourceDelta.getKind()" because "resources[i]" is null
+	at org.eclipse.jem.workbench.utility.JavaModelListener.isClasspathResourceChange(JavaModelListener.java:268)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processJavaElementChanged(JavaReflectionSynchronizer.java:124)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processDelta(JavaModelListener.java:116)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processDelta(JavaReflectionSynchronizer.java:343)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processChildren(JavaModelListener.java:78)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processChildren(JavaReflectionSynchronizer.java:336)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processJavaElementChanged(JavaModelListener.java:176)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.processDelta(JavaModelListener.java:113)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.processDelta(JavaReflectionSynchronizer.java:343)
+	at org.eclipse.jem.workbench.utility.JavaModelListener.elementChanged(JavaModelListener.java:63)
+	at org.eclipse.jem.internal.adapters.jdom.JavaReflectionSynchronizer.elementChanged(JavaReflectionSynchronizer.java:265)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1751)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1739)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1572)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1548)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2259)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2151)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:501)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:321)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:311)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:174)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:458)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1586)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:221)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:47:12.007
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 00:55:29.067
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:08:46.397
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:09:11.403
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:09:11.413
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:12:36.861
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:12:36.869
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:12:54.424
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:12:54.434
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:14:38.839
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:15:05.228
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:15:11.916
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:15:40.230
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:17:11.409
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:17:15.007
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:17:15.012
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:30.916
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:30.923
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:31.881
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:31.884
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:37.712
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:18:37.718
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-10-22 01:19:59.902
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10181)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7727)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3415)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.lambda$1(SemanticHighlightReconcilerStrategy.java:246)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4058)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3676)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:20:19.071
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:20:19.075
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:30.385
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:30.393
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:31.816
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:36.705
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:40.926
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:42.014
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:22:42.797
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:32:07.960
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:32:07.970
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:32:23.646
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:33:10.869
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:09.681
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:11.108
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:56.480
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:56.482
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:56.976
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:56.981
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:59.602
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:36:59.605
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:01.934
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:01.938
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:02.584
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:02.589
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:03.142
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:37:03.146
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 01:40:14.825
+!MESSAGE [Error]	Unexpected resource file:///D:/back-end-workspace/PetWorld/Pet/src/main/java/com/kh/pet/config/PetConfig.java
+!SESSION 2024-10-22 01:41:29.436 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-22 01:41:32.334
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-22 01:41:33.831
+!MESSAGE Logback config file: D:\back-end-workspace\PetWorld\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.ui 2 0 2024-10-22 01:41:34.294
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-10-22 01:41:34.294
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2024-10-22 01:41:34.609
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-10-22 01:41:34.609
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-10-22 01:41:38.773
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+D:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre\bin\javaw.exe
+-cp
+D:\eclipse\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes;D:\eclipse\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Xmx1024m
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:D:\eclipse\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=D:/back-end-workspace/PetWorld/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1729528898773
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 01:41:38.774
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-10-22 01:41:38.781
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 25112
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-10-22 01:41:39.756
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\user1'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 01:41:39.984
+!MESSAGE Boot project ADDED: Pet
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 01:41:39.985
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 01:41:39.986
+!MESSAGE Started Boot LS process
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2024-10-22 02:16:59.688
+!MESSAGE No repository found at http://exerd.com/update.

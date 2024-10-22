@@ -118,6 +118,8 @@ section p {
             <c:when test="${not empty sessionScope.userId}">
                 <a href="/logout">로그아웃</a>
                 <a href="/update">회원정보수정</a>
+                <a href="/mypage">마이페이지</a>
+                <a href="/reservation">예약</a>
             </c:when>
             <c:otherwise>
                 <a href="/signUp">회원가입</a> 
@@ -128,7 +130,6 @@ section p {
         <a href="/FAQ">FAQ</a>
         <a href="/review">리뷰</a>
         <a href="/petsitter">펫시터</a>
-        <a href="/reservation">예약</a>
         <a href="/service">서비스 종류</a>  
     </nav>
 </header>

@@ -84,6 +84,11 @@ public class PageController {
 		return "reviewForm";
 	}
 	
+	//리뷰 수정
+	@GetMapping("/reviewUpdate")
+	public String reviewUpdate() {
+		return "reviewUpdate";
+	}
 	// 상담 게시판
 	@GetMapping("/chat")
 	public String chat() {

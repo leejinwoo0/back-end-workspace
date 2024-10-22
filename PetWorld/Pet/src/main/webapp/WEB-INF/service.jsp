@@ -67,6 +67,18 @@ section p {
   margin-right: 200px;
 }
 
+.walk img {
+   width: 400px;
+  height: 400px;
+  margin-left: 300px;
+}
+
+.pickup img {
+   width: 400px;
+  height: 400px;
+  margin-right: 300px;
+}
+
 .s1 {
   margin-left:200px;
 }
@@ -80,8 +92,17 @@ section p {
 }
 
 .s3 {
- margin-left: 200px;
+ margin-left: 300px;
 }
+
+.s4 {
+ margin-right: 300px;
+}
+
+.s5 {
+ margin-left :300px;
+}
+
 </style>
 </head>
 <body>
@@ -124,14 +145,24 @@ section p {
 </section>
 
 <section id=sec4>
+  <div class="walk">
+  <img src="img/산책.webp">
+  </div>
   <div class="s4">
     <h2>산책</h2>
+    <p>펫시터와 함께 안전한 산책이 가능합니다
+    </p>
   </div>
 </section>
 
 <section id=sec5>
   <div class="s5">
     <h2>픽업</h2>
+    <p>고객님께서 이동이 불가피하실 경우 <br>
+픽업 서비스를 이용 할 수 있습니다.</p>
+  </div>
+  <div class="pickup">
+  <img src="img/픽업.webp">
   </div>
 </section>
 </body>

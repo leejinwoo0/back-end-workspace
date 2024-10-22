@@ -3,6 +3,9 @@ package com.kh.pet.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +15,7 @@ import com.kh.pet.model.vo.Member;
 import mapper.MemberMapper;
 
 @Service
-public class MemberService {
+public class MemberService implements UserDetailsService{
 
     @Autowired
     private MemberMapper memberMapper;
@@ -53,9 +56,15 @@ public class MemberService {
     }
 
     // 아이디로 회원 정보 가져오기
-    public Member loadUserByUsername(String username) {
-        return memberMapper.checkId(username); // 해당 아이디로 회원 정보 조회
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Member member = memberMapper.checkId(username);
+        if (member == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+
+        // 비밀번호 확인은 Spring Security가 내부적으로 처리하므로 제거합니다.
+        
+        return member; // UserDetails 객체 반환
     }
-    
-    
 }

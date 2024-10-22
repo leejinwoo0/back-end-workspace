@@ -69,7 +69,7 @@
         <div class="error">${errorMessage}</div>
     </c:if>
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post" accept-charset="UTF-8">
         <label for="id">아이디:</label>
         <input type="text" id="id" name="id" required>
 

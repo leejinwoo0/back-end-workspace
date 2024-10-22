@@ -53,7 +53,7 @@ public class ReviewController {
     }
 
     // 4. 리뷰 수정 페이지로 이동 (회원만 가능)
-    @GetMapping("/edit/{reviewCode}")
+    @GetMapping("/reviewUpdate/{reviewCode}")
     public String showEditForm(@PathVariable int reviewCode, Model model) {
         try {
             Review review = reviewService.getReviewById(reviewCode);  // 리뷰 조회

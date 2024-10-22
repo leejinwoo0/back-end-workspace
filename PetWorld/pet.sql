@@ -17,6 +17,8 @@ id를 프라이머리키로 쓸때
 SELECT *FROM Member;
 SELECT * FROM Chat;
 
+
+
 CREATE TABLE Chat (
 chat_code INT PRIMARY KEY,
 title VARCHAR(100) NOT NULL,
@@ -56,3 +58,9 @@ review_date DATE,
 id VARCHAR(50),
 FOREIGN KEY(id) REFERENCES Member(id)
 );
+
+INSERT INTO Review (review_code, id, review_date, title, review_text, review_photo)
+VALUES (1,1, '20241022', '아','자자자자자자',150000);
+SELECT * FROM member WHERE id = 1;
+INSERT INTO member (id, other_columns) VALUES (1, 'other_values');
+
