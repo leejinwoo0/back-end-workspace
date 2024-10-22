@@ -25,16 +25,15 @@ public class Member implements UserDetails {
     private String address;    // 주소
     private String email;      // 이메일
     private String role;       // 역할 (예: ROLE_MEMBER, ROLE_ADMIN 등)
+    private String petsitterCode;
+    private String petsitterClass;
+    private String petsitterPhone;
+    private String price;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // return authorities based on role, e.g., SimpleGrantedAuthority
         return List.of(new SimpleGrantedAuthority(this.role));
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
     }
 
     @Override

@@ -10,12 +10,21 @@
         <result column="address" property="address"/>
         <result column="email" property="email"/>
         <result column="role" property="role"/>
+        <result column="petsitter_code" property="petsitterCode"/>
+        <result column="petsitter_class" property="petsitterClass"/>
+        <result column="petsitter_phone" property="petsitterPhone"/>
+        <result column="price" property="price"/>
     </resultMap>
 
     <!-- 회원 목록 조회 -->
     <select id="getMemberList" resultMap="memberMap">
         SELECT id, password, name, phone, address, email, role
         FROM Member
+    </select>
+    
+    <select id="getPetSitterlist" resultMap="memberMap">
+        SELECT * FROM Petsitter as p
+		INNER JOIN Member as m ON m.id = p.id;
     </select>
 
     <!-- 아이디 중복 체크 -->

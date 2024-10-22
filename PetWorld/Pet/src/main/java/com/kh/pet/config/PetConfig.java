@@ -25,7 +25,7 @@ public class PetConfig {
                 .formLogin(login ->
                     login
                         .loginPage("/login") //  로그인 페이지
-                        .defaultSuccessUrl("/", true) // 로그인 성공 시 홈 페이지로 리디렉션
+                        .defaultSuccessUrl("/loginSuccess", true) // 로그인 성공 시 홈 페이지로 리디렉션
                         .failureHandler(new DomainFailureHandler()) // 로그인 실패했을때 에러 처리
                         .permitAll() // 로그인 페이지 접근 허용
                 )

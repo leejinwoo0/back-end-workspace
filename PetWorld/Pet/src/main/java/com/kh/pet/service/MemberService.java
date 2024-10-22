@@ -27,10 +27,16 @@ public class MemberService implements UserDetailsService{
     public List<Member> getMemberList() {
         return memberMapper.getMemberList();
     }
+    
+    public List<Member> getPetSitterlist() {
+        return memberMapper.getPetSitterlist();
+    }
 
     // 아이디 중복 체크
     public boolean check(String id) {
         Member member = memberMapper.checkId(id);
+        System.out.println("회원가입");
+        System.out.println(member);
         return member == null; // null이면 중복이 아님
     }
 
@@ -58,7 +64,10 @@ public class MemberService implements UserDetailsService{
     // 아이디로 회원 정보 가져오기
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    	System.out.println(username);
         Member member = memberMapper.checkId(username);
+        
+      
         if (member == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }

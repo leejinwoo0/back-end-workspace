@@ -77,7 +77,7 @@
         <input type="text" id="name" name="name" value="${member.name}" required>
 
         <label for="id">아이디:</label>
-        <input type="text" id="id" name="id" value="${member.id}" readonly>
+        <input type="text" id="id" name="id" value="${member.id}">
 
         <label for="password">비밀번호:</label>
         <input type="password" id="password" name="password" placeholder="비밀번호 변경 원할 경우 입력" >

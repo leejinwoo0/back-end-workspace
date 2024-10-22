@@ -14,9 +14,9 @@ id를 프라이머리키로 쓸때
 유니크는 중복허용불가할라고 그렇기때문 아이디에만쓰임 이번경우에는 프라이머리키이기때문에 유니크가 필요없음
 */
 
-SELECT *FROM Member;
+SELECT * FROM Member;
 SELECT * FROM Chat;
-
+SELECT * FROM Member WHERE id = 'xxxx';
 
 
 CREATE TABLE Chat (
@@ -43,7 +43,7 @@ FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
 );
 
 CREATE TABLE PetSitter (
-petsitter_code INT PRIMARY KEY,
+petsitter_id INT PRIMARY KEY,
 petsitter_class VARCHAR(50),
 petsitter_phone VARCHAR(15),
 price DECIMAL (10, 2)

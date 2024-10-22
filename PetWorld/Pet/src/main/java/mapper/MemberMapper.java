@@ -11,6 +11,9 @@ public interface MemberMapper {
 
     // 회원 목록 조회
     List<Member> getMemberList();
+    
+    // 펫시터 목록 조회
+    List<Member> getPetSitterlist();
 
     // 아이디 중복 체크
     Member checkId(String id);

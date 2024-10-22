@@ -106,11 +106,11 @@ public class PageController {
 		return "reservation";
 	}
 	
-	// 펫케어사 소개 페이지
-	@GetMapping("/petsitter")
-	public String petsitter() {
-		return "petsitter";
-	}
+//	// 펫케어사 소개 페이지
+//	@GetMapping("/petsitter")
+//	public String petsitter() {
+//		return "petsitter";
+//	}
 	
 	
 }
