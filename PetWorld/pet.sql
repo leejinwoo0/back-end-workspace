@@ -16,7 +16,7 @@ id를 프라이머리키로 쓸때
 
 SELECT * FROM Member;
 SELECT * FROM Chat;
-SELECT * FROM Member WHERE id = 'xxxx';
+SELECT * FROM petsitter;
 
 
 CREATE TABLE Chat (
@@ -42,12 +42,28 @@ FOREIGN KEY (id) REFERENCES member (id),
 FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
 );
 
+
+
 CREATE TABLE PetSitter (
-petsitter_id INT PRIMARY KEY,
-petsitter_class VARCHAR(50),
+petsitter_code INT PRIMARY KEY,
+petsitter_name VARCHAR(100),
+petsitter_grade VARCHAR(50),
 petsitter_phone VARCHAR(15),
-price DECIMAL (10, 2)
+petsitter_address VARCHAR(255),
+petsitter_price DECIMAL (10, 3)
 );
+SET foreign_key_checks = 0;
+
+DROP TABLE Member;
+DROP TABLE PetSitter;
+
+commit;
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (1,'펫시터1', '1등급', '01012345677', '서울' ,'100');
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (2,'펫시터2', '2등급', '01012345677', '서울' ,'70');
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (3,'펫시터3', '3등급', '01012345677', '서울' ,'50');
 
 CREATE TABLE Review (
 review_code INT PRIMARY KEY,

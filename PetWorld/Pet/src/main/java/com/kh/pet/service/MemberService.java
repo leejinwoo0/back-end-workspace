@@ -28,10 +28,7 @@ public class MemberService implements UserDetailsService{
         return memberMapper.getMemberList();
     }
     
-    public List<Member> getPetSitterlist() {
-        return memberMapper.getPetSitterlist();
-    }
-
+   
     // 아이디 중복 체크
     public boolean check(String id) {
         Member member = memberMapper.checkId(id);

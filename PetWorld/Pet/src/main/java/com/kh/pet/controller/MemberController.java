@@ -36,16 +36,6 @@ public class MemberController {
         return "member/list"; // 회원 목록 페이지
     }
     
-    //펫시터 목록조회
-    @GetMapping("/petsitter")
-    public String getPetSitterlist(Model model) { 
-        List<Member> petSitters = memberService.getPetSitterlist();
-        System.out.println(petSitters);
-        
-        model.addAttribute("petsitters", petSitters);
-        
-        return "petsitter"; // 회원 목록 페이지
-    }
 
     // 중복체크
     @ResponseBody
@@ -62,7 +52,7 @@ public class MemberController {
             if ("member".equals(member.getRole())) {
                 member.setRole("ROLE_MEMBER");
             } else {
-                member.setRole("ROLE_COMPANY");
+                member.setRole("ROLE_PETSITTER");
             }
             boolean isRegistered = memberService.signUp(member);
             if (isRegistered) {

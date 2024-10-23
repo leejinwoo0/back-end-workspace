@@ -129,7 +129,7 @@ section p {
         <a href="/chat">상담게시판</a> 
         <a href="/FAQ">FAQ</a>
         <a href="/review">리뷰</a>
-        <a href="/petsitter">펫시터</a>
+        <a href="/petsitter/list">펫시터</a>
         <a href="/service">서비스 종류</a>  
     </nav>
 </header>

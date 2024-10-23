@@ -1,0 +1,48 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PetsitterMapper">
+
+    <!-- ResultMap 정의 -->
+    <resultMap id="petsitterMap" type="Member">
+        <id column="petsitter_code" property="petsitterCode"/>
+        <result column="petsitter_grade" property="petsitter_grade"/>
+        <result column="petsitter_phone" property="petsitter_phone"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="email" property="email"/>
+        <result column="role" property="role"/>
+    </resultMap>
+
+    <!-- 회원 목록 조회 -->
+    <select id="getMemberList" resultMap="memberMap">
+        SELECT id, password, name, phone, address, email, role
+        FROM Member
+    </select>
+    
+
+    <!-- 아이디 중복 체크 -->
+    <select id="checkId" parameterType="String" resultMap="memberMap">
+        SELECT * FROM Member WHERE id = #{id}
+    </select>
+
+    <!-- 회원가입 -->
+    <insert id="signUp" parameterType="Member">
+        INSERT INTO Member (id, password, name, phone, address, email, role)
+        VALUES (#{id}, #{password}, #{name}, #{phone}, #{address}, #{email}, #{role})
+    </insert>
+
+    <!-- 회원정보 수정 -->
+    <update id="updateMember" parameterType="Member">
+        UPDATE Member
+        SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}, role = #{role}
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 회원탈퇴 -->
+    <delete id ="deleteMember" parameterType="Member">
+       DELETE Member
+       SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}, role = #{role}
+       WHERE id = #{id}
+    </delete>
+    
+
+</mapper>

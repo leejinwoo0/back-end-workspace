@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="list"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="selectAllPetsitter"/>
+			<item value="updateMember"/>
+			<item value="getUsername"/>
+			<item value="checkId"/>
+			<item value="loadUserByUsername"/>
 			<item value="list"/>
 			<item value="PathVariable"/>
 			<item value="bean"/>
@@ -23,7 +28,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1554"/>
+		<item key="DIALOG_X_ORIGIN" value="872"/>
 		<item key="DIALOG_Y_ORIGIN" value="462"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
