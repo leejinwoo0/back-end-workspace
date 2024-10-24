@@ -85,7 +85,7 @@ public class MemberController {
             }
         } catch (Exception e) {
             model.addAttribute("errorMessage", "정보 수정 중 오류가 발생했습니다: " + e.getMessage());
-            return "mypage"; // 예외 발생 시 다시 회원정보수정 페이지로 이동
+            return "mypage/update"; // 예외 발생 시 다시 회원정보수정 페이지로 이동
         }
     }
 
@@ -113,6 +113,7 @@ public class MemberController {
     public String loginSuccess(HttpServletRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Member member = (Member) authentication.getPrincipal();  // 로그인된 사용자 정보 가져오기
+        
         
         // 세션에 사용자 ID 저장
         HttpSession session = request.getSession();

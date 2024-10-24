@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,10 +19,9 @@ header {
   z-index: 1000;
 }
 
-header a {
-  font-size: 2.3rem;
-  font-weight: bold;
-  margin-left: 50px;
+header img {
+  height: 100px; /* 로고 높이 설정 */
+  margin-left: 20px; /* 로고 왼쪽 여백 */
 }
 
 section {
@@ -107,10 +106,12 @@ section p {
 </head>
 <body>
 <header>
-<a href="/index">PetWorld</a>
+    <a href="/index">
+        <img src="img/mainlogo.webp" alt="로고" /> <!-- 로고 이미지 추가 -->
+    </a>
 </header>
 
-<section id=sec>
+<section id="sec">
   <div class="s1">
     <h2>반려동물과 반려인 모두를 생각한 <br>
     1:1 맞춤 펫시팅 서비스</h2>
@@ -123,7 +124,7 @@ section p {
   </div>
 </section>
 
-<section id=sec2>
+<section id="sec2">
   <div class="s2" style="flex: 1;">
     <p>여행, 명절 등 장시간 집을 비울 때</p>
     <p>출장, 야근 등 갑자기 일이 생겼을 때</p>
@@ -134,7 +135,7 @@ section p {
   </div>
 </section>
 
-<section id=sec3>
+<section id="sec3">
   <div class="s3">
     <h2>목욕</h2>
     <p>우리 아이가 목욕이 필요 할 경우, 목욕을 신청 할 수 있습니다</p>
@@ -144,7 +145,7 @@ section p {
   </div>
 </section>
 
-<section id=sec4>
+<section id="sec4">
   <div class="walk">
   <img src="img/산책.webp">
   </div>
@@ -155,7 +156,7 @@ section p {
   </div>
 </section>
 
-<section id=sec5>
+<section id="sec5">
   <div class="s5">
     <h2>픽업</h2>
     <p>고객님께서 이동이 불가피하실 경우 <br>

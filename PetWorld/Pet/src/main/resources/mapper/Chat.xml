@@ -18,27 +18,27 @@
     </select>
 
     <!-- 2.회원만 상담 내용 작성 -->
-    <insert id="insertChat">
+    <insert id="insertChat" parameterType="Chat">
         INSERT INTO chat (chat_code, title, text, answer, id)
         VALUES (#{chatCode}, #{title}, #{text}, NULL, #{id})
     </insert>
 
     <!-- 3. 관리자만 상담 내용에 답변 댓글 가능-->
-    <update id="updateAnswer">
+    <update id="updateAnswer" parameterType="Chat">
         UPDATE chat
         SET answer = #{answer}
          WHERE chat_code = #{chatCode} AND #{roleAdmin} = true
     </update>
 
     <!-- 4.회원만 상담 내용 수정 -->
-    <update id="updateChat">
+    <update id="updateChat" parameterType="Chat">
         UPDATE chat
         SET title = #{title}, text = #{text}
         WHERE chat_code = #{chatCode} AND id = #{id}
     </update>
 
     <!-- 5.회원만 상담 내용 삭제 -->
-    <delete id="deleteChat">
+    <delete id="deleteChat" parameterType="Chat">
         DELETE FROM chat
         WHERE chat_code = #{chatCode} AND id = #{id}
     </delete>

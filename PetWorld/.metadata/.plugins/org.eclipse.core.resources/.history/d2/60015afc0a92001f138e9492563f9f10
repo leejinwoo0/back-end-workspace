@@ -1,0 +1,34 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ReviewMapper">
+
+    <!-- 리뷰 결과를 매핑하는 resultMap -->
+    <resultMap id="reviewMap" type="Review">
+        <id column="review_code" property="reviewCode"/>
+        <result column="title" property="title"/>
+        <result column="review_text" property="reviewText"/>
+        <result column="review_date" property="reviewDate"/>
+        <result column="id" property="id"/> <!-- 회원의 ID -->
+    </resultMap>
+
+    <!--  회원 유무 상관없이 리뷰 목록 보기 -->
+    <select id="selectAllReviews" resultMap="reviewMap">
+        SELECT review_code, title, review_text, review_date, id
+        FROM reviews
+        ORDER BY review_date DESC
+    </select>
+
+    <!--  회원만 리뷰 작성 -->
+    <insert id="insertReview" parameterType="Review">
+        INSERT INTO review (review_code, title, review_text, review_date, id)
+        VALUES (#{reviewCode}, #{title}, #{reviewText}, #{reviewDate}, #{id})
+    </insert>
+    
+  
+    <!--  회원만 리뷰 삭제 -->
+    <delete id="deleteReview" parameterType="Review">
+        DELETE FROM review WHERE review_code = #{reviewCode} AND id = #{id}
+    </delete>
+
+   
+
+</mapper>

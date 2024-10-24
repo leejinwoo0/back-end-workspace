@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>예약 목록</title>
+</head>
+<body>
+    <h1>예약 목록</h1>
+    <table border="1">
+        <tr>
+            <th>예약번호</th>
+            <th>펫시터</th>
+            <th>펫 수</th>
+            <th>케어 시간</th>
+            <th>목욕 서비스</th>
+            <th>산책 서비스</th>
+            <th>픽업 서비스</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+        <c:forEach var="reservation" items="${reservations}">
+            <tr>
+                <td>${reservation.id}</td>
+                <td>${reservation.petsitter}</td>
+                <td>${reservation.petNum}</td>
+                <td>${reservation.careTime}</td>
+                <td>${reservation.bathService ? 'Yes' : 'No'}</td>
+                <td>${reservation.walkService ? 'Yes' : 'No'}</td>
+                <td>${reservation.pickupService ? 'Yes' : 'No'}</td>
+                <td><a href="/reservation/updateForm/${reservation.id}">수정</a></td>
+                <td><a href="/reservation/delete/${reservation.id}" onclick="return confirm('삭제하시겠습니까?')">삭제</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+    <a href="/reservation/addForm">새 예약 추가</a>
+</body>
+</html>

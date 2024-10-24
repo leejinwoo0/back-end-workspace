@@ -19,6 +19,9 @@ public interface ReservationMapper {
     // 선택항목 예약 추가
     void addReservation(Reservation reservation);
     
+    // 예약 저장
+    void saveReservation(Reservation reservation);
+    
     // 예약 정보 수정
     void updateReservation(Reservation reservation);
 

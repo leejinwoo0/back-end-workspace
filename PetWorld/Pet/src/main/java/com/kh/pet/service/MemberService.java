@@ -47,8 +47,11 @@ public class MemberService implements UserDetailsService{
     // 회원정보 수정
     public boolean updateProfile(Member member) {
         // 비밀번호 변경 요청 시 암호화
+    	 System.out.println("member"+member.getPassword());
         if (member.getPassword() != null && !member.getPassword().isEmpty()) {
             member.setPassword(passwordEncoder.encode(member.getPassword()));
+            
+           
         }
         return memberMapper.updateMember(member) == 1; // UPDATE 성공 시 1 반환
     }
@@ -62,8 +65,9 @@ public class MemberService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     	System.out.println(username);
+    	
         Member member = memberMapper.checkId(username);
-        
+        System.out.println("Member" + member);
       
         if (member == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);

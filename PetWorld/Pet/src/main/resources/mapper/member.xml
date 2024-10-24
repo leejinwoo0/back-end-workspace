@@ -33,7 +33,7 @@
     <!-- 회원정보 수정 -->
     <update id="updateMember" parameterType="Member">
         UPDATE Member
-        SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}, role = #{role}
+        SET password = #{password}, name = #{name}, phone = #{phone}, address = #{address}, email = #{email}
         WHERE id = #{id}
     </update>
     

@@ -3,6 +3,9 @@ package com.kh.pet.controller;
 import com.kh.pet.model.vo.Member;
 import com.kh.pet.model.vo.Review;
 import com.kh.pet.service.ReviewService;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,7 +27,7 @@ public class ReviewController {
     public String listReviews(Model model) {
         List<Review> reviews = reviewService.getAllReviews();  // 모든 리뷰 조회
         model.addAttribute("reviews", reviews);  // 모델에 리뷰 목록 추가
-        return "reviews/reviewList";  // 리뷰 목록 페이지로 이동
+       return "review";  // 리뷰 목록 페이지로 이동
     }
 
     // 2. 리뷰 작성 페이지로 이동 (회원만 가능)
@@ -40,52 +43,26 @@ public class ReviewController {
         	}
     }
 
-    // 3. 리뷰 작성 처리 (회원만 가능)
+    // 3. 리뷰 작성한후, 리뷰목록 보여주기 (회원만 가능)
     @PostMapping("/add")
-    public String addReview(@ModelAttribute Review review) {
+    public String addReview(@ModelAttribute Review review, HttpSession session) {
+    
+    	System.out.println("review" + review);
+    	String userId = (String) session.getAttribute("userId");
+        
+    	if(userId !=null &&!userId.isEmpty()) {
+    		review.setId(userId);
+    	}else {
+    		return "redirect:/reviewForm";
+    	}
+          
         try {
             reviewService.addReview(review);  // 리뷰 작성
             return "redirect:/reviews/list";  // 리뷰 작성 후 목록 페이지로 리다이렉트
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/reviews/new?error";  // 오류 발생 시 다시 폼 페이지로 리다이렉트
+            return "redirect:/reviewForm";  // 경로 수정
         }
     }
 
-    // 4. 리뷰 수정 페이지로 이동 (회원만 가능)
-    @GetMapping("/reviewUpdate/{reviewCode}")
-    public String showEditForm(@PathVariable int reviewCode, Model model) {
-        try {
-            Review review = reviewService.getReviewById(reviewCode);  // 리뷰 조회
-            model.addAttribute("review", review);  // 모델에 리뷰 추가
-            return "reviews/reviewEditForm";  // 리뷰 수정 폼 페이지로 이동
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/reviews/list?error";  // 오류 시 목록 페이지로 리다이렉트
-        }
-    }
-
-    // 5. 리뷰 수정 처리 (회원만 가능)
-    @PostMapping("/update")
-    public String updateReview(@ModelAttribute Review review) {
-        try {
-            reviewService.updateReview(review);  // 리뷰 수정 처리
-            return "redirect:/reviews/list";  // 수정 후 목록 페이지로 리다이렉트
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/reviews/edit/" + review.getReviewCode() + "?error";  // 오류 시 수정 페이지로 리다이렉트
-        }
-    }
-
-    // 6. 리뷰 삭제 처리 (회원만 가능)
-    @PostMapping("/delete/{reviewCode}")
-    public String deleteReview(@PathVariable int reviewCode, @RequestParam String id) {
-        try {
-            reviewService.deleteReview(reviewCode, id);  // 리뷰 삭제
-            return "redirect:/reviews/list";  // 삭제 후 목록 페이지로 리다이렉트
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/reviews/list?error";  // 오류 시 목록 페이지로 리다이렉트
-        }
-    }
 }

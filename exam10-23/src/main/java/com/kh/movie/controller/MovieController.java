@@ -32,8 +32,6 @@ public class MovieController {
     private MovieService service;
 
 
-    // 업로드 경로
-    private String path = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json";
 
 
 
@@ -64,7 +62,7 @@ public class MovieController {
     @GetMapping("/movie-api")
     public ResponseEntity movieApi() throws Exception {
         String key = "7051f228650924504c4f9f387acf9812";
-        String listUrl = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json";
+        String listUrl = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=" + key+"&itemPerPage=5&openStartDt=2024";
 
         JSONObject jsonResponse = convert(listUrl);
         JSONObject movieListResult = jsonResponse.getJSONObject("movieListResult");
@@ -74,24 +72,34 @@ public class MovieController {
 
         for(int i = 0; i < movieList.length(); i++) {
             JSONObject result = movieList.getJSONObject(i);
+
             int movieCd = result.getInt("movieCd");
-            String url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
+            log.info("movieCd :" + movieCd);
+            String url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=" +key+"movieCd :" + movieCd;
 
             JSONObject jsonData = convert(url);
             JSONObject movieInfoResult = jsonData.getJSONObject("movieInfoResult");
             JSONObject movieInfo = movieInfoResult.getJSONObject("movieInfo");
 
+            log.info("movieInfo : " + movieInfo);
             String title = movieInfo.getString("movieNm");
 
-            JSONArray actors = movieInfo.getJSONArray("actors");
-            String actor = "";
-            for(int j = 0; j < actors.length(); j++) {
-                JSONObject actorObject = actors.getJSONObject(j);
-                actor += actorObject.getString("peopleNm");
-                if(j < actors.length() - 1) {
-                    actor += ", ";
+            JSONArray genres = movieInfo.getJSONArray("genres");
+            String genre = "";
+            for(int j = 0; j < genres.length(); j++) {
+                JSONObject genreObject = genres.getJSONObject(j);
+                genre += genreObject.getString("genreNm");
+                if(j < genres.length() - 1) {
+                    genre += ", ";
                 }
             };
+            log.info("genre" +genre);
+
+            list.add(Movie.builder()
+                          .id(movieCd)
+                          .title(title)
+                          .actor(genre)
+                          .build());
 
         }
 

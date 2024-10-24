@@ -72,13 +72,13 @@ public class PageController {
 		return "service";
 	}
 
-	// 리뷰
-	@GetMapping("/review")
-	public String review() {
-		return "review";
-	}
+	 //리뷰
+	//@GetMapping("/review")
+	//public String review() {
+	//	return "review";
+	//}
 	
-	//리뷰 작성
+    //리뷰 작성
 	@GetMapping("/reviewForm")
 	public String reviewForm() {
 		return "reviewForm";

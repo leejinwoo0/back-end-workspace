@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.kh.pet.model.vo.Reservation;
+import com.kh.pet.service.MemberService;
 import com.kh.pet.service.ReservationService;
 
 @RestController
@@ -13,6 +14,9 @@ public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
+    
+    @Autowired
+    private MemberService memberService;
 
     // 예약 목록 조회
     @GetMapping("/list")

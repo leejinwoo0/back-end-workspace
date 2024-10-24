@@ -69,13 +69,16 @@
             width: 100px; /* 이미지 너비 설정 */
             height: auto; /* 비율 유지 */
         }
+        
+        .header a {
+        margin-right: 200px;
+        }
     </style>
 </head>
 <body>
 <div class="header">
     <h1>리뷰 목록</h1>
     <a href="<c:url value='/reviews/reviewForm'/>">리뷰 작성</a>
-    <a href="<c:url value='/reviews/reviewUpdate'/>" style="margin-left: 20px;">리뷰 수정</a>
 </div>
 
 <c:if test="${not empty param.error}">
@@ -88,23 +91,16 @@
             <th>작성자 ID</th>
             <th>작성일</th>
             <th>리뷰 제목</th>
-            <th>리뷰 내용</th>
-            <th>이미지</th>
+            <th>리뷰 내용</th>          
         </tr>
     </thead>
     <tbody>
         <c:forEach var="review" items="${reviews}">
             <tr>
-                <td>${id}</td>
-                <td>${review.date}</td>
-                <td>${title}</td>
-                <td>${review.text}</td>
-                
-                <td>
-                    <c:if test="${not empty review.photoPath}">
-                        <img src="${review.photo}" alt="리뷰 이미지" class="review-photo"/>
-                    </c:if>
-                </td>
+                <td>${review.id}</td>
+                <td>${review.reviewDate}</td>
+                <td>${review.title}</td>
+                <td>${review.reviewText}</td>
             </tr>
         </c:forEach>
     </tbody>

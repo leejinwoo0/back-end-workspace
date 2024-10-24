@@ -17,12 +17,15 @@
             color: #333;
         }
 
-        textarea {
+        input[type="text"], textarea {
             width: 100%;
-            height: 100px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        textarea {
+            height: 100px;
             resize: none; /* 크기 조절 비활성화 */
         }
 
@@ -47,6 +50,10 @@
         label {
             font-weight: bold;
         }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -57,13 +64,32 @@
 </c:if>
 
 <form action="<c:url value='/reviews/add'/>" method="post">
-    <input type="hidden" name="id" value="${id}"/>
-    <label for="content">리뷰 내용:</label><br>
-    <textarea id="content" name="content" required></textarea><br><br>
+    <input type="hidden" name="id" value="${user.id}"/> <!-- 로그인한 사용자 ID 전송 -->
+
+    <div class="form-group">
+        <label for="title">리뷰 제목:</label><br>
+        <input type="text" id="title" name="title" required/><br>
+    </div>
+
+    <div class="form-group">
+        <label for="username">아이디:</label><br>
+        <input type="text" id="username" name="username" /> <!-- 사용자가 직접 입력 가능 -->
+
+    </div>
+
+    <div class="form-group">
+        <label for="date">작성 날짜:</label><br>
+        <input type="text" id="date" name="reviewDate" required/> <!-- 사용자가 직접 입력 가능 -->
+
+    </div>
+
+    <div class="form-group">
+        <label for="content">리뷰 내용:</label><br>
+        <textarea id="content" name="reviewText" required></textarea><br>
+    </div>
+
     <input type="submit" value="작성하기"/>
 </form>
-
-<a href="<c:url value='/reviews/list'/>">목록으로 돌아가기</a>
 
 </body>
 </html>

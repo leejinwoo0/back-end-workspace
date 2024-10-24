@@ -33,11 +33,37 @@ header > * {
 header form {
   justify-content: center;
 }
+
+  table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
 </style>
-</head>
-<body>
 <header>
 <a href="/index">PetWorld</a>
 </header>
+</head>
+<body>
+
 </body>
 </html>

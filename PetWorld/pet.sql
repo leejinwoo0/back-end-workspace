@@ -42,7 +42,7 @@ FOREIGN KEY (id) REFERENCES member (id),
 FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
 );
 
-
+SELECT * FROM Reservation;
 
 CREATE TABLE PetSitter (
 petsitter_code INT PRIMARY KEY,
@@ -52,28 +52,38 @@ petsitter_phone VARCHAR(15),
 petsitter_address VARCHAR(255),
 petsitter_price DECIMAL (10, 3)
 );
-SET foreign_key_checks = 0;
+SET foreign_key_checks = 1;
 
 DROP TABLE Member;
 DROP TABLE PetSitter;
 
 commit;
 INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
-VALUES (1,'펫시터1', '1등급', '01012345677', '서울' ,'100');
+VALUES (1,'펫시터1(서울)', '1등급', '01012345677', '서울' ,'100');
 INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
-VALUES (2,'펫시터2', '2등급', '01012345677', '서울' ,'70');
+VALUES (2,'펫시터2(서울)', '2등급', '01012345677', '서울' ,'70');
 INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
-VALUES (3,'펫시터3', '3등급', '01012345677', '서울' ,'50');
+VALUES (3,'펫시터3(서울)', '3등급', '01012345677', '서울' ,'50');
+
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (4,'펫시터1(경기)', '1등급', '01012345677', '경기' ,'100');
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (5,'펫시터2(경기)', '2등급', '01012345677', '경기' ,'70');
+INSERT INTO PetSitter (petsitter_code, petsitter_name, petsitter_grade, petsitter_phone, petsitter_address, petsitter_price) 
+VALUES (6,'펫시터3(경기)', '3등급', '01012345677', '경기' ,'50');
+
 
 CREATE TABLE Review (
 review_code INT PRIMARY KEY,
 title VARCHAR(100) NOT NULL,
-review_text TEXT NOT NULL,
-review_photo VARCHAR(255),
-review_date DATE,
+review_text VARCHAR(100),
+review_date VARCHAR(100),
 id VARCHAR(50),
 FOREIGN KEY(id) REFERENCES Member(id)
 );
+
+SELECT *FROM Review;
+DROP TABLE Review;
 
 INSERT INTO Review (review_code, id, review_date, title, review_text, review_photo)
 VALUES (1,1, '20241022', '아','자자자자자자',150000);

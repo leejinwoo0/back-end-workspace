@@ -30,6 +30,9 @@ public class ReservationService {
     	reservationmapper.addReservation(reservation);
     }
     
+    public void saveReservation(Reservation reservation) {
+    	reservationmapper.saveReservation(reservation);
+    }
 
     // 예약 정보 수정
     public void updateReservation(Reservation reservation) {
