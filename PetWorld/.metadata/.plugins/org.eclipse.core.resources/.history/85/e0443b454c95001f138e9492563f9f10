@@ -1,0 +1,26 @@
+package com.kh.pet.model.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalTime; // LocalTime 추가
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor 
+@Builder
+public class Reservation {
+    
+    private int resCode;
+    private String petsitter;
+    private int petNum;
+    private LocalTime careTime; // Integer에서 LocalTime으로 변경
+    private String date;
+    private boolean bathService;
+    private boolean walkService;
+    private boolean pickupService;
+    private String id;
+
+}

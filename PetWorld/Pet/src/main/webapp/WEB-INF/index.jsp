@@ -126,7 +126,6 @@ section p {
                 <a href="/login">로그인</a>
             </c:otherwise>
         </c:choose>
-        <a href="/chat">상담게시판</a> 
         <a href="/FAQ">FAQ</a>
         <a href="<c:url value='/reviews/list'/>">리뷰</a>
         <a href="/petsitter/list">펫시터</a>

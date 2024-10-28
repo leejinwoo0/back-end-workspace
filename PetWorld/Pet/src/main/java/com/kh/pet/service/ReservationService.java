@@ -1,7 +1,6 @@
 package com.kh.pet.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,39 +8,40 @@ import com.kh.pet.model.vo.Reservation;
 
 import mapper.ReservationMapper;
 
+
 @Service
 public class ReservationService {
-	
-	@Autowired(required = false)
-	private ReservationMapper reservationmapper;
-	
-	// 예약 목록 조회
-    public List<Reservation> getReservationList() {
-        return reservationmapper.getReservationList(); // 예약 테이블의 모든 데이터 가져오기
-    }
-    
-  
- // 회원 ID로 예약 목록 조회
-    public Reservation getReservationListById(String id) {
-        return reservationmapper.getReservationById(id);
+
+    @Autowired
+    private ReservationMapper reservationMapper;
+
+    // 새로운 예약 추가
+    public void addReservation(Reservation reservation) {
+        reservationMapper.insertReservation(reservation);
     }
 
-    
-    // 선택항목 예약 추가
-    public void addReservation(Reservation reservation) {
-    	reservationmapper.addReservation(reservation);
+    // 예약 목록 조회
+    public List<Reservation> getReservationList() {
+        return reservationMapper.selectAllReservations();
     }
-    
-    
+
+    // 특정 회원의 예약 목록 조회 (아이디로)
+    public List<Reservation> getReservationListById(String id) { // 아이디를 매개변수로 사용
+        return reservationMapper.selectReservationsById(id); // 매퍼 메서드 호출 시 id 사용
+    }
+
+    // 특정 예약 조회
+    public Reservation getReservationListByReservationId(String reservationId) {
+        return reservationMapper.selectReservationById(reservationId);
+    }
 
     // 예약 정보 수정
     public void updateReservation(Reservation reservation) {
-    	reservationmapper.updateReservation(reservation); // 예약 정보 업데이트
+        reservationMapper.updateReservation(reservation);
     }
 
-    // 예약 삭제 (예약 코드로 삭제)
-    public void deleteReservation(String resCode) {
-    	reservationmapper.deleteReservation(resCode); // 예약 코드에 따라 예약 삭제
+    // 예약 삭제
+    public void deleteReservation(String id) {
+        reservationMapper.deleteReservation(id);
     }
-    
 }

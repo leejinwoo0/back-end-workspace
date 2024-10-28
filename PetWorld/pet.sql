@@ -33,17 +33,20 @@ FOREIGN KEY(id) REFERENCES Member(id)
 CREATE TABLE Reservation (
 res_code INT PRIMARY KEY KEY AUTO_INCREMENT,
 petsitter VARCHAR(100),
-pet_num INT,
-care_time TIME,
+pet_num VARCHAR(20),
+care_time VARCHAR(10),
 date VARCHAR(100),
 bath_service BOOLEAN,
 walk_service BOOLEAN,
 pickup_service BOOLEAN,
 id VARCHAR(50),
-petsitter_code INT,
-FOREIGN KEY (id) REFERENCES member (id),
-FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
+FOREIGN KEY (id) REFERENCES member (id)
 );
+
+
+INSERT INTO Reservation (petsitter, pet_num, care_time, date, bath_service, walk_service, pickup_service, id)
+VALUES ('JohnDoe', 2, 3, '2024-10-30', true, false, true, 'zxzx');
+
 
 SELECT * FROM Reservation;
 DROP TABLE Reservation;

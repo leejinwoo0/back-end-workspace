@@ -24,26 +24,6 @@
         margin: 0 auto;
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-
-    table, th, td {
-        border: 1px solid #ccc;
-    }
-
-    th, td {
-        padding: 10px;
-        text-align: center;
-    }
-
-    th {
-        background-color: #007bff;
-        color: white;
-    }
-
     .form-container {
         margin-bottom: 20px;
         padding: 20px;
@@ -74,41 +54,9 @@
     .form-container button:hover {
         background-color: #218838;
     }
-
-    .reservation-list {
-        margin-top: 20px;
-    }
-
-    .reservation-list h3 {
-        text-align: center;
-    }
-
-    .reservation-list table {
-        margin-top: 10px;
-    }
 </style>
 <script>
     $(document).ready(function() {
-        // 예약 목록 가져오기
-        function loadReservations() {
-            $.getJSON('${pageContext.request.contextPath}/reservation/list', function(data) {
-                var tableContent = '';
-                $.each(data, function(index, reservation) {
-                    tableContent += '<tr>';
-                    tableContent += '<td>' + reservation.id + '</td>';
-                    tableContent += '<td>' + reservation.date + '</td>';
-                    tableContent += '<td>' + reservation.careTime + '</td>';
-                    tableContent += '<td>' + reservation.petsitter + '</td>';
-                    tableContent += '<td>' + reservation.petNum + '</td>';
-                    tableContent += '<td>' + (reservation.bathService ? 'Yes' : 'No') + '</td>';
-                    tableContent += '<td>' + (reservation.walkService ? 'Yes' : 'No') + '</td>';
-                    tableContent += '<td>' + (reservation.pickupService ? 'Yes' : 'No') + '</td>';
-                    tableContent += '</tr>';
-                });
-                $('#reservationTable tbody').html(tableContent);
-            });
-        }
-
         // 예약 추가 폼 제출
         $('#addReservationForm').on('submit', function(event) {
             event.preventDefault(); // 기본 폼 제출 방지
@@ -125,9 +73,6 @@
                     alert('예약 추가 실패: ' + jqXHR.responseText);
                 });
         });
-
-        // 예약 목록 로드
-        loadReservations();
     });
 </script>
 </head>
@@ -141,11 +86,13 @@
         <!-- 예약 추가 폼 -->
         <div class="form-container">
             <h3>예약 추가</h3>
-            <form id="addReservationForm" method="post">
+            <form id="addReservationForm" action="${pageContext.request.contextPath}/reservation/add" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                
                 <input type="date" id="date" name="date" required>
                 <label for="date">예약 날짜</label>
-
-                <select name="careTime" required>
+                
+                <select name="careTime" id="careTime" required>
                     <option value="" selected disabled>필수선택</option>
                     <option value="1">1시간</option>
                     <option value="3">3시간</option>
@@ -153,8 +100,9 @@
                     <option value="24">하루</option>
                     <option value="48">2일이상</option>
                 </select>
-                <label>돌봄시간</label>
-
+                <label for="careTime">돌봄시간</label>
+                
+                
                 <select name="petNum" id="petNum" required>
                     <option value="" selected disabled>필수선택</option>
                     <option value="1">1마리</option>
@@ -163,34 +111,37 @@
                     <option value="4">4마리</option>
                     <option value="0">5마리 이상</option>
                 </select>
-                <label>돌봄 요청 펫 수</label>
-
+                <label for="petNum">돌봄 요청 펫 수</label>
+                
+               
                 <select name="petsitter" id="petsitter" required>
                     <option value="" selected disabled>필수선택</option>
                     <option value="1">1등급</option>
                     <option value="2">2등급</option>
                     <option value="3">3등급</option>
                 </select>
-                <label>펫시터 등급</label>
-
-                <select name="bathService">
+                <label for="petsitter">펫시터 등급</label>
+                
+                
+                <select name="bathService" id="bathService">
                     <option value="true">Yes</option>
                     <option value="false" selected>No</option>
                 </select>
-                <label>목욕 서비스</label>
-
-                <select name="walkService">
+                <label for="bathService">목욕 서비스</label>
+                
+                
+                <select name="walkService" id="walkService">
                     <option value="true">Yes</option>
                     <option value="false" selected>No</option>
                 </select>
-                <label>산책 서비스</label>
-
-                <select name="pickupService">
+                <label for="walkService">산책 서비스</label>
+               
+                <select name="pickupService" id="pickupService">
                     <option value="true">Yes</option>
                     <option value="false" selected>No</option>
                 </select>
-                <label>픽업 서비스</label>
-
+                <label for="pickupService">픽업 서비스</label>
+                
                 <button type="submit">예약</button>
             </form>
         </div>
