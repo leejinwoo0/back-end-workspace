@@ -19,8 +19,8 @@
 
     <!--  회원만 리뷰 작성 -->
     <insert id="insertReview" parameterType="Review">
-        INSERT INTO review (review_code, title, review_text, review_date, id)
-        VALUES (8, #{title}, #{reviewText}, #{reviewDate}, #{id})
+        INSERT INTO review (title, review_text, review_date, id)
+        VALUES (#{title}, #{reviewText}, #{reviewDate}, #{id})
     </insert>
     
   

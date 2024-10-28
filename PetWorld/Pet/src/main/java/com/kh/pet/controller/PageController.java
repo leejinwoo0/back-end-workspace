@@ -1,12 +1,16 @@
 package com.kh.pet.controller;
 
+import java.util.List;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.pet.model.vo.Member;
+import com.kh.pet.model.vo.Reservation;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -33,20 +37,22 @@ public class PageController {
 		return "login";
 	}
 	
-	// 마이 페이지
 	@GetMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Member member = (Member) authentication.getPrincipal();
-    	String role = member.getRole();
-		
-		if(role.equals("ROLE_PETSITTER")) {
-			return "petsitterpage";
-		}else if(role.equals("ROLE_MEMBER")) {
-			return "mypage";
-		}
-		return "adminpage";
+	public String mypage(Model model, HttpServletRequest request) {
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    Member member = (Member) authentication.getPrincipal();
+	    String role = member.getRole();
+	    
+	    // 예약 목록 가져오기
+	    List<Reservation> reservations = reservationService.getReservationListById(member.getId());
+	    model.addAttribute("reservations", reservations);
+	    
+	    if (role.equals("ROLE_PETSITTER")) {
+	        return "petsitterpage";
+	    } else if (role.equals("ROLE_MEMBER")) {
+	        return "mypage"; // 이 JSP에서 예약 목록을 표시
+	    }
+	    return "adminpage";
 	}
 	
 	// 회원정보수정 페이지

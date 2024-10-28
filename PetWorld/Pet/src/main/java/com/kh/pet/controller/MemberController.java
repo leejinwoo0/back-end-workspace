@@ -78,7 +78,7 @@ public class MemberController {
             boolean isUpdated = memberService.updateProfile(member);
             
             if (isUpdated) {
-                return "redirect:/"; // 수정 성공 시 메인 페이지로 리다이렉트
+                return "redirect:/login"; // 수정 성공 시 로그인 페이지로 리다이렉트
             } else {
                 model.addAttribute("errorMessage", "정보 수정에 실패했습니다. 다시 시도해주세요.");
                 return "mypage"; // 실패 시 다시 회원정보수정 페이지로 이동
@@ -95,9 +95,12 @@ public class MemberController {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             Member currentUser = (Member) authentication.getPrincipal();
+           // System.out.println("컨트롤러 - 현재 사용자: " + currentUser.getId());
             boolean isDeleted = memberService.deleteAccount(currentUser.getId());
+           // System.out.println("컨트롤러 - 서비스 호출 결과: " + isDeleted);
             if (isDeleted) {
                 SecurityContextHolder.clearContext(); // 인증 정보 삭제
+                
                 return "redirect:/login"; // 로그인 페이지로 리다이렉트
             } else {
                 model.addAttribute("errorMessage", "회원탈퇴에 실패했습니다. 다시 시도해주세요.");
@@ -109,6 +112,7 @@ public class MemberController {
         }
     }
     
+    // 로그인
     @RequestMapping("/loginSuccess")
     public String loginSuccess(HttpServletRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

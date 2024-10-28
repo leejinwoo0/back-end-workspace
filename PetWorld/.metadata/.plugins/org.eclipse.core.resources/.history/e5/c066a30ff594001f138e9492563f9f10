@@ -1,0 +1,183 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 관리</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* 기본 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .form-container {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .form-container input,
+    .form-container select {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-container button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .form-container button:hover {
+        background-color: #218838;
+    }
+
+    .reservation-list {
+        margin-top: 20px;
+    }
+
+    .reservation-list h3 {
+        text-align: center;
+    }
+
+    .reservation-list table {
+        margin-top: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        // 예약 목록 가져오기
+        function loadReservations() {
+            $.getJSON('${pageContext.request.contextPath}/reservation/list', function(data) {
+                var tableContent = '';
+                $.each(data, function(index, reservation) {
+                    tableContent += '<tr>';
+                    tableContent += '<td>' + reservation.id + '</td>';
+                    tableContent += '<td>' + reservation.date + '</td>';
+                    tableContent += '<td>' + reservation.careTime + '</td>';
+                    tableContent += '<td>' + reservation.petsitter + '</td>';
+                    tableContent += '<td>' + reservation.petNum + '</td>';
+                    tableContent += '<td>' + (reservation.bathService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '<td>' + (reservation.walkService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '<td>' + (reservation.pickupService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '</tr>';
+                });
+                $('#reservationTable tbody').html(tableContent);
+            });
+        }
+
+       
+        // 예약 목록 로드
+        loadReservations();
+    });
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>예약 관리</h1>
+        <c:if test="${not empty errorMessage}">
+            <div class="error">${errorMessage}</div>
+        </c:if>
+
+        <!-- 예약 추가 폼 -->
+        <div class="form-container">
+            <h3>예약 추가</h3>
+            <form id="addReservationForm" action="<c:url value='/mypage'/>" method="post">
+                <input type="date" id="date" name="date" required>
+                <label for="date">예약 날짜</label>
+
+                <select name="careTime" required>
+                    <option value="" selected disabled>필수선택</option>
+                    <option value="1">1시간</option>
+                    <option value="3">3시간</option>
+                    <option value="6">6시간</option>
+                    <option value="24">하루</option>
+                    <option value="48">2일이상</option>
+                </select>
+                <label>돌봄시간</label>
+
+                <select name="petNum" id="petNum" required>
+                    <option value="" selected disabled>필수선택</option>
+                    <option value="1">1마리</option>
+                    <option value="2">2마리</option>
+                    <option value="3">3마리</option>
+                    <option value="4">4마리</option>
+                    <option value="0">5마리 이상</option>
+                </select>
+                <label>돌봄 요청 펫 수</label>
+
+                <select name="petsitter" id="petsitter" required>
+                    <option value="" selected disabled>필수선택</option>
+                    <option value="1">1등급</option>
+                    <option value="2">2등급</option>
+                    <option value="3">3등급</option>
+                </select>
+                <label>펫시터 등급</label>
+
+                <select name="bathService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+                <label>목욕 서비스</label>
+
+                <select name="walkService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+                <label>산책 서비스</label>
+
+                <select name="pickupService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+                <label>픽업 서비스</label>
+
+                <button type="submit">예약</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

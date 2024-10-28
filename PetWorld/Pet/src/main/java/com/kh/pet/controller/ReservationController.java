@@ -1,87 +1,105 @@
 package com.kh.pet.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import com.kh.pet.model.vo.Reservation;
 import com.kh.pet.service.MemberService;
 import com.kh.pet.service.ReservationService;
 
-@RestController
+@Controller
 @RequestMapping("/reservation")
 public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
-    
+
     @Autowired
     private MemberService memberService;
 
-    // 예약 목록 조회
+    // 예약 목록 조회 (JSP로 전달)
     @GetMapping("/list")
-    public List<Reservation> getReservationList() {
-        return reservationService.getReservationList();
+    public String getReservationList(Model model) {
+        List<Reservation> reservations = reservationService.getReservationList();
+        model.addAttribute("reservations", reservations);
+        return "mypage"; // JSP 파일 이름
     }
 
-    // 새로운 예약 추가 (필수 + 선택 항목)
+    // 새로운 예약 추가
     @PostMapping("/add")
     public String addReservation(
-            @RequestParam String petsitter,       // 필수 항목
-            @RequestParam int petNum,             // 필수 항목
-            @RequestParam int careTime,           // 필수 항목
-            @RequestParam(required = false) Boolean bathService,  // 선택 항목
-            @RequestParam(required = false) Boolean walkService,  // 선택 항목
-            @RequestParam(required = false) Boolean pickupService // 선택 항목
+            @RequestParam String petsitter,
+            @RequestParam Integer petNum,
+            @RequestParam Integer careTime,
+            @RequestParam String date,
+            @RequestParam Boolean bathService,
+            @RequestParam Boolean walkService,
+            @RequestParam Boolean pickupService
     ) {
-        // 필수 항목은 반드시 값이 있어야 한다는 가정하에 처리
         Reservation reservation = new Reservation();
         reservation.setPetsitter(petsitter);
         reservation.setPetNum(petNum);
         reservation.setCareTime(careTime);
+        reservation.setDate(date);
+        reservation.setBathService(bathService);
+        reservation.setWalkService(walkService);
+        reservation.setPickupService(pickupService);
 
-        // 선택 항목은 null일 경우 false로 기본 설정
-        reservation.setBathService(bathService != null ? bathService : false);
-        reservation.setWalkService(walkService != null ? walkService : false);
-        reservation.setPickupService(pickupService != null ? pickupService : false);
+        try {
+            reservationService.addReservation(reservation);
+            return "redirect:/mypage"; // 예약 후 마이페이지로 리다이렉트
+        } catch (Exception e) {
+            return "redirect:/reservation/add"; // 실패 시 다시 예약 페이지로
+        }
+    }
 
-        // 서비스에서 예약을 추가
-        reservationService.addReservation(reservation);
-
-        return "예약이 성공적으로 추가되었습니다.";
+    // 특정 예약 조회
+    @GetMapping("/get/{id}")
+    public Reservation getReservation(@PathVariable String id) {
+        return reservationService.getReservationListById(id);
     }
 
     // 예약 정보 수정
-    @PostMapping("/update")
+    @PostMapping("/update/{id}")
     public String updateReservation(
-            @RequestParam String id,          // 아이디로
-            @RequestParam String petsitter,        // 필수 항목
-            @RequestParam int petNum,              // 필수 항목
-            @RequestParam int careTime,            // 필수 항목
-            @RequestParam(required = false) Boolean bathService,  // 선택 항목
-            @RequestParam(required = false) Boolean walkService,  // 선택 항목
-            @RequestParam(required = false) Boolean pickupService // 선택 항목
+            @PathVariable String id,
+            @RequestParam String petsitter,
+            @RequestParam Integer petNum,
+            @RequestParam Integer careTime,
+            @RequestParam String date,
+            @RequestParam Boolean bathService,
+            @RequestParam Boolean walkService,
+            @RequestParam Boolean pickupService
     ) {
         Reservation reservation = new Reservation();
         reservation.setId(id);
         reservation.setPetsitter(petsitter);
         reservation.setPetNum(petNum);
         reservation.setCareTime(careTime);
+        reservation.setDate(date);
+        reservation.setBathService(bathService);
+        reservation.setWalkService(walkService);
+        reservation.setPickupService(pickupService);
 
-        // 선택 항목 처리
-        reservation.setBathService(bathService != null ? bathService : false);
-        reservation.setWalkService(walkService != null ? walkService : false);
-        reservation.setPickupService(pickupService != null ? pickupService : false);
-
-        reservationService.updateReservation(reservation);
-
-        return "예약이 성공적으로 수정되었습니다.";
+        try {
+            reservationService.updateReservation(reservation);
+            return "redirect:/index"; // 성공 시 Index 페이지로 리다이렉트
+        } catch (Exception e) {
+            return "redirect:/mypage"; // 실패 시 마이페이지에 머무름
+        }
     }
 
     // 예약 삭제
     @DeleteMapping("/delete/{id}")
     public String deleteReservation(@PathVariable String id) {
-        reservationService.deleteReservation(id);
-        return "예약이 삭제되었습니다.";
+        try {
+            reservationService.deleteReservation(id);
+            return "redirect:/index"; // 성공 시 Index 페이지로 리다이렉트
+        } catch (Exception e) {
+            return "redirect:/mypage"; // 실패 시 마이페이지에 머무름
+        }
     }
 }

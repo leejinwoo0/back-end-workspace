@@ -8,6 +8,8 @@ email VARCHAR(100) NOT NULL,
 role VARCHAR(20)
 );
 
+DELETE FROM Member WHERE id = 'ioii';
+
 /*
 id를 프라이머리키로 쓸때
 프라이머리키를 거는 순간 낫널 유니크가 걸림 그렇기때문에 auto_increment 필요없음
@@ -29,10 +31,11 @@ FOREIGN KEY(id) REFERENCES Member(id)
 );
 
 CREATE TABLE Reservation (
-res_code INT PRIMARY KEY,
+res_code INT PRIMARY KEY KEY AUTO_INCREMENT,
 petsitter VARCHAR(100),
 pet_num INT,
 care_time TIME,
+date VARCHAR(100),
 bath_service BOOLEAN,
 walk_service BOOLEAN,
 pickup_service BOOLEAN,
@@ -43,6 +46,7 @@ FOREIGN KEY (petsitter_code) REFERENCES PetSitter (petsitter_code)
 );
 
 SELECT * FROM Reservation;
+DROP TABLE Reservation;
 
 CREATE TABLE PetSitter (
 petsitter_code INT PRIMARY KEY,
@@ -74,7 +78,7 @@ VALUES (6,'펫시터3(경기)', '3등급', '01012345677', '경기' ,'50');
 
 
 CREATE TABLE Review (
-review_code INT PRIMARY KEY,
+review_code INT PRIMARY KEY AUTO_INCREMENT,
 title VARCHAR(100) NOT NULL,
 review_text VARCHAR(100),
 review_date VARCHAR(100),

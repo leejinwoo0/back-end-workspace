@@ -13,6 +13,8 @@ public interface ReservationMapper {
 	// 예약 목록 조회
 	List<Reservation> getReservationList();
 
+	Reservation getReservationById(String id);
+	
     // 새로운 예약 추가
     void insertReservation(Reservation reservation);
     

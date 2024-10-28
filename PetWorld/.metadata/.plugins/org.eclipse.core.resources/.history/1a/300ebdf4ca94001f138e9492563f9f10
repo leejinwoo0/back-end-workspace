@@ -1,0 +1,166 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 관리</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* 기본 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .form-container {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .form-container input,
+    .form-container select {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-container button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .form-container button:hover {
+        background-color: #218838;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        // 예약 목록 가져오기
+        function loadReservations() {
+            $.getJSON('${pageContext.request.contextPath}/reservation/list', function(data) {
+                var tableContent = '';
+                $.each(data, function(index, reservation) {
+                    tableContent += '<tr>';
+                    tableContent += '<td>' + (reservation.id ? '1등급' : '2등급' '3등급') + '</td>';
+                    tableContent += '<td>' + reservation.petsitter + '</td>';
+                    tableContent += '<td>' + reservation.petNum + '</td>';
+                    tableContent += '<td>' + reservation.careTime + '</td>';
+                    tableContent += '<td>' + (reservation.bathService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '<td>' + (reservation.walkService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '<td>' + (reservation.pickupService ? 'Yes' : 'No') + '</td>';
+                    tableContent += '<td><button onclick="deleteReservation(\'' + reservation.id + '\')">삭제</button></td>';
+                    tableContent += '</tr>';
+                });
+                $('#reservationTable tbody').html(tableContent);
+            });
+        }
+
+        // 예약 삭제
+        function deleteReservation(id) {
+            if (confirm('정말로 이 예약을 삭제하시겠습니까?')) {
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/reservation/delete/' + id,
+                    type: 'DELETE',
+                    success: function(response) {
+                        alert(response);
+                        loadReservations();
+                    }
+                });
+            }
+        }
+
+        // 예약 목록 로드
+        loadReservations();
+
+        // 예약 추가
+        $('#addReservationForm').submit(function(event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.post('${pageContext.request.contextPath}/reservation/add', formData, function(response) {
+                alert(response);
+                loadReservations();
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>예약 관리</h1>
+
+        <!-- 예약 추가 폼 -->
+        <div class="form-container">
+            <h3>예약 추가</h3>
+            <form id="addReservationForm">
+                <input type="text" name="petsitter" placeholder="펫시터 이름" required>
+                <input type="number" name="petNum" placeholder="반려동물 수" required>
+                <input type="number" name="careTime" placeholder="돌봄 시간(시간)" required>
+                
+                <!-- 선택 항목 -->
+               
+                <select name="bathService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+ <label>목욕 서비스</label>
+           
+                <select name="walkService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                </select>
+     <label>산책 서비스</label>
+               
+                <select name="pickupService">
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                  
+                </select>
+  <label>픽업 서비스</label> 
+                <button type="submit">예약 추가</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

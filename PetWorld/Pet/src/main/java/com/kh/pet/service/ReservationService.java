@@ -19,20 +19,20 @@ public class ReservationService {
     public List<Reservation> getReservationList() {
         return reservationmapper.getReservationList(); // 예약 테이블의 모든 데이터 가져오기
     }
-
-    // 새로운 예약 추가
-    public void insertReservation(Reservation reservation) {
-    	reservationmapper.insertReservation(reservation); // 예약 정보 추가
+    
+  
+ // 회원 ID로 예약 목록 조회
+    public Reservation getReservationListById(String id) {
+        return reservationmapper.getReservationById(id);
     }
+
     
     // 선택항목 예약 추가
     public void addReservation(Reservation reservation) {
     	reservationmapper.addReservation(reservation);
     }
     
-    public void saveReservation(Reservation reservation) {
-    	reservationmapper.saveReservation(reservation);
-    }
+    
 
     // 예약 정보 수정
     public void updateReservation(Reservation reservation) {

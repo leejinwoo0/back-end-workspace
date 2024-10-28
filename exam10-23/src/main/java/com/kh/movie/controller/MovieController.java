@@ -93,12 +93,24 @@ public class MovieController {
                     genre += ", ";
                 }
             };
+
+            JSONArray actors = movieInfo.getJSONArray("actors");
+            String actor = "";
+            for(int j = 0; j < actors.length(); j++) {
+                JSONObject genreObject = actors.getJSONObject(j);
+                actor += genreObject.getString("peopleNm");
+                if(j < genres.length() - 1) {
+                    actor += ", ";
+                }
+            };
+
             log.info("genre" +genre);
 
             list.add(Movie.builder()
                           .id(movieCd)
                           .title(title)
-                          .actor(genre)
+                          .actor(actor)
+                          .genre(genre)
                           .build());
 
         }

@@ -11,6 +11,7 @@ public class Reservation {
 	private String petsitter;
 	private int petNum;
 	private int careTime;
+	private String date;
 	private boolean bathService;
 	private boolean walkService;
 	private boolean pickupService;
