@@ -42,10 +42,10 @@ public class PageController {
 		return "login";
 	}
 	
-	@GetMapping("mypage")
-	public String mypage() {
-		return "mypage";
-	}
+	/*
+	 * @GetMapping("mypage") public String mypage() { System.out.println("asdasd");
+	 * return "mypage"; }
+	 */
 	
 	//@GetMapping("/mypage")
 	//public String mypage(Model model) {

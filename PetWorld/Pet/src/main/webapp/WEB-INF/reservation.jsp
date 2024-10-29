@@ -66,7 +66,7 @@
             $.post('${pageContext.request.contextPath}/reservation/add', formData)
                 .done(function(response) {
                     // 예약 추가 성공 시 마이페이지로 리디렉션
-                    window.location.href = '${pageContext.request.contextPath}/mypage';
+                    window.location.href = '${pageContext.request.contextPath}/reservation/mypage';
                 })
                 .fail(function(jqXHR) {
                     // 예약 추가 실패 시 에러 메시지 출력
@@ -87,7 +87,7 @@
         <div class="form-container">
             <h3>예약 추가</h3>
             <form id="addReservationForm" action="${pageContext.request.contextPath}/reservation/add" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                
                 
                 <input type="date" id="date" name="date" required>
                 <label for="date">예약 날짜</label>

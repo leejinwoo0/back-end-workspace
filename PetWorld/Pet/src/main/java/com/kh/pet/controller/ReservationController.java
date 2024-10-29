@@ -36,21 +36,28 @@ public class ReservationController {
         List<Reservation> reservations = reservationService.getReservationListById(member.getId());
         System.out.println("예약 목록: " + reservations);
         model.addAttribute("reservations", reservations);
-        return "mypage"; // JSP 파일 이름
+        return "mypage"; 
     }
 
     // 새로운 예약 추가
     @PostMapping("/add")
     public String addReservation(
             @RequestParam String petsitter,
-            @RequestParam String petNum, // petNum을 String으로 변경
-            @RequestParam String careTime, // careTime을 String으로 변경
+            @RequestParam String petNum, 
+            @RequestParam String careTime, 
             @RequestParam String date,
             @RequestParam Boolean bathService,
             @RequestParam Boolean walkService,
             @RequestParam Boolean pickupService
     ) {
-        System.out.println("addReservation 메서드 호출");
+        
+    	   System.out.println("petsitter: " + petsitter);
+    	    System.out.println("petNum: " + petNum);
+    	    System.out.println("careTime: " + careTime);
+    	    System.out.println("date: " + date);
+    	    System.out.println("bathService: " + bathService);
+    	    System.out.println("walkService: " + walkService);
+    	    System.out.println("pickupService: " + pickupService);
         
         // 현재 사용자 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -58,18 +65,23 @@ public class ReservationController {
 
         Reservation reservation = new Reservation();
         reservation.setPetsitter(petsitter);
-        reservation.setPetNum(petNum); // petNum 설정
-        reservation.setCareTime(careTime); // careTime 설정
+        reservation.setPetNum(petNum); 
+        reservation.setCareTime(careTime); 
         reservation.setDate(date);
         reservation.setBathService(bathService);
         reservation.setWalkService(walkService);
         reservation.setPickupService(pickupService);
         
         reservation.setId(member.getId());
-
+        
+        
+         
         try {
             reservationService.addReservation(reservation);
+           System.out.println("예약성공" + reservation);
             return "redirect:/reservation/mypage"; // 예약 후 마이페이지로 리다이렉트
+         
+             
         } catch (Exception e) {
             System.out.println("예약 추가 실패: " + e.getMessage());
             return "redirect:/reservation/add"; // 실패 시 다시 예약 페이지로
@@ -79,7 +91,7 @@ public class ReservationController {
     // 특정 예약 조회
     @GetMapping("/get/{id}")
     public Reservation getReservation(@PathVariable String id) {
-        System.out.println("getReservation 메서드 호출, ID: " + id);
+        System.out.println("getReservation2 메서드 호출, ID: " + id);
         return reservationService.getReservationListByReservationId(id);
     }
 
@@ -88,8 +100,8 @@ public class ReservationController {
     public String updateReservation(
             @PathVariable String id,
             @RequestParam String petsitter,
-            @RequestParam String petNum, // petNum을 String으로 변경
-            @RequestParam String careTime, // careTime을 String으로 변경
+            @RequestParam String petNum, 
+            @RequestParam String careTime, 
             @RequestParam String date,
             @RequestParam Boolean bathService,
             @RequestParam Boolean walkService,
@@ -100,8 +112,8 @@ public class ReservationController {
         Reservation reservation = new Reservation();
         reservation.setId(id);
         reservation.setPetsitter(petsitter);
-        reservation.setPetNum(petNum); // petNum 설정
-        reservation.setCareTime(careTime); // careTime 설정
+        reservation.setPetNum(petNum); 
+        reservation.setCareTime(careTime); 
         reservation.setDate(date);
         reservation.setBathService(bathService);
         reservation.setWalkService(walkService);
@@ -132,20 +144,19 @@ public class ReservationController {
     // 마이페이지 이동
     @GetMapping("/mypage")
     public String mypage(Model model) {
-        System.out.println("mypage 메서드 호출");
+   
+        
+        
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Member member = (Member) authentication.getPrincipal();
-        String role = member.getRole();
+ 
         
         // 현재 회원 ID로 예약 목록 가져오기
         List<Reservation> reservations = reservationService.getReservationListById(member.getId());
         model.addAttribute("reservations", reservations);
         
-        if (role.equals("ROLE_PETSITTER")) {
-            return "petsitterpage";
-        } else if (role.equals("ROLE_MEMBER")) {
-            return "mypage"; // mypage.jsp로 이동
-        }
-        return "adminpage";
+        System.out.println("예약목록 가져오기" + reservations);
+            return "mypage"; 
+    
     }
 }

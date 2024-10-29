@@ -9,6 +9,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 
@@ -67,4 +69,14 @@ public class PetConfig {
         filterBean.setOrder(Integer.MIN_VALUE); // 필터의 우선순위 설정
         return filterBean;
     }
+    
+    // 더블슬래시 허용
+    @Bean
+    public HttpFirewall httpFirewall() {
+        StrictHttpFirewall strictHttpFirewall = new StrictHttpFirewall();
+        strictHttpFirewall.setAllowUrlEncodedDoubleSlash(true);
+        return strictHttpFirewall;
+    }
+    
+    
 }
