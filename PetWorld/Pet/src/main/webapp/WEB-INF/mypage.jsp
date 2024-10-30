@@ -17,78 +17,22 @@
         height: 100px;
         align-items: center;
         z-index: 1000;
-        background-color: white; /* 헤더 배경색 추가 */
+        background-color: white;
     }
-
-    /* 헤더 안의 a 태그 스타일 */
-    header a {
-        font-size: 2.3rem;
-        font-weight: bold;
-        margin-left: 50px;
-    }
-
-    .div {
-        width: 100%;
-        height: 100px;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 120px 20px 20px; /* 헤더 높이만큼 padding 추가 */
-        background-color: #f4f4f4;
-    }
-
-    h1 {
-        color: #333;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
-
-    table, th, td {
-        border: 1px solid #ddd;
-    }
-
-    th, td {
-        padding: 12px;
-        text-align: left;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    a {
-        text-decoration: none;
-        color: #007BFF;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    .error {
-        color: red;
-        margin-bottom: 20px;
-    }
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+    header a { font-size: 2.3rem; font-weight: bold; margin-left: 50px; }
+    .div { width: 100%; height: 100px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 120px 20px 20px; background-color: #f4f4f4; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 12px; text-align: left; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    tr:hover { background-color: #f1f1f1; }
+    a { text-decoration: none; color: #007BFF; }
+    a:hover { text-decoration: underline; }
 </style>
 
-<title>Chat</title>
+<title>Reservation Management</title>
 </head>
 <body>
 
@@ -96,8 +40,7 @@
   <a href="${pageContext.request.contextPath}/index">PetWorld</a>
 </header>
 
-<div class="div">
-</div>
+<div class="div"></div>
 <a href="${pageContext.request.contextPath}/delete">회원탈퇴</a>
 
 <div class="header">
@@ -113,31 +56,40 @@
             <th>펫시터등급</th> 
             <th>목욕서비스</th>
             <th>산책서비스</th>
-            <th>픽업서비스</th>         
+            <th>픽업서비스</th>
+            <th>삭제</th>
         </tr>
     </thead>
     <tbody>
         <c:if test="${empty reservations}">
             <tr>
-                <td colspan="7" style="text-align:center;">예약이 없습니다.</td>
+                <td colspan="9" style="text-align:center;">예약이 없습니다.</td>
             </tr>
         </c:if>
         <c:forEach var="reservation" items="${reservations}">
-            <tr>
-                <td>${reservation.date}</td>
-                <td>${reservation.careTime}</td>
-                <td>${reservation.petNum}</td>
-                <td>${reservation.petsitter}</td>
-                <td>${reservation.bathService ? 'Yes' : 'No'}</td>
-                <td>${reservation.walkService ? 'Yes' : 'No'}</td>
-                <td>${reservation.pickupService ? 'Yes' : 'No'}</td>           
-            </tr>
-        </c:forEach>
+    <tr>
+        <td>${reservation.date}</td>
+        <td>${reservation.careTime}</td>
+        <td>${reservation.petNum}</td>
+        <td>${reservation.petsitter}</td>
+        <td>${reservation.bathService ? 'Yes' : 'No'}</td>
+        <td>${reservation.walkService ? 'Yes' : 'No'}</td>
+        <td>${reservation.pickupService ? 'Yes' : 'No'}</td>
+        
+      
+        <!-- 삭제 버튼 -->
+        <td>
+            <form action="${pageContext.request.contextPath}/reservation/delete/${reservation.id}" method="post" onsubmit="return confirm('예약을 삭제하시겠습니까?');">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">삭제</button>
+            </form>
+        </td>
+    </tr>
+</c:forEach>
     </tbody>
 </table>
 
-<button type="button" onclick="manageReservation('edit')">수정</button>
-    <button type="button" onclick="manageReservation('delete')">삭제</button>
+
 
 </body>
 </html>

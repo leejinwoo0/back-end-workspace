@@ -76,6 +76,13 @@
     </style>
 </head>
 <body>
+<header>
+<a href="/index">
+        <img src="img/mainlogo.webp" /> 
+    </a>
+</header>
+ 
+
 <div class="header">
     <h1>리뷰 목록</h1>
     <a href="<c:url value='/reviews/reviewForm'/>">리뷰 작성</a>

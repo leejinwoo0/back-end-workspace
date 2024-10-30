@@ -36,8 +36,8 @@ public class ReservationService {
     }
 
     // 예약 정보 수정
-    public void updateReservation(Reservation reservation) {
-        reservationMapper.updateReservation(reservation);
+    public void updateReservation(String id) {
+        reservationMapper.updateReservation(id);
     }
 
     // 예약 삭제

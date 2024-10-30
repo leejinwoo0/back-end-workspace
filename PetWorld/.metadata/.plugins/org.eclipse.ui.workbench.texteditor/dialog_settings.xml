@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="HttpFire"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="httpFire"/>
+			<item value="//"/>
 			<item value="selectAllPetsitter"/>
 			<item value="updateMember"/>
 			<item value="getUsername"/>
@@ -21,8 +23,6 @@
 			<item value="userid"/>
 			<item value="resCode"/>
 			<item value="rescode"/>
-			<item value="setrescode"/>
-			<item value="setRescode"/>
 		</list>
 		<list key="replacehistory">
 		</list>

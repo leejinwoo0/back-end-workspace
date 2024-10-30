@@ -9,7 +9,7 @@
 <title>Chat</title>
 <style>
 header {
-  background-color: yellow;
+  background-color: white;
   position: fixed;
   width: 100%;
   display: flex;
@@ -22,6 +22,7 @@ header {
 header img {
   height: 100px; /* 로고 높이 설정 */
   margin-left: 20px; /* 로고 왼쪽 여백 */
+  border-radius: 80%; 
 }
 
 section {
@@ -33,7 +34,7 @@ section {
 }
 
 section:nth-child(odd) {
-  background-color: yellow; /* 홀수 섹션 흰색 배경 */
+  background-color: white; /* 홀수 섹션 흰색 배경 */
 }
 
 section:nth-child(even) {
@@ -107,7 +108,7 @@ section p {
 <body>
 <header>
     <a href="/index">
-        <img src="img/mainlogo.webp" alt="로고" /> <!-- 로고 이미지 추가 -->
+        <img src="img/mainlogo.webp" alt="로고" /> 
     </a>
 </header>
 

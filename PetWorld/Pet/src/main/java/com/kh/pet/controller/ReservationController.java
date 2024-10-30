@@ -98,7 +98,7 @@ public class ReservationController {
     // 예약 정보 수정
     @PostMapping("/update/{id}")
     public String updateReservation(
-            @PathVariable String id,
+            @PathVariable String id, // 경로 변수로 예약 ID를 받습니다.
             @RequestParam String petsitter,
             @RequestParam String petNum, 
             @RequestParam String careTime, 
@@ -109,8 +109,9 @@ public class ReservationController {
     ) {
         System.out.println("updateReservation 메서드 호출, ID: " + id);
 
+        // Reservation 객체 생성 및 속성 설정
         Reservation reservation = new Reservation();
-        reservation.setId(id);
+        reservation.setId(id); // 경로 변수로 받은 ID 설정
         reservation.setPetsitter(petsitter);
         reservation.setPetNum(petNum); 
         reservation.setCareTime(careTime); 
@@ -120,24 +121,26 @@ public class ReservationController {
         reservation.setPickupService(pickupService);
 
         try {
-            reservationService.updateReservation(reservation);
-            return "redirect:/mypage"; // 성공 시 마이페이지로 리다이렉트
+            // reservationService.updateReservation 메서드를 호출하여 예약 수정
+            reservationService.updateReservation(id); // 수정된 Reservation 객체 전달
+            return "redirect:/reservation/mypage"; // 성공 시 마이페이지로 리다이렉트
         } catch (Exception e) {
             System.out.println("예약 수정 실패: " + e.getMessage());
-            return "redirect:/mypage"; // 실패 시 마이페이지에 머무름
+            return "redirect:/reservation/mypage"; // 실패 시 마이페이지에 머무름
         }
     }
 
+
     // 예약 삭제
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteReservation(@PathVariable String id) {
         System.out.println("deleteReservation 메서드 호출, ID: " + id);
         try {
             reservationService.deleteReservation(id);
-            return "redirect:/mypage"; // 성공 시 마이페이지로 리다이렉트
+            return "redirect:/reservation/mypage"; // 성공 시 마이페이지로 리다이렉트
         } catch (Exception e) {
             System.out.println("예약 삭제 실패: " + e.getMessage());
-            return "redirect:/mypage"; // 실패 시 마이페이지에 머무름
+            return "redirect:/reservation/mypage"; // 실패 시 마이페이지에 머무름
         }
     }
 
