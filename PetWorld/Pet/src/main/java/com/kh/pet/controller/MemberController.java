@@ -71,9 +71,9 @@ public class MemberController {
     @PostMapping("/mypage/update")
     public String updateProfile(Member member, HttpServletRequest request, Model model) {
         try {
-//            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//            Member currentUser = (Member) auth.getPrincipal();
-//            member.setId(currentUser.getId()); // 현재 사용자의 ID 유지
+           Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+          Member currentUser = (Member) auth.getPrincipal();
+            member.setId(currentUser.getId()); // 현재 사용자의 ID 유지
 //            System.out.println(currentUser.getId());
             boolean isUpdated = memberService.updateProfile(member);
             

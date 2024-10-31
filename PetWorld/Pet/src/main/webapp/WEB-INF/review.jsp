@@ -78,7 +78,7 @@
 <body>
 <header>
 <a href="/index">
-        <img src="img/mainlogo.webp" /> 
+        <img src="img/개사진1.webp" /> 
     </a>
 </header>
  

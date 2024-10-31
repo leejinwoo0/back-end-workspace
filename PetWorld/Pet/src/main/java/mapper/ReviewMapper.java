@@ -15,7 +15,5 @@ public interface ReviewMapper {
 	// 리뷰작성 회원만
 	  int insertReview(Review review);
 	
-	// 리뷰 삭제
-	  void deleteReview(int reviewCode, String id);
-
+	
 }

@@ -16,9 +16,10 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 130px;
   align-items: center;
   z-index: 1000;
+  border-bottom: 3px solid black;
 }
 
 header img {
@@ -26,7 +27,7 @@ header img {
  height: 100px; 
  border-radius: 80%;
  margin-left: 50px;
- margin-top:20px;
+ margin-top:10px;
 }
 
 header a {
@@ -35,10 +36,6 @@ header a {
   margin-left: 10px;
 }
 
-header nav a {
-  font-size: 1rem; /* nav의 a 요소 글자 크기 */
-  font-weight: bold; 
-}
 header > * {
   width: 60%;
   display: flex;
@@ -49,6 +46,8 @@ header nav {
   height: 100%;
 }
 header nav a {
+font-size: 1rem; /* nav의 a 요소 글자 크기 */
+  font-weight: bold; 
   display: flex;
   align-items: center;
   padding: 10px;
@@ -111,8 +110,10 @@ section p {
 </head>
 <body>
 <header>
- <img src="img/mainlogo.webp">
-    <a href="/index">PetWorld</a>
+<a href="/index">
+<img src="img/mainlogo.webp">
+</a>
+ 
     <nav>
         <c:choose>
             <c:when test="${not empty sessionScope.userId}">

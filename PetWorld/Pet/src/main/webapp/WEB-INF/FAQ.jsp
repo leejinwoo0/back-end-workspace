@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +11,15 @@
 <title>FAQ</title>
 <style>
 header {
-  background-color: yellow;
+  background-color: white;
   position: fixed;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 130px;
   align-items: center;
   z-index: 1000;
+  border-bottom: 3px solid black;
 }
 
 header img {
@@ -25,22 +27,34 @@ header img {
  height: 100px; 
  border-radius: 80%;
  margin-left: 50px;
- margin-top:20px;
+ margin-top:10px;
 }
 
 header a {
-  font-size: 2.3rem;
-  font-weight: bold;
-  margin-left: 50px;
+  font-size: 2.3rem; /* PetWorld의 글자 크기 */
+  font-weight: bold; /* 필요에 따라 굵기 설정 */
+  margin-left: 10px;
 }
 
 header > * {
-  width: 50%;
+  width: 60%;
   display: flex;
 }
 
-header form {
-  justify-content: center;
+header nav {
+  justify-content: end;
+  height: 100%;
+}
+header nav a {
+  font-size: 1rem; /* nav의 a 요소 글자 크기 */
+  font-weight: bold; 
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+header nav a:hover {
+  background-color: black;
+  color: white;
 }
 
 section {
@@ -52,13 +66,24 @@ section {
   text-align: center;
 }
 
+
 section h2 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 15px;
   justify-content: center;
   display: flex;
 }
+
+section p {
+font-size: 1.3rem;
+font-weight: bold;
+padding: 100px;
+line-height: 2;
+background-color: #f1f1f1;
+overflow: hidden;
+}
+
 
 .main {
 height: 100%;
@@ -79,10 +104,10 @@ height: 100%;
 }
 
 .panel {
-  padding: 0 18px;
-  display: none; /* 초기에는 숨겨둠 */
-  background-color: #f1f1f1;
+
+  display: none; 
   overflow: hidden;
+
 }
 
 .acc2 {
@@ -96,9 +121,8 @@ height: 100%;
 }
 
 .panel2 {
-  padding: 0 18px;
+
   display: none; /* 초기에는 숨겨둠 */
-  background-color: #f1f1f1;
   overflow: hidden;
 }
 
@@ -113,9 +137,8 @@ height: 100%;
 }
 
 .panel3 {
-  padding: 0 18px;
+
   display: none; /* 초기에는 숨겨둠 */
-  background-color: #f1f1f1;
   overflow: hidden;
 }
 
@@ -130,34 +153,60 @@ height: 100%;
 }
 
 .panel4 {
-  padding: 0 18px;
+
   display: none; /* 초기에는 숨겨둠 */
-  background-color: #f1f1f1;
   overflow: hidden;
 }
 
 .main img {
-      width: 400px; /* 이미지 너비를 300px로 설정 */
-      height: 400px; /* 이미지의 비율을 유지 */
-      border-radius: 80%;
+      width: 600px; 
+      height: 600px; 
+      
      
-}
+
 </style>
 
 </head>
 <body>
 <header>
-  <a href="/index">PetWorld</a>
+<a href="/index">
+<img src="img/mainlogo.webp">
+</a>
+ 
+    <nav>
+        <c:choose>
+            <c:when test="${not empty sessionScope.userId}">
+                <a href="/logout">로그아웃</a>
+                <a href="/update">회원정보수정</a>
+                <a href="/reservation/mypage">마이페이지</a>
+                <a href="/reservation">예약</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/signUp">회원가입</a> 
+                <a href="/login">로그인</a>
+            </c:otherwise>
+        </c:choose>
+        <a href="/FAQ">FAQ</a>
+        <a href="<c:url value='/reviews/list'/>">리뷰</a>
+        <a href="/petsitter/list">펫시터</a>
+        <a href="/service">서비스 종류</a>  
+    </nav>
 </header>
-<section id="sec1">
+
+<section id="sec">
 <div class="main">
-<img src ="img/mainlogo.webp">
+<img src ="img/놀이.webp">
+</section>
+
+<section id="sec1">
 </div>
   <h2 class="acc">펫월드는 어떤사이트인가요</h2> <!-- FAQ 제목 클릭 시 동작 -->
   <div class="panel">
-    <p>펫월드는 '반려동물 종합 돌봄 전문 서비스'입니다.<br>
+    <p>
+    펫월드는 '반려동물 종합 돌봄 전문 서비스'입니다.<br>
     까다롭게 선별되고 검증된 매니저가 우리 아이를 안전하고 세심하게 돌봐드려요!<br>
-    반려동물 전문 펫시터 펫월드 매니저를 보다 쉽고, 편리하게 만나보세요!</p>
+    반려동물 전문 펫시터 펫월드 매니저를 보다 쉽고, 편리하게 만나보세요!
+    </p>
   </div>
 </section>
 

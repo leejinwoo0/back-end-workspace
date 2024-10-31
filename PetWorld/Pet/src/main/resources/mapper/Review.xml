@@ -7,7 +7,7 @@
         <result column="title" property="title"/>
         <result column="review_text" property="reviewText"/>
         <result column="review_date" property="reviewDate"/>
-        <result column="id" property="id"/> <!-- 회원의 ID -->
+        <result column="id" property="id"/> 
     </resultMap>
 
     <!--  회원 유무 상관없이 리뷰 목록 보기 -->
@@ -24,11 +24,5 @@
     </insert>
     
   
-    <!--  회원만 리뷰 삭제 -->
-    <delete id="deleteReview" parameterType="Review">
-        DELETE FROM review WHERE review_code = #{reviewCode} AND id = #{id}
-    </delete>
-
-   
-
+  
 </mapper>
