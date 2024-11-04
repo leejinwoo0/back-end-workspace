@@ -7,11 +7,64 @@
 <title>예약 관리</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-    /* 기본 스타일 */
+    
+     header {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            height: 130px;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 3px solid black;
+        }
+
+        header img {
+            width: 100px; 
+            height: 100px; 
+            border-radius: 80%;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+        header a {
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        header > * {
+            width: 60%;
+            display: flex;
+        }
+
+        header nav {
+            justify-content: end;
+            height: 100%;
+        }
+
+        header nav a {
+            font-size: 1rem;
+            font-weight: bold; 
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color:black;
+            text-decoration: none!important; 
+        }
+
+        header nav a:hover {
+            background-color: black;
+            color: white;
+        }
+    
+    
     body {
         font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        padding: 20px;
+        background-color: white;
+
     }
 
     h1 {
@@ -21,15 +74,15 @@
 
     .container {
         max-width: 800px;
-        margin: 0 auto;
+        margin-top: 200px;
+        margin-left: 550px;
     }
 
     .form-container {
         margin-bottom: 20px;
         padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+        border: 3px solid black;
     }
 
     .form-container input,
@@ -45,14 +98,15 @@
         padding: 10px 15px;
         border: none;
         border-radius: 4px;
-        background-color: #28a745;
+        background-color: black;
         color: white;
         cursor: pointer;
         margin-top: 10px;
+        margin-left: 50px;
     }
 
     .form-container button:hover {
-        background-color: #218838;
+        background-color: #0056b3;
     }
 </style>
 <script>
@@ -77,6 +131,32 @@
 </script>
 </head>
 <body>
+
+<header>
+    <a href="/index">
+        <img src="img/mainlogo.webp">
+    </a>
+    <nav>
+        <c:choose>
+            <c:when test="${not empty sessionScope.userId}">
+                <a href="/logout">로그아웃</a>
+                <a href="/update">회원정보수정</a>
+                <a href="/reservation/mypage">마이페이지</a>
+                <a href="/reservation">예약</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/signUp">회원가입</a> 
+                <a href="/login">로그인</a>
+            </c:otherwise>
+        </c:choose>
+        <a href="/FAQ">FAQ</a>
+        <a href="<c:url value='/reviews/list'/>">리뷰</a>
+        <a href="/petsitter/list">펫시터</a>
+        <a href="/service">서비스 종류</a>  
+    </nav>
+</header>
+
+
     <div class="container">
         <h1>예약 관리</h1>
         <c:if test="${not empty errorMessage}">

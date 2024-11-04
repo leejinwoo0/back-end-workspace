@@ -42,10 +42,10 @@
         function validateInput() {
             const name = $("#name").val();
             const password = $("#password").val();
-            const id = $("#id").val(); // 아이디 추가
-            const nameRegex = /^[가-힣]{2,}$/; // 한글 2글자 이상
-            const passwordRegex = /^(?=.*[a-z])[a-z]{4,}$/; // 영소문자 4글자 이상
-            const idRegex = /^[a-zA-Z]+$/; // 영문자만
+            const id = $("#id").val(); 
+            const nameRegex = /^[가-힣]{2,}$/; 
+            const passwordRegex = /^(?=.*[a-z])[a-z]{4,}$/; 
+            const idRegex = /^[a-zA-Z]+$/; 
 
             // 이름 유효성 검사
             if (nameRegex.test(name)) {
@@ -143,7 +143,7 @@
             max-width: 400px;
             margin: auto;
             border: 3px solid black;
-            height : 700px;
+            height : 750px;
         }
         label {
             display: block;
@@ -159,7 +159,7 @@
             border: 1px solid black;
             border-radius: 4px;
             transition: border-color 0.3s;
-            font-size: 0.9em; /* 글씨 크기 줄임 */
+            font-size: 0.9em; 
         }
         input[type="text"]:focus,
         input[type="password"]:focus,
@@ -168,8 +168,8 @@
             outline: none;
         }
         button {
-            background-color: white;
-            color: black;
+            background-color: black;
+            color: white;
             font-size: 1rem;
             font-weight: bold;
             padding: 5px; 
@@ -193,7 +193,10 @@
             margin-top: -10px;
             margin-bottom: 15px;
             font-size: 0.9em;
-        }
+            display: block; /* 인라인에서 블록으로 변경하여 위치 조정 */
+            position: relative;
+            margin-left: 30px /* span을 왼쪽으로 이동 */
+           }
         p {
             text-align: center;
         }
@@ -220,6 +223,7 @@
         margin-right: 10px; 
         text-align: right; 
     }
+    
         
     </style>
 </head>

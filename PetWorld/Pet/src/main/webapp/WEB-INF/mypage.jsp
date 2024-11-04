@@ -61,10 +61,9 @@
             background-color: black;
             color: white;
         }
-    .div { 
-    width: 100%; 
-    height: 100px; 
-    }
+        
+        
+    
     
     body { 
     font-family: Arial, sans-serif; 
@@ -80,6 +79,7 @@
     table { 
     width: 70%;
     margin-left: 100px; 
+    margin-top: 50px;
     border-collapse: collapse; 
     
     }
@@ -101,9 +101,18 @@
     background-color: #f1f1f1; 
     }
     
+    
+    
+     .del { 
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 100px;
+    }
+    
     a { 
     text-decoration: none; 
-    color: #007BFF; 
+    color: black; 
     }
     
     a:hover { 
@@ -111,9 +120,19 @@
     }
     
     .rrr {
+    margin-top: 150px;
     margin-left: 100px;
+    font-size: 2rem;
+    font-weight: bold;
+    color:black;
     }
 </style>
+
+<script>
+    function confirmDelete() {
+        return confirm("회원을 정말 탈퇴하시겠습니까?");
+    }
+</script>
 
 <title>Reservation Management</title>
 </head>
@@ -144,8 +163,12 @@
     </nav>
 </header>
 
-<div class="div"></div>
-<a href="${pageContext.request.contextPath}/delete">회원탈퇴</a>
+<div class="del">
+    <a href="${pageContext.request.contextPath}/delete" onclick="return confirmDelete()">
+        <p>회원탈퇴</p>
+    </a>
+</div>
+
 
 <div class=rrr>
     <h1>예약 목록</h1>

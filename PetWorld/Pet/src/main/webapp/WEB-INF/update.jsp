@@ -126,8 +126,8 @@
             border-radius: 4px;
         }
         button {
-            background-color: white;
-            color: black;
+            background-color: black;
+            color: white;
             padding: 5px;
             border: 1px solid black;
             border-radius: 4px;
