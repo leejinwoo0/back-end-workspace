@@ -204,15 +204,6 @@
         <label for="name">이름</label>
         <input type="text" id="name" name="name" value="${member.name}" required>
         </div>
-
-
-        <div class=gg>
-        <label for="id">아이디</label>
-        <input type="text" id="id" name="id" value="${member.id}"  placeholder="아이디 변경 원할 경우에만 입력">
-        </div>
-        <button type="button" onclick="checkDuplicateId()">중복 체크</button>
-        <span id="idFeedback" class="feedback"></span>
-        
         
         <div class=gg>
         <label for="password">비밀번호</label>
