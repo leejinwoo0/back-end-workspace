@@ -31,8 +31,8 @@ header img {
 }
 
 header a {
-  font-size: 2.3rem; /* PetWorld의 글자 크기 */
-  font-weight: bold; /* 필요에 따라 굵기 설정 */
+  font-size: 2.3rem; 
+  font-weight: bold; 
   margin-left: 10px;
 }
 
@@ -46,7 +46,7 @@ header nav {
   height: 100%;
 }
 header nav a {
-font-size: 1rem; /* nav의 a 요소 글자 크기 */
+font-size: 1rem; 
   font-weight: bold; 
   display: flex;
   align-items: center;
@@ -70,7 +70,8 @@ section h2 {
   margin-bottom: 15px;
 }
 section p {
-  line-height: 1.5;
+  line-height: 2.5;
+  font-size: 1.5rem;
 }
 
 .dog1 img{
@@ -95,7 +96,7 @@ section p {
 
 .s1, .s2, .s3 {
   position: relative;
-  top: 100px;
+  top: 300px;
 }
 .s1 {
   margin-left: -700px;
@@ -105,6 +106,18 @@ section p {
 }
 .s3 {
   margin-left: -700px;
+}
+
+
+
+.s1 p {
+margin-top: 100px;
+}
+.s2 p {
+margin-top: 50px;
+}
+.s3 p {
+margin-top: 50px;
 }
 </style>
 </head>
@@ -137,7 +150,9 @@ section p {
 <section id="sec1">
 <div class="s1">
 <h2>펫시터가 책임질게~</h2>
-<P>asdasdasd</P>
+<P>여행이나 출장, 피치 못 할 사정 등으로
+누군가의 보살핌이 필요할때! <br>
+페팸 펫시터가 우리 아이들을 돌봐드려요</P>
 </div>
 <div class="dog1">
 <img src = "img/개사진1.webp">
@@ -146,8 +161,9 @@ section p {
 
 <section id="sec2">
 <div class="s2">
-<h2>개건고양이건 가져만와</h2>
-<P>asdasdasd</P>
+<h2>개,고양이 전문 돌봄 사이트</h2>
+<P>국내 최고의 서비스, 펫시터 최다보유 돌봄사이트!!</P><br>
+<p></p>
 </div>
 <div class="dog2">
 <img src = "img/개사진2.webp">
@@ -156,8 +172,11 @@ section p {
 
 <section id="sec3">
 <div class="s3">
-<h2>행복하잖아~</h2>
-<p>asdasdas</p>
+<h2>믿고맡길수있는 검증된 펫시터</h2>
+<p>철저한 신원 검증 <br>
+자격증취득<br>
+전문교육이수
+</p>
 </div>
 <div class="good">
 <img src = "img/화목한반려동물사진.webp">

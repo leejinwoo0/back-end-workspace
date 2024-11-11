@@ -75,34 +75,35 @@ public class MovieController {
             String title = movieInfo.getString("movieNm");
 
             JSONArray actors = movieInfo.getJSONArray("actors");
-            String actor = "";
+            StringBuilder actor = new StringBuilder();
             for(int j = 0; j < actors.length(); j++) {
                 JSONObject actorObject = actors.getJSONObject(j);
-                actor += actorObject.getString("peopleNm");
+                actor.append(actorObject.getString("peopleNm")) ;
                 if(j < actors.length() - 1) {
-                    actor += ", ";
+                    actor.append(", ") ;
                 }
             };
 
             JSONArray genres = movieInfo.getJSONArray("genres");
-            String genre = "";
+            StringBuilder genre = new StringBuilder();
             for(int j = 0; j < genres.length(); j++) {
                 JSONObject actorObject = genres.getJSONObject(j);
-                genre += actorObject.getString("peopleNm");
+                genre.append(actorObject.getString("peopleNm"));
                 if(j < genres.length() - 1) {
-                    genre += ", ";
+                    genre.append(", ") ;
                 }
             };
-
+            Movie movie  = Movie.builder()
+                        .movieCd(movieCd)
+                        .title(title)
+                        .actor(actor.toString())
+                        .genre(genre.toString())
+                        .build();
         }
 
         return ResponseEntity.ok(list);
     }
 
-  List<movie>  = .build();
-    .movieCd(movieCd);
-    .title(title)  ;
-    .actor(actor);
-    .genre(genre);
+
 
 }

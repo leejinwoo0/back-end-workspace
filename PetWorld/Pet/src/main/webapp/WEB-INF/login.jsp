@@ -63,7 +63,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: white;
             margin: 0;
-            padding-top: 130px; /* header와 겹치지 않도록 패딩 추가 */
+            padding-top: 130px; 
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -151,10 +151,10 @@
     }
 
        .gg label {
-        width: 30%; /* label의 너비 조정 */
+        width: 30%; 
         font-weight: bold;
-        margin-right: 10px; /* label과 input 사이의 간격 */
-        text-align: right; /* label 텍스트 오른쪽 정렬 */
+        margin-right: 10px; 
+        text-align: right; 
     }
         
      

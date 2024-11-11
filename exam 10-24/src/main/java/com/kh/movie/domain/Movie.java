@@ -23,4 +23,9 @@ public class Movie {
 
     @Column
     private String actor;
+
+    @Column
+    private int movieCd;
+
+
 }

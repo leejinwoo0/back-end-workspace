@@ -193,9 +193,9 @@
             margin-top: -10px;
             margin-bottom: 15px;
             font-size: 0.9em;
-            display: block; /* 인라인에서 블록으로 변경하여 위치 조정 */
+            display: block; 
             position: relative;
-            margin-left: 30px /* span을 왼쪽으로 이동 */
+            margin-left: 30px 
            }
         p {
             text-align: center;

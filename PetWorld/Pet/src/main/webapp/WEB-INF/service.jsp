@@ -61,18 +61,18 @@ header nav a:hover {
 
 section {
   display: flex;
-  justify-content: space-between; /* 양쪽 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  padding: 20px; /* 패딩 추가 */
-  height: 100vh; /* 섹션 높이 설정 */
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px; 
+  height: 100vh; 
 }
 
 section:nth-child(odd) {
-  background-color: white; /* 홀수 섹션 흰색 배경 */
+  background-color: white; 
 }
 
 section:nth-child(even) {
-  background-color: white; /* 짝수 섹션 노란색 배경 */
+  background-color: white; 
 }
 
 section h2 {
@@ -80,13 +80,13 @@ section h2 {
   font-weight: bold;
   margin-bottom: 15px;
   line-height: 1.5;
-  flex: 1; /* 글 영역 */
+  flex: 1; 
 }
 
 section p {
   font-size: 1.5rem;
   line-height: 1.5;
-  flex: 1; /* 글 영역 */
+  flex: 1; 
 }
 
 .care img {
@@ -95,6 +95,12 @@ section p {
   margin-right: 200px;
 }
 
+
+.happy img {
+ width: 400px;
+  height: 400px;
+  margin-left: 200px;
+}
 .bath img {
   width: 400px;
   height: 400px;
@@ -122,9 +128,12 @@ section p {
   line-height: 1.5;
   margin-bottom: 15px; /* p 태그 간의 간격 추가 */
   flex: 1; /* 글 영역 */
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
+.s2 h2{
+ margin-left: 200px;
+}
 .s3 {
  margin-left: 300px;
 }
@@ -179,13 +188,14 @@ section p {
 </section>
 
 <section id="sec2">
+  <div class="happy">
+    <img src="img/행복.webp">
+  </div>
   <div class="s2" style="flex: 1;">
+    <h2>반려동물 걱정은 No<br> 마음놓고 일상생활을 즐기세요</h2>
     <p>여행, 명절 등 장시간 집을 비울 때</p>
     <p>출장, 야근 등 갑자기 일이 생겼을 때</p>
     <p>집에 혼자 있는 시간이 많은 우리 아이들이 걱정될 때</p>
-  </div>
-  <div style="flex: 1;">
-    <h2>반려동물 걱정은 No<br> 마음놓고 일상생활을 즐기세요</h2>
   </div>
 </section>
 

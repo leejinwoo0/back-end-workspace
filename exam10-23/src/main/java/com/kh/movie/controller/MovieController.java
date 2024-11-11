@@ -118,4 +118,40 @@ public class MovieController {
         return ResponseEntity.ok(list);
     }
 
+    @PostMapping
+    public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
+        Movie savedMovie = service.save(movie);
+        return ResponseEntity.ok(savedMovie);
+    }
+
+    // Read
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> getMovie(@PathVariable int id) {
+        Optional<Movie> movie = service.findById(id);
+        return movie.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Update
+    @PutMapping("/{id}")
+    public ResponseEntity<Movie> updateMovie(@PathVariable int id, @RequestBody Movie updatedMovie) {
+        Optional<Movie> existingMovie = service.findById(id);
+        if (existingMovie.isPresent()) {
+            updatedMovie.setId(id);
+            Movie savedMovie = service.save(updatedMovie);
+            return ResponseEntity.ok(savedMovie);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Delete
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable int id) {
+        if (service.existsById(id)) {
+            service.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

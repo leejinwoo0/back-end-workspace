@@ -137,10 +137,10 @@
     }
 
        .gg label {
-        width: 30%; /* label의 너비 조정 */
+        width: 30%; 
         font-weight: bold;
-        margin-right: 10px; /* label과 input 사이의 간격 */
-        text-align: right; /* label 텍스트 오른쪽 정렬 */
+        margin-right: 10px; 
+        text-align: right;
     }
     
 </style>
